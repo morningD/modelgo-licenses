@@ -1,0 +1,112 @@
+/* Mark color styles */
+mark[style*="color:purple"], mark[style*="color: purple"] {
+  background: none;
+  color: #7c3aed;
+  font-weight: inherit;
+}
+
+mark[style*="color:green"], mark[style*="color: green"] {
+  background: none;
+  color: #16a34a;
+  font-weight: inherit;
+}
+
+mark[style*="color:yellow"], mark[style*="color: yellow"] {
+  background: none;
+  color: #ca8a04;
+  font-weight: inherit;
+}
+
+mark[style*="color:orange"], mark[style*="color: orange"] {
+  background: none;
+  color: #ea580c;
+  font-weight: inherit;
+}
+
+mark[style*="color:blue"], mark[style*="color: blue"] {
+  background: none;
+  color: #2563eb;
+  font-weight: inherit;
+}
+
+mark[style*="color:red"], mark[style*="color: red"] {
+  background: none;
+  color: #dc2626;
+  font-weight: inherit;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 8px 12px;
+}
+
+th {
+  background-color: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+/* Details/Summary styles */
+details {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  user-select: none;
+}
+
+details[open] summary {
+  margin-bottom: 8px;
+}
+
+/* Video embed */
+.video-embed {
+  margin: 24px 0;
+}
+
+.video-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 8px;
+}
+
+.video-embed .caption {
+  text-align: center;
+  color: var(--vp-c-text-2);
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+
+/* Figure/caption styles */
+figure {
+  margin: 24px 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+figcaption {
+  color: var(--vp-c-text-2);
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+
+/* Home page hero adjustments */
+.VPHero .VPImage {
+  max-width: 200px;
+  border-radius: 12px;
+}
