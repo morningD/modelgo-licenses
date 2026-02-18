@@ -105,8 +105,46 @@ figcaption {
   margin-top: 8px;
 }
 
-/* Home page hero adjustments */
-.VPHero .VPImage {
-  max-width: 200px;
-  border-radius: 12px;
+/* Home page hero — banner background */
+.VPHero {
+  background: url('/images/banner.png') center / cover no-repeat;
+  position: relative;
+  min-height: 400px;
+}
+
+.VPHero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.dark .VPHero::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.VPHero .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Let the hero image slot grow for our interactive component */
+.VPHero .image-container {
+  width: 100% !important;
+  height: auto !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  transform: none !important;
+}
+
+.VPHero .image-bg {
+  display: none !important;
+}
+
+.VPHero .image {
+  margin: 0 !important;
+  position: relative;
+  z-index: 10;
 }

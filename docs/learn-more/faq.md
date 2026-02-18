@@ -1,4 +1,4 @@
-# FAQ
+# 📪 FAQ
 
 ## Q: Why we need ModelGo licenses?
 

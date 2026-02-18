@@ -1,4 +1,4 @@
-# Using ModelGo Licenses
+# 🚀 Using ModelGo Licenses
 
 ModelGo Licenses include eight variants, grouped into **Permissive Licenses**, **Conditional Permissive Licenses**, and **Stringent Licenses**. Please select the one that best suits your needs.
 
@@ -6,9 +6,8 @@ ModelGo Licenses include eight variants, grouped into **Permissive Licenses**, *
 
 These licenses are sublicensable and irrevocable, with <mark style="color:purple;">almost no restrictions</mark> applied to the derivatives.
 
-::::: tabs
-
-:::: tab MG0
+:::tabs
+== MG0
 
 | License Full Name | ModelGo Zero License 2.0 |
 |---|---|
@@ -16,10 +15,10 @@ These licenses are sublicensable and irrevocable, with <mark style="color:purple
 | Tags | Permissive, Sublicensable, Irrevocable |
 | Purposes | Publishing models with almost no restrictions except for the terms regarding Warranty, Liability, and Termination. Recipients may remove your attribution and license file. |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG0/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG0/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -33,9 +32,7 @@ https://ids.nus.edu.sg/docs/modelgo/MG0-2.0.txt
 
 </details>
 
-::::
-
-:::: tab MG-BY
+== MG-BY
 
 | License Full Name | ModelGo Attribution License 2.0 |
 |---|---|
@@ -43,10 +40,10 @@ https://ids.nus.edu.sg/docs/modelgo/MG0-2.0.txt
 | Tags | Permissive, Sublicensable, Irrevocable |
 | Purposes | Further to the provisions of MG0, recipients should retain all attribution info and other notices from original work in their copies and derivatives, and a statement of modifications is also required. |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -60,17 +57,14 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-2.0.txt
 
 </details>
 
-::::
-
-:::::
+:::
 
 ### Conditional Permissive
 
 These licenses include some <mark style="color:purple;">copyleft-style terms</mark>. Recipients can freely use and make derivatives as long as they comply with the specified conditional license terms of the original work.
 
-::::: tabs
-
-:::: tab MG-BY-SA
+:::tabs
+== MG-BY-SA
 
 | License Full Name | ModelGo Attribution-ShareAlike License 2.0 |
 |---|---|
@@ -78,10 +72,10 @@ These licenses include some <mark style="color:purple;">copyleft-style terms</ma
 | Tags | Copyleft, Disclose Source, Non-Sublicensable, Irrevocable |
 | Purposes | Publishing models with the requirement to open-source model weights, architectures, training and testing code/scripts, etc. (excluding data and system library) for all copies and subsequent derivatives. |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-SA/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-SA/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -95,9 +89,7 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-SA-2.0.txt
 
 </details>
 
-::::
-
-:::: tab MG-BY-RAI
+== MG-BY-RAI
 
 | License Full Name | ModelGo Attribution-ResponsibleAI License 2.0 |
 |---|---|
@@ -105,10 +97,10 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-SA-2.0.txt
 | Tags | Weak Copyleft, Responsible AI, Non-Sublicensable, <mark style="color:purple;">**Revocable**</mark>, GPL-Incompatible |
 | Purposes | Publishing models with the responsible use of AI terms, which has been advocated by [RAIL](https://www.licenses.ai). Note that, by applying this license, all copies and subsequent derivatives will be restricted by these use-based restriction terms. |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-RAI/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-RAI/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -122,17 +114,14 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-RAI-2.0.txt
 
 </details>
 
-::::
-
-:::::
+:::
 
 ### Stringent
 
 These licenses are <mark style="color:purple;">non-free</mark> and contain <mark style="color:purple;">strict redistribution restrictions</mark>, such as for non-commercial purposes only and/or prohibiting the sharing of derivatives of the original work. They also require model attribution when publishing model outputs as datasets.
 
-::::: tabs
-
-:::: tab MG-BY-NC
+:::tabs
+== MG-BY-NC
 
 | License Full Name | ModelGo Attribution-NonCommercial License 2.0 |
 |---|---|
@@ -140,10 +129,10 @@ These licenses are <mark style="color:purple;">non-free</mark> and contain <mark
 | Tags | No Commercial Use, Non-Sublicensable, GPL-Incompatible, <mark style="color:purple;">**Revocable**</mark> |
 | Purposes | Publishing models with no commercial prohibition means that any kind of commercial use (including SaaS) of original models and their derivatives, as well as the complementary code and scripts, is not allowed. Please note that the rights granting of this license can be revoked. |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -157,9 +146,7 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-2.0.txt
 
 </details>
 
-::::
-
-:::: tab MG-BY-NC-RAI
+== MG-BY-NC-RAI
 
 | License Full Name | ModelGo Attribution-NonCommercial-ResponsibleAI License 2.0 |
 |---|---|
@@ -167,10 +154,10 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-2.0.txt
 | Tags | Weak Copyleft, No Commercial Use, Responsible AI, GPL-Incompatible, Non-Sublicensable, <mark style="color:purple;">**Revocable**</mark> |
 | Purposes | Further to the provisions of MG-BY-NC, recipients should also comply with the responsible use of AI terms. |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-RAI/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-RAI/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -184,15 +171,12 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-RAI-2.0.txt
 
 </details>
 
-::::
-
-:::::
+:::
 
 The <mark style="color:purple;">**NoDerivatives**</mark> licensing options prohibit any kind of sharing of derivatives. These licenses can be used as proprietary licenses.
 
-::::: tabs
-
-:::: tab MG-BY-ND
+:::tabs
+== MG-BY-ND
 
 | License Full Name | ModelGo Attribution-NoDerivatives License 2.0 |
 |---|---|
@@ -200,10 +184,10 @@ The <mark style="color:purple;">**NoDerivatives**</mark> licensing options prohi
 | Tags | Proprietary, No Sharing Derivatives, Non-Sublicensable, <mark style="color:purple;">**Revocable**</mark> |
 | Purposes | Publishing models with sharing restrictions limited to the verbatim copy, prohibiting any kind of sharing of derivatives (excluding outputs). |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-ND/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-ND/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -217,9 +201,7 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-ND-2.0.txt
 
 </details>
 
-::::
-
-:::: tab MG-BY-NC-ND
+== MG-BY-NC-ND
 
 | License Full Name | ModelGo Attribution-NonCommercial-NoDerivatives License 2.0 |
 |---|---|
@@ -227,10 +209,10 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-ND-2.0.txt
 | Tags | Proprietary, No Commercial Use, No Sharing Derivatives, Non-Sublicensable, <mark style="color:purple;">**Revocable**</mark> |
 | Purposes | Further to the provisions of MG-BY-ND, any kind of commercial use (including SaaS) of original models and their derivatives, as well as the complementary code and scripts, is not allowed. |
 
-[Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-ND/LICENSE)
+[👆 Get the Full Text of this License](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-ND/LICENSE)
 
 <details>
-<summary>Add to your README</summary>
+<summary>Add 👇 to your README</summary>
 
 ```
 ### Model License:
@@ -244,9 +226,7 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-ND-2.0.txt
 
 </details>
 
-::::
-
-:::::
+:::
 
 ## How to Apply the ModelGo Licenses to Your Model
 
@@ -260,4 +240,4 @@ https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-ND-2.0.txt
 
 3. **Use Model Sheet to Improve Understanding (Optional)**
 
-   Paste the corresponding [Model Sheet](how-to-choose#with-the-help-of-model-sheet) in your README or Model Card to help downstream users understand the granted rights and restrictions of your model.
+   Paste the corresponding [Model Sheet](/get-started/how-to-choose#-with-the-help-of-model-sheet) in your README or Model Card to help downstream users understand the granted rights and restrictions of your model.

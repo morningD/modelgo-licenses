@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/modelgo-licenses/',
 
   head: [
-    ['link', { rel: 'icon', href: '/modelgo-licenses/images/cover.png' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/modelgo-licenses/mg-favicon.svg' }]
   ],
 
   markdown: {
@@ -17,12 +17,10 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/images/cover.png',
-
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Get Started', link: '/get-started/using-modelgo-licenses' },
-      { text: 'Learn More', link: '/learn-more/understanding-modelgo' },
+      { text: '🚀 Get Started', link: '/get-started/using-modelgo-licenses' },
+      { text: '📖 Learn More', link: '/learn-more/understanding-modelgo' },
       { text: 'GitHub', link: 'https://github.com/Xtra-Computing/ModelGo' }
     ],
 
@@ -30,16 +28,16 @@ export default defineConfig({
       {
         text: 'Get Started',
         items: [
-          { text: 'Using ModelGo Licenses', link: '/get-started/using-modelgo-licenses' },
-          { text: 'How to Choose', link: '/get-started/how-to-choose' }
+          { text: '🚀 Using ModelGo Licenses', link: '/get-started/using-modelgo-licenses' },
+          { text: '✨ How to Choose', link: '/get-started/how-to-choose' }
         ]
       },
       {
         text: 'Learn More',
         items: [
-          { text: 'Understanding ModelGo', link: '/learn-more/understanding-modelgo' },
-          { text: 'FAQ', link: '/learn-more/faq' },
-          { text: 'Disclaimer', link: '/learn-more/disclaimer' }
+          { text: '📖 Understanding ModelGo', link: '/learn-more/understanding-modelgo' },
+          { text: '📪 FAQ', link: '/learn-more/faq' },
+          { text: '📌 Disclaimer', link: '/learn-more/disclaimer' }
         ]
       }
     ],

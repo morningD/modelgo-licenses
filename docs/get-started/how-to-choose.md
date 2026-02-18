@@ -1,4 +1,4 @@
-# How to Choose
+# ✨ How to Choose
 
 ## Diff View of ModelGo Licenses
 
@@ -10,7 +10,7 @@ To enhance understanding and increase transparency of ModelGo licenses, we offer
 
 This diff view provides an overview understanding of different MG licenses. However, if you're still unsure which license will meet your needs, our Model Sheet can be helpful.
 
-## With the Help of Model Sheet
+## 📋 With the Help of Model Sheet
 
 Agreeing with [IBM AI Factsheet](https://aifs360.res.ibm.com) and [Montreal Data License](https://arxiv.org/abs/1903.12262), we believe that transparency is crucial to increasing trust and standardization in AI. ModelGo licenses use a <mark style="color:purple;">**Model Sheet**</mark> to assist model users in understanding the granted rights and restrictions in the license terms. It also helps model developers find the most suitable MG licenses.
 
@@ -416,7 +416,7 @@ Model Sheet:
 
 </details>
 
-## Tips
+## 💡 Tips
 
 Here are some useful tips for selecting suitable MG licenses:
 
