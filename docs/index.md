@@ -50,7 +50,7 @@ This model is licensed under the ModelGo Zero License, Version 2.0 (MG0-2.0);
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG0-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG0/LICENSE
 ```
 
 </details>
@@ -75,7 +75,7 @@ This model is licensed under the ModelGo Attribution License, Version 2.0 (MG-BY
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG-BY-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY/LICENSE
 ```
 
 </details>
@@ -107,7 +107,7 @@ This model is licensed under the ModelGo Attribution-ShareAlike License, Version
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG-BY-SA-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-SA/LICENSE
 ```
 
 </details>
@@ -132,7 +132,7 @@ This model is licensed under the ModelGo Attribution-ResponsibleAI License, Vers
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG-BY-RAI-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 ```
 
 </details>
@@ -164,7 +164,7 @@ This model is licensed under the ModelGo Attribution-NonCommercial License, Vers
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC/LICENSE
 ```
 
 </details>
@@ -189,7 +189,7 @@ This model is licensed under the ModelGo Attribution-NonCommercial-ResponsibleAI
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-RAI-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 ```
 
 </details>
@@ -219,7 +219,7 @@ This model is licensed under the ModelGo Attribution-NoDerivatives License, Vers
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG-BY-ND-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-ND/LICENSE
 ```
 
 </details>
@@ -244,7 +244,7 @@ This model is licensed under the ModelGo Attribution-NonCommercial-NoDerivatives
 you may use this model only in compliance with the License.
 You may obtain a copy of the License at
 
-https://ids.nus.edu.sg/docs/modelgo/MG-BY-NC-ND-2.0.txt
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-ND/LICENSE
 ```
 
 </details>

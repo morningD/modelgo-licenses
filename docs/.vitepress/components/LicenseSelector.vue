@@ -45,7 +45,6 @@ const licenses = Object.keys(licenseMap)
 const selected = ref<string | null>(null)
 const downloading = ref(false)
 
-// Only the visible badges — TransitionGroup handles enter/leave/move
 const visibleBadges = computed(() => {
   if (!selected.value) return allBadges
   const keys = new Set(licenseMap[selected.value])
@@ -81,65 +80,160 @@ async function downloadLicense() {
 
 <template>
   <div class="ls-root">
-    <p class="ls-hint">👇 Click a license to explore</p>
-
-    <div class="ls-buttons">
-      <button
-        v-for="name in licenses"
-        :key="name"
-        :class="['ls-btn', { active: selected === name }]"
-        @click="selectLicense(name)"
-      >
-        {{ name }}
-      </button>
+    <!-- Fixed-height slot for hint so nothing shifts -->
+    <div class="ls-hint-slot">
+      <Transition name="hint">
+        <p v-if="!selected" class="ls-hint">
+          Pick Your License <span class="hint-arrow">↓</span>
+        </p>
+      </Transition>
     </div>
 
-    <div class="ls-badges-wrap">
-      <TransitionGroup name="badge" tag="div" class="ls-badges">
-        <div
-          v-for="b in visibleBadges"
-          :key="b.key"
-          class="ls-badge"
-          :style="{ '--badge-color': b.color }"
+    <!-- Buttons area with optional animated border -->
+    <div class="ls-buttons-area">
+      <!-- Rotating border overlay -->
+      <Transition name="box-fade">
+        <div v-if="!selected" class="ls-border-ring" aria-hidden="true" />
+      </Transition>
+
+      <div class="ls-buttons">
+        <button
+          v-for="name in licenses"
+          :key="name"
+          :class="['ls-btn', { active: selected === name }]"
+          @click="selectLicense(name)"
         >
-          <span class="badge-icon">{{ b.icon }}</span>
-          <div class="badge-text">
-            <span class="badge-label">{{ b.label }}</span>
-            <span class="badge-fullname">{{ b.fullName }}</span>
-          </div>
-          <div class="badge-desc">{{ b.desc }}</div>
-        </div>
-      </TransitionGroup>
+          {{ name }}
+        </button>
+      </div>
     </div>
 
-    <Transition name="slide-up">
-      <button
-        v-if="selected"
-        class="ls-download"
-        :disabled="downloading"
-        @click="downloadLicense"
-      >
-        📄 {{ downloading ? 'Downloading...' : `Download ${selected} License` }}
-      </button>
-    </Transition>
+    <!-- Badges + download -->
+    <div class="ls-result">
+      <div class="ls-badges-wrap">
+        <TransitionGroup name="badge" tag="div" class="ls-badges">
+          <div
+            v-for="b in visibleBadges"
+            :key="b.key"
+            class="ls-badge"
+            :style="{ '--badge-color': b.color }"
+          >
+            <span class="badge-icon">{{ b.icon }}</span>
+            <div class="badge-text">
+              <span class="badge-label">{{ b.label }}</span>
+              <span class="badge-fullname">{{ b.fullName }}</span>
+            </div>
+            <div class="badge-desc">{{ b.desc }}</div>
+          </div>
+        </TransitionGroup>
+      </div>
+
+      <Transition name="slide-up">
+        <button
+          v-if="selected"
+          class="ls-download"
+          :disabled="downloading"
+          @click="downloadLicense"
+        >
+          📄 {{ downloading ? 'Downloading...' : `Download ${selected} License` }}
+        </button>
+      </Transition>
+    </div>
   </div>
 </template>
 
 <style scoped>
+/* Animated gradient angle */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .ls-root {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  padding: 8px 0;
+  padding: 4px 0;
+  margin-top: -20px;
+  width: 100%;
 }
 
+/* Fixed-height slot so buttons don't shift when hint disappears */
+.ls-hint-slot {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hint */
 .ls-hint {
   font-size: 14px;
-  color: var(--vp-c-text-2);
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
   margin: 0;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
 }
+
+.hint-arrow {
+  display: inline-block;
+  animation: nudge-down 1.5s ease-in-out infinite;
+}
+
+@keyframes nudge-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+.hint-enter-active { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.hint-leave-active { transition: all 0.2s ease; }
+.hint-enter-from { opacity: 0; transform: translateY(-6px); }
+.hint-leave-to { opacity: 0; transform: translateY(-6px); }
+
+/* Buttons area — relative container for the border overlay */
+.ls-buttons-area {
+  position: relative;
+  padding: 14px 18px;
+}
+
+/* Rotating border ring — sits behind buttons as overlay */
+.ls-border-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--border-angle),
+    var(--vp-c-brand-1),
+    #2563eb,
+    #16a34a,
+    #ca8a04,
+    #ea580c,
+    var(--vp-c-brand-1)
+  );
+  animation: border-spin 3s linear infinite reverse;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes border-spin {
+  to { --border-angle: 360deg; }
+}
+
+/* Box fade transition */
+.box-fade-enter-active { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.box-fade-leave-active { transition: all 0.3s ease; }
+.box-fade-enter-from { opacity: 0; }
+.box-fade-leave-to { opacity: 0; }
 
 /* License buttons */
 .ls-buttons {
@@ -147,6 +241,7 @@ async function downloadLicense() {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
+  align-items: center;
 }
 
 .ls-btn {
@@ -178,10 +273,19 @@ async function downloadLicense() {
   box-shadow: 0 3px 14px rgba(124, 58, 237, 0.25);
 }
 
-/* Badges container — fixed height prevents hero shake */
-.ls-badges-wrap {
-  min-height: 100px;
+/* Result */
+.ls-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   width: 100%;
+}
+
+.ls-badges-wrap {
+  height: 46px;
+  width: 100%;
+  overflow: visible;
 }
 
 .ls-badges {
@@ -189,15 +293,16 @@ async function downloadLicense() {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-start;
+  align-items: center;
 }
 
-/* Individual badge */
+/* Badge */
 .ls-badge {
   position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
+  padding: 6px 12px;
   background: var(--vp-c-bg-soft);
   border: 1.5px solid var(--vp-c-divider);
   border-radius: 10px;
@@ -211,7 +316,7 @@ async function downloadLicense() {
 }
 
 .badge-icon {
-  font-size: 18px;
+  font-size: 16px;
   flex-shrink: 0;
 }
 
@@ -222,18 +327,18 @@ async function downloadLicense() {
 }
 
 .badge-label {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   color: var(--vp-c-text-1);
 }
 
 .badge-fullname {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--badge-color);
   font-weight: 500;
 }
 
-/* Tooltip — absolute, doesn't affect layout */
+/* Tooltip */
 .badge-desc {
   position: absolute;
   top: calc(100% + 6px);
@@ -260,14 +365,11 @@ async function downloadLicense() {
   pointer-events: auto;
 }
 
-/* === TransitionGroup animations === */
-
-/* MOVE: remaining badges slide to new positions with spring physics */
+/* TransitionGroup */
 .badge-move {
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ENTER: badges spring up from below */
 .badge-enter-active {
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
               opacity 0.35s ease;
@@ -278,11 +380,9 @@ async function downloadLicense() {
   transform: translateY(40px) scale(0.6);
 }
 
-/* LEAVE: badges fall with gravity + rotation */
 .badge-leave-active {
   transition: transform 0.45s cubic-bezier(0.55, 0, 1, 0.45),
               opacity 0.35s ease;
-  /* Take out of flow so remaining items can move */
   position: absolute;
 }
 
@@ -291,7 +391,7 @@ async function downloadLicense() {
   transform: translateY(80px) rotate(15deg) scale(0.5);
 }
 
-/* Download button */
+/* Download */
 .ls-download {
   display: inline-flex;
   align-items: center;
@@ -318,19 +418,8 @@ async function downloadLicense() {
   cursor: wait;
 }
 
-/* Slide-up transition for download button */
-.slide-up-enter-active {
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.slide-up-leave-active {
-  transition: all 0.25s ease;
-}
-.slide-up-enter-from {
-  opacity: 0;
-  transform: translateY(12px) scale(0.9);
-}
-.slide-up-leave-to {
-  opacity: 0;
-  transform: translateY(8px) scale(0.95);
-}
+.slide-up-enter-active { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.slide-up-leave-active { transition: all 0.25s ease; }
+.slide-up-enter-from { opacity: 0; transform: translateY(12px) scale(0.9); }
+.slide-up-leave-to { opacity: 0; transform: translateY(8px) scale(0.95); }
 </style>
