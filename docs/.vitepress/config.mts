@@ -4,10 +4,10 @@ import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 export default defineConfig({
   title: 'ModelGo Licenses',
   description: 'A Standard Way for Model Publishing',
-  base: '/modelgo-licenses/',
+  base: '/',
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/modelgo-licenses/mg-favicon.svg' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/mg-favicon.svg' }]
   ],
 
   markdown: {
@@ -46,7 +46,7 @@ export default defineConfig({
 
     footer: {
       message: 'Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a> (excluding license text files). All rights reserved.',
-      copyright: 'ModelGo Licenses &copy; NUS Institute of Data Science | <a href="/modelgo-licenses/learn-more/disclaimer">Disclaimer</a>'
+      copyright: 'ModelGo Licenses &copy; NUS Institute of Data Science | <a href="/learn-more/disclaimer">Disclaimer</a>'
     },
 
     search: {
