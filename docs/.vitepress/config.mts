@@ -19,8 +19,6 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: '🚀 Get Started', link: '/get-started/using-modelgo-licenses' },
-      { text: '📖 Learn More', link: '/learn-more/understanding-modelgo' },
       { text: 'GitHub', link: 'https://github.com/Xtra-Computing/ModelGo' }
     ],
 
@@ -47,8 +45,8 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Except where otherwise noted, the content on this website is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a>.',
-      copyright: 'ModelGo Licenses &copy; NUS Institute of Data Science'
+      message: 'Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a> (excluding license text files). All rights reserved.',
+      copyright: 'ModelGo Licenses &copy; NUS Institute of Data Science | <a href="/modelgo-licenses/learn-more/disclaimer">Disclaimer</a>'
     },
 
     search: {

@@ -9,6 +9,8 @@ defineProps<{
   <div class="video-embed">
     <iframe
       :src="url"
+      title="Embedded video"
+      loading="lazy"
       allow="autoplay; encrypted-media"
       allowfullscreen
     />

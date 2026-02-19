@@ -1,6 +1,6 @@
 # 📪 FAQ
 
-## Q: Why we need ModelGo licenses?
+## Q: Why do we need ModelGo licenses?
 
 ModelGo licenses offer flexible licensing elements to fulfill your specific licensing needs about using and distributing your ML models.
 

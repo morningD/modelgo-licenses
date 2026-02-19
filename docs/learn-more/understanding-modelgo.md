@@ -2,7 +2,7 @@
 
 ## How It's Built
 
-**ModelGo Licenses V2** is a complete redraft of V1, created by Dr. [Moming Duan](https://scholar.google.com/citations?user=vEWocfwAAAAJ) with **NUS IDS** and Singapore legal experts, inspired by **OpenRAILs** and **Creative Commons.** V2 resolves V1's potential copyright issues (due to V1 being a remix of legacy licenses). We dedicate it to the public—use ModelGo V2 with confidence.
+**ModelGo Licenses V2** is a complete redraft of V1, created by Dr. [Moming Duan](https://scholar.google.com/citations?user=vEWocfwAAAAJ) with **NUS IDS** and Singapore legal experts, inspired by **OpenRAILs** and **Creative Commons.** V2 resolves V1's potential copyright issues (due to V1 being a remix of legacy licenses). We dedicate it to the public. Use ModelGo V2 with confidence.
 
 ## Structure
 
@@ -16,6 +16,8 @@ ModelGo licenses include a Disclaimer and Limitation of Liability (Section 3, 4)
 
 | Time | Event |
 |------|-------|
+| 2026-1-14 | The paper introducing ModelGo Analyzer is accepted by ACM [TheWebConf26](https://www2026.thewebconf.org) ! |
+| 2025-12-9 | 3rd resubmission for OSI review. |
 | 2025-6-18 | 2nd resubmission for OSI review. |
 | 2025-5-2 | The paper introducing ModelGo Licenses is accepted as an [<mark style="color:purple;">**oral**</mark>](https://icml.cc/virtual/2025/oral/40181) at ICML 2025 !! |
 | 2025-3-23 | 1st resubmission for OSI review. |

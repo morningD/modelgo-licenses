@@ -41,9 +41,410 @@ const licenseDownloads: Record<string, string> = {
   'MG-BY-NC-ND': 'https://raw.githubusercontent.com/Xtra-Computing/ModelGo/main/MGL/V2/MG-BY-NC-ND/LICENSE',
 }
 
+const licenseReadme: Record<string, string> = {
+  'MG0': `### Model License:
+
+This model is licensed under the ModelGo Zero License, Version 2.0 (MG0-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG0/LICENSE`,
+  'MG-BY': `### Model License:
+
+This model is licensed under the ModelGo Attribution License, Version 2.0 (MG-BY-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY/LICENSE`,
+  'MG-BY-SA': `### Model License:
+
+This model is licensed under the ModelGo Attribution-ShareAlike License, Version 2.0 (MG-BY-SA-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-SA/LICENSE`,
+  'MG-BY-RAI': `### Model License:
+
+This model is licensed under the ModelGo Attribution-ResponsibleAI License, Version 2.0 (MG-BY-RAI-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE`,
+  'MG-BY-NC': `### Model License:
+
+This model is licensed under the ModelGo Attribution-NonCommercial License, Version 2.0 (MG-BY-NC-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC/LICENSE`,
+  'MG-BY-ND': `### Model License:
+
+This model is licensed under the ModelGo Attribution-NoDerivatives License, Version 2.0 (MG-BY-ND-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-ND/LICENSE`,
+  'MG-BY-NC-RAI': `### Model License:
+
+This model is licensed under the ModelGo Attribution-NonCommercial-ResponsibleAI License, Version 2.0 (MG-BY-NC-RAI-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE`,
+  'MG-BY-NC-ND': `### Model License:
+
+This model is licensed under the ModelGo Attribution-NonCommercial-NoDerivatives License, Version 2.0 (MG-BY-NC-ND-2.0);
+you may use this model only in compliance with the License.
+You may obtain a copy of the License at
+
+https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-ND/LICENSE`,
+}
+
+const licenseModelSheet: Record<string, string> = {
+  'MG0': `### Model Sheet MG0-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✓ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✓ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✗ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✓ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✗ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✗ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✗ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✗ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✗ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✗ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✗ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✗ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+  'MG-BY': `### Model Sheet MG-BY-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✓ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✓ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✗ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✓ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✓ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✓ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✓ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✗ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✗ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✗ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+  'MG-BY-SA': `### Model Sheet MG-BY-SA-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✓ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✗ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✗ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✓ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✓ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✓ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✓ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✓ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✓ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✗ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+  'MG-BY-RAI': `### Model Sheet MG-BY-RAI-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✓ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✗ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✓ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✓ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✓ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✓ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✓ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✓ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✗ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✗ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✗ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+  'MG-BY-NC': `### Model Sheet MG-BY-NC-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✓ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✗ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✓ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✗ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✓ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✓ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✓ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✗ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✗ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✓ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+  'MG-BY-ND': `### Model Sheet MG-BY-ND-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✗ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✗ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✓ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✓ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✗ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✓ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✗ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✗ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✗ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✗ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✓ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+  'MG-BY-NC-RAI': `### Model Sheet MG-BY-NC-RAI-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✓ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✗ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✓ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✗ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✓ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✓ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✓ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✓ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✗ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✗ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✓ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+  'MG-BY-NC-ND': `### Model Sheet MG-BY-NC-ND-2.0
++--------------+-------------------------------------------------+---+
+|              | Use, Reproduce, Distribute Licensed Materials   | ✓ |
+|              +-------------------------------------------------+---+
+|              | Create Derivative Materials                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials                 | ✗ |
+| Grant of     +-------------------------------------------------+---+
+| Rights       | Sublicensable License                           | ✗ |
+|              +-------------------------------------------------+---+
+|              | Revocable License                               | ✓ |
+|              +-------------------------------------------------+---+
+|              | Commercial Use of Licensed Materials            | ✗ |
+|              | and/or Derivative Materials                     |   |
++--------------+-------------------------------------------------+---+
+| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
+| AI           | and Derivative Materials                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Licensed Materials                 |   |
+|              +-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✗ |
+|              | Distributing Derivative Materials               |   |
+|              +-------------------------------------------------+---+
+|              | Retain Original Attribution Notice when         | ✓ |
+| Requirements | Distributing Licensed Materials                 |   |
+| Relating to  +-------------------------------------------------+---+
+| Distribution | Retain Original Attribution Notice when         | ✗ |
+| of Licensed  | Distributing Derivative Materials               |   |
+| Materials,   +-------------------------------------------------+---+
+| Derivative   | Indicate Modifications when Distributing        | ✗ |
+| Materials,   | Derivative Materials                            |   |
+| Output       +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    | ✗ |
+|              | and/or Derivative Materials in Source Code Form |   |
+|              +-------------------------------------------------+---+
+|              | Licensing Distributed Derivative Materials      | ✗ |
+|              | on Same Terms as License                        |   |
+|              +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✓ |
+|              | Distributing Output as Dataset                  |   |
++--------------+-------------------------------------------------+---+`,
+}
+
 const licenses = Object.keys(licenseMap)
 const selected = ref<string | null>(null)
 const downloading = ref(false)
+const showDeclaration = ref(false)
+const copied = ref<'readme' | 'sheet' | null>(null)
+const highlightDecl = ref(false)
 
 const visibleBadges = computed(() => {
   if (!selected.value) return allBadges
@@ -53,6 +454,8 @@ const visibleBadges = computed(() => {
 
 function selectLicense(name: string) {
   selected.value = selected.value === name ? null : name
+  highlightDecl.value = false
+  showOrb.value = false
 }
 
 async function downloadLicense() {
@@ -65,7 +468,7 @@ async function downloadLicense() {
     const blob = new Blob([text], { type: 'text/plain' })
     const a = document.createElement('a')
     a.href = URL.createObjectURL(blob)
-    a.download = `${selected.value}-LICENSE.txt`
+    a.download = 'LICENSE'
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
@@ -74,7 +477,37 @@ async function downloadLicense() {
     window.open(licenseDownloads[selected.value!], '_blank')
   } finally {
     downloading.value = false
+    showOrb.value = true
+    setTimeout(() => {
+      showOrb.value = false
+      highlightDecl.value = true
+    }, 700)
   }
+}
+
+const showOrb = ref(false)
+
+let closeTimer: number | undefined
+
+function toggleDeclaration() {
+  showDeclaration.value = !showDeclaration.value
+}
+
+function onDeclEnter() {
+  clearTimeout(closeTimer)
+  showDeclaration.value = true
+}
+
+function onDeclLeave() {
+  closeTimer = window.setTimeout(() => {
+    showDeclaration.value = false
+  }, 200)
+}
+
+async function copyText(text: string, type: 'readme' | 'sheet') {
+  await navigator.clipboard.writeText(text)
+  copied.value = type
+  setTimeout(() => { copied.value = null }, 1500)
 }
 </script>
 
@@ -129,14 +562,41 @@ async function downloadLicense() {
       </div>
 
       <Transition name="slide-up">
-        <button
-          v-if="selected"
-          class="ls-download"
-          :disabled="downloading"
-          @click="downloadLicense"
-        >
-          📄 {{ downloading ? 'Downloading...' : `Download ${selected} License` }}
-        </button>
+        <div v-if="selected" class="ls-actions">
+          <button
+            :class="['ls-download', { 'dl-drained': showOrb }]"
+            :disabled="downloading"
+            @click="downloadLicense"
+          >
+            ⬇️ {{ downloading ? 'Downloading...' : `Download ${selected} License` }}
+          </button>
+
+          <div v-if="showOrb" class="decl-orb" />
+
+          <div class="ls-decl-wrap" @mouseenter="onDeclEnter" @mouseleave="onDeclLeave">
+            <button :class="['ls-declaration', { 'decl-highlight': highlightDecl }]" @click="toggleDeclaration">📜 License Declaration</button>
+            <div v-show="showDeclaration" class="decl-popover">
+              <div class="decl-section">
+                <div class="decl-header">
+                  <span>Add to your README</span>
+                  <button class="decl-copy" @click="copyText(licenseReadme[selected!], 'readme')">
+                    {{ copied === 'readme' ? '✓ Copied!' : 'Copy' }}
+                  </button>
+                </div>
+                <pre class="decl-code">{{ licenseReadme[selected!] }}</pre>
+              </div>
+              <div class="decl-section">
+                <div class="decl-header">
+                  <span>Model Sheet (Optional)</span>
+                  <button class="decl-copy" @click="copyText(licenseModelSheet[selected!], 'sheet')">
+                    {{ copied === 'sheet' ? '✓ Copied!' : 'Copy' }}
+                  </button>
+                </div>
+                <pre class="decl-code">{{ licenseModelSheet[selected!] }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
       </Transition>
     </div>
   </div>
@@ -391,6 +851,16 @@ async function downloadLicense() {
   transform: translateY(80px) rotate(15deg) scale(0.5);
 }
 
+/* Actions row */
+.ls-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 /* Download */
 .ls-download {
   display: inline-flex;
@@ -399,13 +869,51 @@ async function downloadLicense() {
   padding: 8px 20px;
   background: var(--vp-c-brand-1);
   color: #fff;
-  border: none;
+  border: 2px solid var(--vp-c-brand-1);
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.5s ease, color 0.5s ease;
   box-shadow: 0 3px 12px rgba(124, 58, 237, 0.25);
+}
+
+.ls-download.dl-drained {
+  background: transparent;
+  color: var(--vp-c-brand-1);
+  box-shadow: none;
+}
+
+/* Traveling orb */
+.decl-orb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--vp-c-brand-1);
+  box-shadow: 0 0 16px var(--vp-c-brand-1), 0 0 32px rgba(124, 58, 237, 0.4);
+  pointer-events: none;
+  z-index: 10;
+  animation: orb-travel 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes orb-travel {
+  0% {
+    left: 20%;
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.2);
+  }
+  100% {
+    left: 80%;
+    transform: translateY(-50%) scale(0.5);
+    opacity: 0;
+  }
 }
 
 .ls-download:hover {
@@ -418,8 +926,153 @@ async function downloadLicense() {
   cursor: wait;
 }
 
+/* Declaration button */
+.ls-decl-wrap {
+  position: relative;
+}
+
+.ls-declaration {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 20px;
+  background: transparent;
+  color: var(--vp-c-brand-1);
+  border: 2px solid var(--vp-c-brand-1);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.4s ease;
+}
+
+.ls-declaration.decl-highlight {
+  color: #fff;
+  border-color: transparent;
+  background:
+    radial-gradient(circle, var(--vp-c-brand-1) 99%, transparent 100%) no-repeat center padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      var(--vp-c-brand-1),
+      #2563eb,
+      #16a34a,
+      #ca8a04,
+      #ea580c,
+      var(--vp-c-brand-1)
+    ) border-box;
+  background-size: 0% 0%, 100% 100%;
+  animation: border-spin 2s linear infinite reverse, decl-spread 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  box-shadow: 0 3px 12px rgba(124, 58, 237, 0.25);
+}
+
+@keyframes decl-spread {
+  from { background-size: 0% 0%, 100% 100%; }
+  to { background-size: 300% 300%, 100% 100%; }
+}
+
+.ls-declaration:hover {
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(124, 58, 237, 0.35);
+}
+
+/* Declaration popover */
+.decl-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 520px;
+  max-height: 460px;
+  overflow-y: auto;
+  background: var(--vp-c-bg);
+  border: 1.5px solid var(--vp-c-divider);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 200;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.decl-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.decl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+
+.decl-copy {
+  padding: 3px 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.decl-copy:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.decl-code {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+  white-space: pre;
+  overflow-x: auto;
+  font-family: var(--vp-font-family-mono);
+}
+
 .slide-up-enter-active { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .slide-up-leave-active { transition: all 0.25s ease; }
 .slide-up-enter-from { opacity: 0; transform: translateY(12px) scale(0.9); }
 .slide-up-leave-to { opacity: 0; transform: translateY(8px) scale(0.95); }
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .ls-btn {
+    padding: 7px 16px;
+    font-size: 14px;
+  }
+
+  .decl-popover {
+    width: min(520px, 90vw);
+    max-height: 60vh;
+  }
+
+  .decl-code {
+    font-size: 10px;
+  }
+
+  .ls-download,
+  .ls-declaration {
+    font-size: 13px;
+    padding: 7px 16px;
+  }
+
+  .decl-copy {
+    padding: 5px 12px;
+  }
+}
 </style>

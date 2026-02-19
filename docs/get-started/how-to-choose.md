@@ -423,5 +423,5 @@ Here are some useful tips for selecting suitable MG licenses:
 * If you just want to share your model freely and without any conditions, MG0 is the option for you.
 * Choose the options that most closely match your publishing needs.
 * Choose revocable licenses if you haven't finalized your decision yet.
-* Do not choose MG-\*-RAI if your project incorporates or is expected to incorporate any GPL/AGPL/CCs code or ML components.
+* Do not choose MG-*-RAI if your project incorporates or is expected to incorporate any GPL/AGPL/CCs code or ML components.
 * If your project already contains any components under MG licenses with SA option, you must license your entire project with the same SA option.
