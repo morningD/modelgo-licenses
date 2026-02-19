@@ -538,8 +538,9 @@ function tick(time) {
       const a = rabbits.value[i], b = rabbits.value[j]
       if (a.grabbed || b.grabbed) continue
       const dx = b.x - a.x, dy = b.y - a.y
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      if (dist < COLLISION_DIST && dist > 0) {
+      const distSq = dx * dx + dy * dy
+      if (distSq < COLLISION_DIST * COLLISION_DIST && distSq > 0) {
+        const dist = Math.sqrt(distSq)
         const nx = dx / dist, ny = dy / dist
         const ov = (COLLISION_DIST - dist) / 2
         a.x -= nx * ov; a.y -= ny * ov
@@ -611,8 +612,8 @@ function tick(time) {
     rabbits.value.forEach(r => {
       if (r.y < -5) {
         const bfY = b.baseY + Math.sin(b.phase) * b.bobAmp + b.driftY, rY = -r.y
-        const d = Math.sqrt((b.x - r.x) ** 2 + (bfY - rY) ** 2)
-        if (d < 40 && !b.fleeing) { b.fleeing = true; b.fleeTimer = 30; b.dir = b.x > r.x ? 1 : -1 }
+        const bdx = b.x - r.x, bdy = bfY - rY
+        if (bdx * bdx + bdy * bdy < 1600 && !b.fleeing) { b.fleeing = true; b.fleeTimer = 30; b.dir = b.x > r.x ? 1 : -1 }
       }
     })
   })
@@ -627,8 +628,8 @@ function tick(time) {
       const s = rb.phase
       const eRx = 136 * s, eRy = 88 * s
       if (eRx < 1 || eRy < 1) return
-      const norm = Math.sqrt((dx / eRx) ** 2 + (bfY / eRy) ** 2)
-      if (norm > 0.55 && norm < 0.99) bf.rainbowHue = 100
+      const normSq = (dx / eRx) * (dx / eRx) + (bfY / eRy) * (bfY / eRy)
+      if (normSq > 0.3025 && normSq < 0.9801) bf.rainbowHue = 100
     })
   })
 
@@ -705,8 +706,8 @@ function tick(time) {
       const s = rb.phase
       const eRx = 136 * s, eRy = 88 * s
       if (eRx < 1 || eRy < 1) return
-      const norm = Math.sqrt((dx / eRx) ** 2 + (dy / eRy) ** 2)
-      if (norm > 0.3 && norm < 1.15) cl.rainbowHue = 100
+      const normSq = (dx / eRx) * (dx / eRx) + (dy / eRy) * (dy / eRy)
+      if (normSq > 0.09 && normSq < 1.3225) cl.rainbowHue = 100
     })
   })
 
@@ -741,10 +742,10 @@ function tick(time) {
   triggerRef(clouds)
   triggerRef(butterflies)
   triggerRef(snails)
-  triggerRef(rainbows)
-  triggerRef(spores)
   triggerRef(grasses)
-  triggerRef(wxParticles)
+  if (rainbows.value.length) triggerRef(rainbows)
+  if (spores.value.length) triggerRef(spores)
+  if (wxParticles.value.length && weather.value.type !== 'clear') triggerRef(wxParticles)
 
   animFrame = requestAnimationFrame(tick)
 }
