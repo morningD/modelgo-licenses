@@ -1,4 +1,4 @@
-# 📌 Disclaimer
+# ℹ️ Disclaimer
 
 By accessing this website and/or using the model licence provided herein, you agree that:
 

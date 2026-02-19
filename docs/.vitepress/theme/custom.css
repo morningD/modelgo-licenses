@@ -385,6 +385,91 @@ figcaption {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
+/* Inline logos */
+.inline-logo {
+  height: 1.5em;
+  width: auto;
+  vertical-align: -0.3em;
+  margin-right: 2px;
+  display: inline-block;
+}
+
+/* Updates timeline */
+.updates-timeline {
+  margin: 16px 0 32px;
+  border-left: 2px solid var(--vp-c-divider);
+  padding-left: 0;
+}
+
+.update-item {
+  position: relative;
+  padding: 8px 0 8px 24px;
+}
+
+.update-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7c3aed;
+}
+
+.update-item:first-child::before {
+  width: 10px;
+  height: 10px;
+  left: -6px;
+  top: 14px;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(124, 58, 237, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+.update-date {
+  display: inline-block;
+  width: 5em;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.dark .update-date {
+  color: #c4b5fd;
+  background: rgba(196, 181, 253, 0.1);
+}
+
+.update-content {
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.update-content a {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.update-content a:hover {
+  text-decoration: underline;
+}
+
+/* Fix: VitePress .visually-hidden becoming visible in RTL (Arabic) */
+[dir="rtl"] .visually-hidden {
+  clip-path: inset(100%) !important;
+}
+
 /* Mobile responsive */
 @media (max-width: 640px) {
   .banner-about {

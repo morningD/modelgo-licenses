@@ -14,20 +14,65 @@ ModelGo licenses include a Disclaimer and Limitation of Liability (Section 3, 4)
 
 ## Timeline
 
-| Time | Event |
-|------|-------|
-| 2026-1-14 | The paper introducing ModelGo Analyzer is accepted by ACM [TheWebConf26](https://www2026.thewebconf.org) ! |
-| 2025-12-9 | 3rd resubmission for OSI review. |
-| 2025-6-18 | 2nd resubmission for OSI review. |
-| 2025-5-2 | The paper introducing ModelGo Licenses is accepted as an [<mark style="color:purple;">**oral**</mark>](https://icml.cc/virtual/2025/oral/40181) at ICML 2025 !! |
-| 2025-3-23 | 1st resubmission for OSI review. |
-| 2025-2-12 | [OSI](https://opensource.org/) is reviewing MG0, MG-BY, and MG-BY-SA (Version 2.0). |
-| 2025-2-7 | ModelGo Licenses 2.0 is available on the [NUS IDS website](https://ids.nus.edu.sg/modelgo.html). |
-| 2024-11-26 | Version 2.0 (a complete redraft) is now ready for release !! |
-| 2024-7-9 | We are seeking advice from law firms. |
-| 2024-4-14 | We are seeking legal collaboration to improve ModelGo Licenses. |
-| 2024-3-25 | ModelGo Licenses website is online !! |
-| 2024-3-12 | <mark style="color:purple;">**Moming**</mark> completed the 1.0 version of ModelGo licenses. |
-| 2024-1-23 | ModelGo was accepted by ACM TheWebConf24 for an [<mark style="color:purple;">**oral**</mark>](https://dl.acm.org/doi/abs/10.1145/3589334.3645520) presentation ! |
-| 2023-11-13 | [<mark style="color:purple;">**Moming**</mark>](https://scholar.google.com/citations?user=vEWocfwAAAAJ) and [<mark style="color:purple;">**Bingsheng**</mark>](https://scholar.google.com/citations?user=RogYLKYAAAAJ) came up with the idea of creating a new model license for public use. |
-| 2023-10-5 | Moming, Qinbin and Bingsheng submitted the paper 'ModelGo: A Practical Tool for Machine Learning License Analysis' to ACM [TheWebConf24](https://www2024.thewebconf.org). |
+<div class="updates-timeline">
+  <div class="update-item">
+    <span class="update-date">2026.1</span>
+    <span class="update-content">The paper introducing ModelGo Analyzer is accepted by <a href="https://www2026.thewebconf.org/accepted/web4good.html"><img src="/images/acm-logo.svg" class="inline-logo" alt="ACM"> TheWebConf26</a> !</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.12</span>
+    <span class="update-content">3rd resubmission for <a href="https://opensource.org/"><img src="/images/osi-logo.svg" class="inline-logo" alt="OSI"> OSI</a> review.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.6</span>
+    <span class="update-content">2nd resubmission for <a href="https://opensource.org/"><img src="/images/osi-logo.svg" class="inline-logo" alt="OSI"> OSI</a> review.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.5</span>
+    <span class="update-content">ModelGo Licenses paper is accepted as an <a href="https://icml.cc/virtual/2025/oral/40181"><mark style="color:purple;"><strong>oral</strong></mark></a> at <a href="https://icml.cc/virtual/2025/oral/40181"><img src="/images/icml-logo.svg" class="inline-logo" alt="ICML">2025</a> !!</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.3</span>
+    <span class="update-content">1st resubmission for <a href="https://opensource.org/"><img src="/images/osi-logo.svg" class="inline-logo" alt="OSI"> OSI</a> review.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.2</span>
+    <span class="update-content"><a href="https://opensource.org/"><img src="/images/osi-logo.svg" class="inline-logo" alt="OSI"> OSI</a> is reviewing MG0, MG-BY, and MG-BY-SA (Version 2.0).</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.2</span>
+    <span class="update-content">ModelGo Licenses 2.0 is available on the <a href="https://ids.nus.edu.sg/modelgo.html"><img src="/images/nus-logo.svg" class="inline-logo" alt="NUS"> NUS IDS website</a>.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2024.11</span>
+    <span class="update-content">Version 2.0 (a complete redraft) is now ready for release !!</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2024.7</span>
+    <span class="update-content">We are seeking advice from law firms.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2024.4</span>
+    <span class="update-content">We are seeking legal collaboration to improve ModelGo Licenses.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2024.3</span>
+    <span class="update-content">ModelGo Licenses website is online !!</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2024.3</span>
+    <span class="update-content"><mark style="color:purple;"><strong>Moming</strong></mark> completed the 1.0 version of ModelGo licenses.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2024.1</span>
+    <span class="update-content">ModelGo was accepted by <a href="https://www2024.thewebconf.org"><img src="/images/acm-logo.svg" class="inline-logo" alt="ACM"> TheWebConf24</a> for an <a href="https://dl.acm.org/doi/abs/10.1145/3589334.3645520"><mark style="color:purple;"><strong>oral</strong></mark></a> presentation !</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2023.11</span>
+    <span class="update-content"><a href="https://scholar.google.com/citations?user=vEWocfwAAAAJ"><mark style="color:purple;"><strong>Moming</strong></mark></a> and <a href="https://scholar.google.com/citations?user=RogYLKYAAAAJ"><mark style="color:purple;"><strong>Bingsheng</strong></mark></a> came up with the idea of creating a new model license for public use.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2023.10</span>
+    <span class="update-content">Moming, Qinbin and Bingsheng submitted the paper 'ModelGo: A Practical Tool for Machine Learning License Analysis' to <a href="https://www2024.thewebconf.org"><img src="/images/acm-logo.svg" class="inline-logo" alt="ACM"> TheWebConf24</a>.</span>
+  </div>
+</div>

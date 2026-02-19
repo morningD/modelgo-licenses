@@ -7,15 +7,15 @@ hero:
   tagline: Flexible, standard licenses designed for AI models
 
 features:
-  - title: 📚 Browse All Licenses
+  - title: 🚀 Browse All Licenses
     details: Explore all eight ModelGo license variants, from permissive to stringent, and find the right one for your model.
     link: /get-started/using-modelgo-licenses
     linkText: View Licenses
-  - title: 🔍 Help Me Choose
+  - title: ✨ Help Me Choose
     details: Not sure which license fits? Use our diff view and Model Sheet to compare options side by side.
     link: /get-started/how-to-choose
     linkText: Compare Options
-  - title: 💡 Understanding ModelGo
+  - title: 📖 Understanding ModelGo
     details: Learn about the design philosophy, scope, and structure behind the ModelGo license framework.
     link: /learn-more/understanding-modelgo
     linkText: Learn More
@@ -25,18 +25,33 @@ features:
 
 **ModelGo licenses** provide CreativeCommons-style licensing solutions to meet your specific needs in publishing AI models. The goal of ModelGo is to facilitate <mark style="color:purple;">managed sharing</mark> of models while <mark style="color:purple;">protecting Intellectual Property</mark>, striking a balance between openness and control.
 
-## Recent Updates 2026.2.19
+## Recent Updates
 
-* Revised MG0 and MG-BY and resubmitted them to [OSI](https://opensource.org/). Withdrew MG-BY-SA as it may not be compatible with the [Open Source Definition](https://opensource.org/osd).
-* MG0, MG-BY, and MG-BY-SA have been submitted for [OSI](https://opensource.org/) approval.
-* ModelGo Licenses were presented as an oral talk at [ICML 2025](https://icml.cc/virtual/2025/oral/40181).
-* ModelGo Licenses are now anchored at [NUS Institute of Data Science](https://ids.nus.edu.sg/modelgo.html) and [NUS Artificial Intelligence Institute](https://ai.nus.edu.sg/).
+<div class="updates-timeline">
+  <div class="update-item">
+    <span class="update-date">2026.2</span>
+    <span class="update-content">Revised MG0 and MG-BY and resubmitted them to <a href="https://opensource.org/"><img src="/images/osi-logo.svg" class="inline-logo" alt="OSI"> OSI</a>. Withdrew MG-BY-SA as it may not be compatible with the <a href="https://opensource.org/osd">Open Source Definition</a>.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.9</span>
+    <span class="update-content">MG0, MG-BY, and MG-BY-SA have been submitted for <a href="https://opensource.org/"><img src="/images/osi-logo.svg" class="inline-logo" alt="OSI"> OSI</a> approval.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.7</span>
+    <span class="update-content">ModelGo Licenses were presented as an oral talk at <a href="https://icml.cc/virtual/2025/oral/40181"><img src="/images/icml-logo.svg" class="inline-logo" alt="ICML">2025</a>.</span>
+  </div>
+  <div class="update-item">
+    <span class="update-date">2025.1</span>
+    <span class="update-content">ModelGo Licenses are now anchored at <a href="https://ids.nus.edu.sg/modelgo.html"><img src="/images/nus-logo.svg" class="inline-logo" alt="NUS"> NUS Institute of Data Science</a> and <a href="https://ai.nus.edu.sg/"><img src="/images/nus-logo.svg" class="inline-logo" alt="NUS"> NUS Artificial Intelligence Institute</a>.</span>
+  </div>
+</div>
 
 <VideoEmbed url="https://drive.google.com/file/d/1BWLXb523KuWWZneGpvOjdsEuECsy4_4l/preview" />
 
 <script setup>
 import { ref } from 'vue'
 
+// --- Lightbox ---
 const lightboxOpen = ref(false)
 const scale = ref(2)
 const translateX = ref(0)

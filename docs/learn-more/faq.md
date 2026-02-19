@@ -1,6 +1,6 @@
-# 📪 FAQ
+# 💬 FAQ
 
-## Q: Why do we need ModelGo licenses?
+## Why do we need ModelGo licenses?
 
 ModelGo licenses offer flexible licensing elements to fulfill your specific licensing needs about using and distributing your ML models.
 
@@ -12,7 +12,7 @@ ModelGo licenses offer flexible licensing elements to fulfill your specific lice
 
 <mark style="color:purple;">**Why not use OpenRAILs?**</mark> Recently, Responsible AI Licenses (RAILs) have been widely advocated to address the need for governing AI technologies, aiming to restrict unlawful and unethical uses of models. We acknowledge the emerging need for such governance (which is why we offer the RAI option in ModelGo licenses), but we also recognize the demand for stricter restrictions, such as prohibiting commercial use, sharing of derivatives, and mandatory open-sourcing to protect the profits of model developers. This is why we propose ModelGo and offer more licensing options to fill this gap.
 
-## Q: What is the difference between ModelGo and OpenRAILs?
+## What is the difference between ModelGo and OpenRAILs?
 
 From the compositional perspective, [OpenRAILs(-M)](https://www.licenses.ai/ai-licenses) is built upon Apache-2.0 with additional terms tailored for ML fields. Their main alterations include adding a Use Restrictions attachment and use-based behaviour restriction terms in the license text. To provide more comprehensive licensing control, ModelGo draws inspiration from previous licenses but does not copy any of their terms. You can use MG licenses without concern for copyright issues in the license text.
 
@@ -20,7 +20,7 @@ From a goals perspective, OpenRAILs(-M) advocate for protecting models from unla
 
 Roughly speaking, MG-BY-RAI can be seen as similar to OpenRAILs. But we just leave the RAI as a choice to the model publishers. Additionally, to further deter misuse of models, the rights granted by MG-BY-RAI are revocable, distinguishing it from OpenRAILs.
 
-## Q: What is the difference between ModelGo and AI2 ImpACT?
+## What is the difference between ModelGo and AI2 ImpACT?
 
 From a goals perspective, [AI2 ImpACT](https://allenai.org/impact-license) is designed to license AI2 released models and datasets, with specific use terms that may not be suitable for common model licensing needs. However, ModelGo is designed to meet the general model licensing needs of developers.
 
@@ -28,7 +28,7 @@ From the distribution control perspective, AI2 ImpACT requires licensees to subm
 
 It's worth mentioning that AI2 ImpACT contains copyleft-style use-based restrictions (RAI), which could render the entire ML project incompatible with GPL-3.0 components. A potential risk of reusing AI2 ImpACT licensed work in building your project is their granted license can be revoked.
 
-## Q: What is the scope of ModelGo licenses governing?
+## What is the scope of ModelGo licenses governing?
 
 MG licenses only apply to the Model, but their terms govern the <mark style="color:purple;">use and distribution of the Model and its derivatives, as well as outputs thereof, and complementary code and scripts</mark>. We classify these objects into three categories to define the scope of terms: Licensed Materials, Derivative Materials, and Output, each with different restriction terms and usage policies. For example, according to the terms of MG-BY-ND-2.0, sharing the verbatim copy of Licensed Materials is allowed while sharing any Derivative Materials is prohibited.
 
@@ -36,19 +36,19 @@ MG licenses should not apply to Third-Party Materials (e.g., open-source softwar
 
 <figure><img src="/images/scope.jpg" alt="MG Governing Scope"><figcaption><p>MG Governing Scope</p></figcaption></figure>
 
-## Q: Should I continue using ModelGo Licenses V1?
+## Should I continue using ModelGo Licenses V1?
 
 <mark style="color:purple;">**We suggest not.**</mark> V1 is a remix of existing license texts and may contain unforeseen copyright issues. Additionally, V2 is more comprehensive and includes clauses that better address IP rights in derivatives. We strongly recommend using V2 instead.
 
-## Q: May I distribute the generated content?
+## May I distribute the generated content?
 
 <mark style="color:purple;">**Of course yes.**</mark> MG licenses will not be proliferated to the generated content and do not claim copyright over them. However, MG with NC and ND require users to include a notice of the provenance model used to generate this content if they are collected and published as a dataset. Please refer to the Clause "<mark style="color:purple;">2.2 Conditions (b)</mark>" for more information.
 
-## Q: Should I retain the attribution information in the generated content?
+## Should I retain the attribution information in the generated content?
 
 <mark style="color:purple;">**It depends.**</mark> The BY options in MG only apply to the model and its derivatives (excluding code and scripts which may already be covered by separate OSS licenses). But MG with NC and ND require users to include a notice of the provenance model used to generate this content if they are collected and published as a dataset.
 
-## Q: Revocable vs. Irrevocable; Sublicensable vs. Non-sublicensable.
+## Revocable vs. Irrevocable; Sublicensable vs. Non-sublicensable.
 
 Intellectual Property (IP) encompasses patents, copyrights, and trademarks. Most software, content and model licenses do not confer trademark usage rights, they may or may not provide limited patent or copyright licenses. However, some licenses do not explicitly state whether their granted licenses are revocable or irrevocable, sublicensable or non-sublicensable, leading to ambiguity in work licensing. We summarize this issue in the tables below:
 
@@ -101,27 +101,27 @@ ModelGo licenses determine revocability and sublicensing with careful considerat
 
 ModelGo licenses explicitly state whether they grant or do not grant licensee patent and copyright licenses. This clarity ensures that model users understand their rights and potential risks when reusing and contributing models.
 
-## Q: Are MG-BY-SA considered Open Source licenses?
+## Are MG-BY-SA considered Open Source licenses?
 
 <mark style="color:purple;">**Currently, no.**</mark> None of the variants of the ModelGo licenses have been approved by the Open Source Initiative (OSI) yet. However, we aim for MG-BY-SA-2.0 to keep the model "open." It's also worth mentioning that the meaning of "open" may differ between software and models. In ModelGo licenses, SA means the availability of **Licensed Materials** and **Derivative Materials**, excluding the openness of the dataset (as we consider it outside the governing scope of MG licenses).
 
-## Q: May I close source my models licensed under MG with SA?
+## May I close source my models licensed under MG with SA?
 
 <mark style="color:purple;">**No.**</mark> This applies to its derivatives as well. MG-BY-SA-2.0 is a copyleft license, meaning all derivative works must also be covered by the same license. You also can't revoke MG-BY-SA-2.0, unlike GPL-3.0, which doesn't explicitly claim the granted patent license is irrevocable.
 
-## Q: Will ModelGo licenses support more licensing options?
+## Will ModelGo licenses support more licensing options?
 
 <mark style="color:purple;">**Possibly**</mark>. We recommend using the licensing options most appropriate for your publishing scenario. We may revise the license text or add new licensing options to address emerging needs in model licensing. However, simplicity and conciseness are also factors we consider, which is important to avoid licensing conflicts in an ML project.
 
-## Q: May I reuse ModelGo licenses text to make my own licenses?
+## May I reuse ModelGo licenses text to make my own licenses?
 
 <mark style="color:purple;">**Yes, you can.**</mark> ModelGo licenses explicitly allow you to do so as stated in Section "MODIFICATION OF THIS LICENSE", provided that you furnish a readable notice describing your modifications to the original ModelGo licenses. However, we encourage using the licensing options most appropriate for your publishing scenario to facilitate standardization in model licensing and simplify license analysis in ML projects.
 
-## Q: Will my modification to Model Sheet take effect?
+## Will my modification to Model Sheet take effect?
 
 <mark style="color:purple;">**No.**</mark> Model Sheet is not part of the terms and conditions of MG licenses, so modifications to it will not be effective. Model Sheet is only to assist you and users in choosing a license and understanding its content. If you have custom needs to add to ModelGo licenses, you should modify the provisions in the terms and conditions part.
 
-## Q: What happens if I remix two models under MG licenses?
+## What happens if I remix two models under MG licenses?
 
 There are two scenarios depending on whether the remixed result is <mark style="color:purple;">**separable**</mark> or <mark style="color:purple;">**inseparable**</mark>.
 
@@ -137,7 +137,7 @@ For example, if we remix two models licensed under MG-BY-NC and MG-BY-RAI respec
 
 Overall, in most cases, you can freely remix permissive MG licensed models into your model without conflicts, and remix conditional MG licensed models into your model if following the same restrictions, but it's difficult to remix stringent MG licensed models and impossible to remix MG with ND licensed models.
 
-## Q: Why do ModelGo licenses not support SA with RAI?
+## Why do ModelGo licenses not support SA with RAI?
 
 Following our previous [ML license analysis study](https://github.com/Xtra-Computing/ModelGo), the copyleft-style use-based restrictions in RAI licenses are incompatible with the terms regarding further restrictions in Section 10 of GPL-3.0. Therefore, with concerns that the RAI kind restrictions are out of the spirit of Open Source and potentially lead to closed source (Ref. Greenbaum, E. (2015). The Non-Discrimination Principle in Open Source Licensing. Cardozo L. Rev., 37, 1297), we didn't draft the MG-BY-SA-RAI license.
 
