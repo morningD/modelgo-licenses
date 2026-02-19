@@ -19,7 +19,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'GitHub', link: 'https://github.com/Xtra-Computing/ModelGo' }
+      { text: 'Paper', link: 'https://icml.cc/virtual/2025/oral/40181' }
     ],
 
     sidebar: [
@@ -40,9 +40,7 @@ export default defineConfig({
       }
     ],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/Xtra-Computing/ModelGo' }
-    ],
+    socialLinks: [],
 
     footer: {
       message: 'Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a> (excluding license text files). All rights reserved.',
