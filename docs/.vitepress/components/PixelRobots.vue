@@ -46,7 +46,7 @@ function computeSky(w) {
   return {
     isSun,
     x: 30 + timePhase * (w - 60),
-    arcY: Math.sin(timePhase * Math.PI) * 80,
+    arcY: Math.sin(timePhase * Math.PI) * 45,
     timePhase,
     lunarPhase: getLunarPhase()
   }
