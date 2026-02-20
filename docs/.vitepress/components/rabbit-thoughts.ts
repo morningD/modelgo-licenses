@@ -585,3 +585,69 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
     ],
   },
 }
+
+export const snakeHisses: Record<string, string[]> = {
+  'en': [
+    'Hssss!',
+    'Go away!',
+    'Don\'t touch!',
+    '*rattle rattle*',
+    'I was napping!',
+  ],
+  'zh-CN': [
+    '嘶嘶嘶！',
+    '走开！',
+    '别碰我！',
+    '*沙沙沙*',
+    '我在睡觉！',
+  ],
+  'zh-TW': [
+    '嘶嘶嘶！',
+    '走開！',
+    '別碰我！',
+    '*沙沙沙*',
+    '我在睡覺！',
+  ],
+  'ja': [
+    'シャー！',
+    'あっち行って！',
+    '触らないで！',
+    '*カラカラ*',
+    '寝てたのに！',
+  ],
+  'ko': [
+    '쉬이익!',
+    '저리 가!',
+    '만지지 마!',
+    '*딸랑딸랑*',
+    '자고 있었는데!',
+  ],
+  'ru': [
+    'Шшш!',
+    'Уходи!',
+    'Не трогай!',
+    '*трещ-трещ*',
+    'Я спал!',
+  ],
+  'es': [
+    '¡Ssss!',
+    '¡Fuera!',
+    '¡No toques!',
+    '*cascabel*',
+    '¡Estaba durmiendo!',
+  ],
+  'fr': [
+    'Sssss !',
+    'Va-t\'en !',
+    'Touche pas !',
+    '*crotale*',
+    'Je dormais !',
+  ],
+  'ar': [
+    'هسسس!',
+    'ابتعد!',
+    'لا تلمسني!',
+    '*خشخشة*',
+    'كنت نائماً!',
+  ],
+}

@@ -2,7 +2,7 @@
 import { ref, shallowRef, triggerRef, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
 import { rabbitPalettes, mushroomPalettes, butterflyPalettes, snailPalettes, sporeColors, grassShades, flowerColors } from './pixel-palettes'
-import { rabbitThoughts } from './rabbit-thoughts'
+import { rabbitThoughts, snakeHisses } from './rabbit-thoughts'
 
 const { lang, isDark } = useData()
 
@@ -393,7 +393,12 @@ function initScene() {
     rustleTimer: 60 + Math.random() * 180,
     rustling: false,
     rustleAmount: 0,
-    hovered: false
+    hovered: false,
+    hissBubble: null,
+    hissCooldown: 0,
+    snakePhase: Math.random() * Math.PI * 2,
+    swayX: 0,
+    swayRot: 0
   }))
 }
 
@@ -744,6 +749,14 @@ function tick(time) {
     const target = sg.hovered ? 1 : 0
     sg.tailReveal += (target - sg.tailReveal) * 0.06 * dt
     if (sg.tailReveal < 0.01) sg.tailReveal = 0
+    if (sg.hissBubble) { sg.hissBubble.timer -= dt; if (sg.hissBubble.timer <= 0) sg.hissBubble = null }
+    if (sg.hissCooldown > 0) sg.hissCooldown -= dt
+    // Independent snake wriggle — faster when rustling or hovered
+    const phaseSpeed = sg.rustling ? 0.18 : sg.hovered ? 0.1 : 0.04
+    sg.snakePhase += phaseSpeed * dt
+    const amp = sg.rustling ? 2.5 : sg.hovered ? 1.5 : 0.8
+    sg.swayX = Math.sin(sg.snakePhase * 1.3) * amp
+    sg.swayRot = Math.sin(sg.snakePhase * 0.9 + 0.7) * (amp * 1.5)
   })
 
   // ── Grass bending ──
@@ -939,6 +952,16 @@ function onGrassEnter(idx) {
 function onGrassLeave(idx) {
   const sg = snakeGrasses.value.find(s => s.grassIdx === idx)
   if (sg) sg.hovered = false
+}
+function onSnakeClick(idx) {
+  const sg = snakeGrasses.value.find(s => s.grassIdx === idx)
+  if (!sg || sg.tailReveal < 0.3 || sg.hissBubble || sg.hissCooldown > 0) return
+  const locale = lang.value?.replace(/\/.*/, '') || 'en'
+  const pool = snakeHisses[locale] || snakeHisses['en']
+  sg.hissBubble = { text: pool[Math.floor(Math.random() * pool.length)], timer: 100 }
+  sg.hissCooldown = 200
+  sg.rustling = true
+  sg.rustleTimer = 20 + Math.random() * 15
 }
 </script>
 
@@ -1419,8 +1442,9 @@ function onGrassLeave(idx) {
       }"
       @pointerenter="onGrassEnter(i)"
       @pointerleave="onGrassLeave(i)"
+      @click="onSnakeClick(i)"
     >
-      <svg :width="g.totalW" :height="g.maxH" :viewBox="`0 0 ${g.totalW} ${g.maxH}`">
+      <svg :width="g.totalW" :height="g.maxH" :viewBox="`0 0 ${g.totalW} ${g.maxH}`" overflow="visible">
         <!-- Dark base band -->
         <rect x="0" :y="g.maxH - 2" :width="g.totalW" height="2" fill="#2a5a28" opacity="0.12" rx="1" />
         <path
@@ -1453,17 +1477,76 @@ function onGrassLeave(idx) {
             />
           </g>
         </template>
-        <!-- Snake tail -->
+        <!-- Snake tail (rattlesnake) -->
         <template v-if="getSnakeData(i)">
           <g :opacity="getSnakeData(i).tailReveal"
-             :transform="`translate(${g.totalW * 0.6}, ${g.maxH - 2})`">
-            <path d="M0 0 Q3 -4, 1 -8 Q-1 -12, 2 -14"
-              fill="none" stroke="#5a8a48" stroke-width="2.5"
-              stroke-linecap="round" opacity="0.85" />
-            <path d="M2 -14 L3 -16 L1 -15 Z" fill="#5a8a48" opacity="0.85" />
+             :transform="`translate(${g.totalW * 0.55}, ${g.maxH})`">
+            <svg width="14" height="30" viewBox="0 0 28 58" x="-7" y="-30" overflow="visible">
+              <g :transform="`translate(0,58) scale(1,-1) translate(${getSnakeData(i).swayX}, 0) rotate(${getSnakeData(i).swayRot}, 14, 0)`">
+                <!-- Body: S-curve sandy brown -->
+                <path d="M10 0 Q18 5, 12 13 Q5 21, 13 28 Q19 33, 15 37"
+                  fill="none" stroke="#c0944a" stroke-width="5.5" stroke-linecap="round" />
+                <!-- Dorsal darker shade -->
+                <path d="M10 0 Q18 5, 12 13 Q5 21, 13 28 Q19 33, 15 37"
+                  fill="none" stroke="#8a6428" stroke-width="6.2" stroke-linecap="round" opacity="0.2" />
+                <!-- Belly lighter center -->
+                <path d="M10 0 Q18 5, 12 13 Q5 21, 13 28 Q19 33, 15 37"
+                  fill="none" stroke="#dab868" stroke-width="2.2" stroke-linecap="round" opacity="0.5" />
+                <!-- Diamond 1 -->
+                <path d="M10 4.2 L13 2.5 L15.5 5 L13 7 Z" fill="#2a1808" opacity="0.5" />
+                <path d="M9.5 4 L13 2 L16 5 L13 7.5 Z" fill="none" stroke="#f0e8d8" stroke-width="0.6" opacity="0.6" stroke-linejoin="round" />
+                <path d="M11.5 4.5 L13 3.5 L14.2 5 L13 6 Z" fill="#4a3018" opacity="0.25" />
+                <!-- Diamond 2 -->
+                <path d="M7.5 12 L10.5 10 L13 12.5 L10.5 14.5 Z" fill="#2a1808" opacity="0.45" />
+                <path d="M7 12 L10.5 9.5 L13.5 12.5 L10.5 15 Z" fill="none" stroke="#f0e8d8" stroke-width="0.55" opacity="0.55" stroke-linejoin="round" />
+                <path d="M9 12.2 L10.5 11 L12 12.5 L10.5 13.8 Z" fill="#4a3018" opacity="0.2" />
+                <!-- Diamond 3 -->
+                <path d="M9.5 20 L12.5 18 L15.5 20.5 L12.5 22.5 Z" fill="#2a1808" opacity="0.4" />
+                <path d="M9 20 L12.5 17.5 L16 20.5 L12.5 23 Z" fill="none" stroke="#f0e8d8" stroke-width="0.5" opacity="0.45" stroke-linejoin="round" />
+                <!-- Diamond 4 (smaller, near tail) -->
+                <path d="M12.5 27 L14.5 26 L16.5 27.5 L14.5 29 Z" fill="#2a1808" opacity="0.35" />
+                <path d="M12 27 L14.5 25.5 L17 27.5 L14.5 29.5 Z" fill="none" stroke="#f0e8d8" stroke-width="0.45" opacity="0.4" stroke-linejoin="round" />
+                <!-- White highlight accents between diamonds -->
+                <path d="M11 3 Q13 2, 15 3.5" fill="none" stroke="#fff" stroke-width="0.4" opacity="0.25" stroke-linecap="round" />
+                <path d="M8 11 Q10 9.5, 12 11" fill="none" stroke="#fff" stroke-width="0.35" opacity="0.2" stroke-linecap="round" />
+                <path d="M10 18.5 Q12 17, 14.5 18.5" fill="none" stroke="#fff" stroke-width="0.3" opacity="0.18" stroke-linecap="round" />
+                <!-- Dark speckles -->
+                <circle cx="14.5" cy="8.5" r="0.35" fill="#3a2010" opacity="0.3" />
+                <circle cx="8.5" cy="16" r="0.3" fill="#3a2010" opacity="0.25" />
+                <circle cx="15" cy="18" r="0.3" fill="#3a2010" opacity="0.2" />
+                <circle cx="10" cy="24" r="0.3" fill="#3a2010" opacity="0.2" />
+                <!-- Tail bands: alternating white/black -->
+                <path d="M15 35 Q16 34.5, 17 35.5" fill="none" stroke="#f0e8d8" stroke-width="2.8" stroke-linecap="butt" opacity="0.85" />
+                <path d="M15.2 37.2 Q16 36.8, 17 37.5" fill="none" stroke="#1a1008" stroke-width="2.4" stroke-linecap="butt" opacity="0.7" />
+                <path d="M15.3 39 Q16 38.5, 16.8 39.2" fill="none" stroke="#f0e8d8" stroke-width="2" stroke-linecap="butt" opacity="0.8" />
+                <path d="M15.3 40.5 Q16 40.2, 16.5 40.8" fill="none" stroke="#1a1008" stroke-width="1.6" stroke-linecap="butt" opacity="0.65" />
+                <!-- Rattle segment 1 -->
+                <ellipse cx="15.8" cy="42.2" rx="3.4" ry="1.7" fill="#c4a058" stroke="#8a7030" stroke-width="0.35" />
+                <line x1="12.5" y1="42.2" x2="19" y2="42.2" stroke="#8a7030" stroke-width="0.3" opacity="0.5" />
+                <!-- Rattle segment 2 -->
+                <ellipse cx="15.8" cy="44.2" rx="3" ry="1.5" fill="#b89850" stroke="#806828" stroke-width="0.35" />
+                <line x1="13" y1="44.2" x2="18.6" y2="44.2" stroke="#806828" stroke-width="0.28" opacity="0.45" />
+                <!-- Rattle segment 3 -->
+                <ellipse cx="15.8" cy="46" rx="2.5" ry="1.3" fill="#ac9048" stroke="#786020" stroke-width="0.3" />
+                <line x1="13.5" y1="46" x2="18" y2="46" stroke="#786020" stroke-width="0.25" opacity="0.4" />
+                <!-- Rattle segment 4 -->
+                <ellipse cx="15.8" cy="47.5" rx="1.8" ry="1" fill="#a08840" stroke="#705818" stroke-width="0.28" />
+                <line x1="14.2" y1="47.5" x2="17.4" y2="47.5" stroke="#705818" stroke-width="0.22" opacity="0.38" />
+                <!-- Terminal button -->
+                <ellipse cx="15.8" cy="48.7" rx="1.2" ry="0.75" fill="#948038" stroke="#685010" stroke-width="0.25" />
+                <line x1="14.8" y1="48.7" x2="16.8" y2="48.7" stroke="#685010" stroke-width="0.2" opacity="0.35" />
+              </g>
+            </svg>
           </g>
         </template>
       </svg>
+      <!-- Snake hiss bubble -->
+      <div v-if="getSnakeData(i)?.hissBubble" class="snake-bubble" :class="{ 'snake-bubble-dark': isDark }"
+        :style="{
+          opacity: Math.min(1, getSnakeData(i).hissBubble.timer / 15, (100 - getSnakeData(i).hissBubble.timer + 15) / 15)
+        }">
+        {{ getSnakeData(i).hissBubble.text }}
+      </div>
     </div>
 
     <!-- ═══ Mushrooms ═══ -->
@@ -1771,7 +1854,7 @@ function onGrassLeave(idx) {
       <div v-if="r.bubble" class="rabbit-bubble" :class="{ 'rabbit-bubble-dark': isDark }"
         :style="{
           opacity: Math.min(1, r.bubble.timer / 15, (120 - r.bubble.timer + 15) / 15),
-          transform: 'translateX(' + (r.vx < 0 ? '20%' : '-120%') + ')'
+          transform: 'translateX(-50%)'
         }">
         {{ r.bubble.text }}
       </div>
@@ -2006,5 +2089,43 @@ function onGrassLeave(idx) {
 }
 .rabbit-bubble-dark::after {
   border-top-color: rgba(40, 36, 50, 0.92);
+}
+.snake-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 248, 230, 0.92);
+  border: 1.5px solid rgba(160, 120, 40, 0.25);
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #4a3820;
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: system-ui, -apple-system, sans-serif;
+  z-index: 20;
+  margin-bottom: 4px;
+}
+.snake-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid rgba(255, 248, 230, 0.92);
+}
+.snake-bubble-dark {
+  background: rgba(45, 40, 30, 0.92);
+  color: #e8dcc8;
+  border-color: rgba(200, 170, 100, 0.2);
+}
+.snake-bubble-dark::after {
+  border-top-color: rgba(45, 40, 30, 0.92);
 }
 </style>
