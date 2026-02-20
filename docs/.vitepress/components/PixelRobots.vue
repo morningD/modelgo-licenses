@@ -3,6 +3,7 @@ import { ref, shallowRef, triggerRef, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
 import { rabbitPalettes, mushroomPalettes, butterflyPalettes, snailPalettes, sporeColors, grassShades, flowerColors } from './pixel-palettes'
 import { rabbitThoughts, snakeHisses } from './rabbit-thoughts'
+import { getActiveHolidays } from './holiday-calendar'
 
 const { lang, isDark } = useData()
 
@@ -15,6 +16,9 @@ const snails = shallowRef([])
 const rainbows = shallowRef([])
 const spores = shallowRef([])
 const snakeGrasses = shallowRef([])
+const holidayDecorations = shallowRef([])
+const holidayParticles = shallowRef([])
+const activeHolidays = ref([])
 const groundY = ref(48)
 function getLunarPhase() {
   // Known new moon: Jan 6, 2000 18:14 UTC
@@ -61,6 +65,9 @@ const sky = ref(computeSky(800))
 let animFrame = 0
 let lastTime = 0
 let resizeObs = null
+let visibilityObs = null
+let isVisible = false
+let sceneReady = false
 let nextSpawn = 0
 let skyFrame = 0
 const SKY_UPDATE_INTERVAL = 60 // update sky every 60 frames
@@ -192,8 +199,9 @@ function initScene() {
   const w = container.value?.offsetWidth || 800
   const now = performance.now()
 
-  rabbits.value = rabbitPalettes.map((colors, i) => ({
-    x: (w / 4) * (i + 1), y: 0,
+  const isMobile = w < 640
+  rabbits.value = (isMobile ? rabbitPalettes.slice(0, 2) : rabbitPalettes).map((colors, i) => ({
+    x: (w / (isMobile ? 3 : 4)) * (i + 1), y: 0,
     vx: (Math.random() > 0.5 ? 1 : -1) * (WALK_SPEED_MIN + Math.random() * (WALK_SPEED_MAX - WALK_SPEED_MIN)),
     vy: 0, colors, grabbed: false, glowing: false,
     earPhase: Math.random() * Math.PI * 2,
@@ -210,14 +218,14 @@ function initScene() {
     bubbleCooldown: 0
   }))
 
-  const mc = 4 + Math.floor(Math.random() * 3)
+  const mc = isMobile ? 2 + Math.floor(Math.random() * 2) : 4 + Math.floor(Math.random() * 3)
   const segW = (w - 40) / mc
   mushrooms.value = Array.from({ length: mc }, (_, i) =>
     makeMushroom(20 + segW * i + Math.random() * segW, now, Math.random() * 5000)
   )
 
   // Grass — varied clusters with different styles
-  const gc = 22 + Math.floor(Math.random() * 10)
+  const gc = isMobile ? 10 + Math.floor(Math.random() * 5) : 22 + Math.floor(Math.random() * 10)
   grasses.value = Array.from({ length: gc }, () => {
     // Different cluster styles: 0=normal, 1=bushy-short, 2=tall-thin, 3=wild-mixed
     const style = Math.floor(Math.random() * 4)
@@ -288,7 +296,7 @@ function initScene() {
     }
   })
 
-  snails.value = snailPalettes.map((colors, i) => ({
+  snails.value = (isMobile ? snailPalettes.slice(0, 1) : snailPalettes).map((colors, i) => ({
     x: w * 0.2 + Math.random() * w * 0.6,
     dir: Math.random() > 0.5 ? 1 : -1,
     speed: 0.06 + Math.random() * 0.04,
@@ -297,7 +305,7 @@ function initScene() {
     bodyStretch: 0
   }))
 
-  const bfc = 3 + Math.floor(Math.random() * 3)
+  const bfc = isMobile ? 1 + Math.floor(Math.random() * 2) : 3 + Math.floor(Math.random() * 3)
   butterflies.value = Array.from({ length: bfc }, (_, i) => ({
     x: Math.random() * w, baseY: 15 + Math.random() * 25,
     phase: Math.random() * Math.PI * 2, wingPhase: Math.random() * Math.PI * 2,
@@ -315,9 +323,9 @@ function initScene() {
   const wt = weather.value.type
 
   // Clouds
-  const clCount = wt === 'clear' ? 4 + Math.floor(Math.random() * 3)
-    : wt === 'partly-cloudy' ? 7 + Math.floor(Math.random() * 4)
-    : 10 + Math.floor(Math.random() * 5)
+  const clCount = isMobile
+    ? (wt === 'clear' ? 2 + Math.floor(Math.random() * 2) : wt === 'partly-cloudy' ? 3 + Math.floor(Math.random() * 2) : 5 + Math.floor(Math.random() * 3))
+    : (wt === 'clear' ? 4 + Math.floor(Math.random() * 3) : wt === 'partly-cloudy' ? 7 + Math.floor(Math.random() * 4) : 10 + Math.floor(Math.random() * 5))
   clouds.value = Array.from({ length: clCount }, (_, ci) => ({
     x: Math.random() * (w + 60) - 30,
     y: 45 + Math.random() * 50,
@@ -400,9 +408,88 @@ function initScene() {
     swayX: 0,
     swayRot: 0
   }))
+
+  // ── Holidays ──
+  const locale = lang.value?.replace(/\/.*/, '') || 'en'
+  activeHolidays.value = getActiveHolidays(locale)
+
+  // Merge decorations from active holidays (max 6 desktop / 4 mobile, dedup by type)
+  const decos = []
+  const decoTypeSeen = new Set()
+  const maxDecos = w < 640 ? 4 : 6
+  for (const h of activeHolidays.value) {
+    if (!h.visuals.decorations) continue
+    const decoList = Array.isArray(h.visuals.decorations) ? h.visuals.decorations : [h.visuals.decorations]
+    for (const deco of decoList) {
+      const dt = deco.type
+      if (decoTypeSeen.has(dt)) continue
+      decoTypeSeen.add(dt)
+      for (let di = 0; di < deco.count && decos.length < maxDecos; di++) {
+        decos.push({
+          type: dt,
+          label: deco.label || '',
+          x: 40 + Math.random() * (w - 80),
+          wobblePhase: Math.random() * Math.PI * 2,
+          wobbleSpeed: 0.01 + Math.random() * 0.01,
+          scale: 0.9 + Math.random() * 0.2
+        })
+      }
+    }
+  }
+  holidayDecorations.value = decos
+
+  // Merge particles from active holidays (max 50 desktop / 25 mobile, dedup by type)
+  const maxParts = w < 640 ? 25 : 50
+  const parts = []
+  const partTypeSeen = new Set()
+  for (const h of activeHolidays.value) {
+    if (!h.visuals.particles) continue
+    const pt = h.visuals.particles.type
+    if (partTypeSeen.has(pt)) continue
+    partTypeSeen.add(pt)
+    const count = Math.min(h.visuals.particles.count, maxParts - parts.length)
+    const colors = h.visuals.particles.colors
+    for (let pi = 0; pi < count && parts.length < maxParts; pi++) {
+      parts.push({
+        type: pt,
+        x: Math.random() * w,
+        y: Math.random() * sh,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: pt === 'firework-spark' ? -(0.5 + Math.random() * 1.5) : (0.2 + Math.random() * 0.5),
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: pt === 'sakura' ? (5 + Math.random() * 4) : pt === 'heart' ? (6 + Math.random() * 4) : pt === 'lantern-glow' ? (4 + Math.random() * 4) : pt === 'snowflake-special' ? (5 + Math.random() * 4) : pt === 'maple-leaf' ? (5 + Math.random() * 3) : pt === 'confetti' ? (4 + Math.random() * 3) : (3 + Math.random() * 3),
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 2,
+        swayPhase: Math.random() * Math.PI * 2,
+        swaySpeed: 0.01 + Math.random() * 0.02,
+        opacity: 0.4 + Math.random() * 0.4,
+        life: pt === 'firework-spark' ? (60 + Math.random() * 60) : 9999,
+        maxLife: pt === 'firework-spark' ? 120 : 9999
+      })
+    }
+  }
+  holidayParticles.value = parts
+
+  // Weather hint: 60% chance to override weather if any active holiday has weatherHint
+  for (const h of activeHolidays.value) {
+    if (h.visuals.weatherHint && Math.random() < 0.6) {
+      weather.value = { type: h.visuals.weatherHint, wind: weather.value.wind }
+      break
+    }
+  }
 }
 
+function startLoop() {
+  if (animFrame) return
+  lastTime = 0 // reset to prevent dt explosion
+  animFrame = requestAnimationFrame(tick)
+}
+function stopLoop() {
+  if (animFrame) { cancelAnimationFrame(animFrame); animFrame = 0 }
+}
 function tick(time) {
+  animFrame = 0
+  if (!isVisible) return
   const dt = lastTime ? Math.min((time - lastTime) / 16, 3) : 1
   lastTime = time
   const w = container.value?.offsetWidth || 800
@@ -495,11 +582,21 @@ function tick(time) {
           // Speech bubble — ~15% chance per hop, with cooldown
           if (!r.bubble && r.bubbleCooldown <= 0 && Math.random() < 0.15) {
             const locale = lang.value?.replace(/\/.*/, '') || 'en'
-            const thoughts = rabbitThoughts[locale] || rabbitThoughts['en']
-            const pool = r.isBaby ? thoughts.baby
-              : r.tripping ? thoughts.trip
-              : thoughts.idle
-            r.bubble = { text: pool[Math.floor(Math.random() * pool.length)], timer: 120 }
+            // 25% chance holiday thought when holidays are active
+            let text = null
+            if (activeHolidays.value.length > 0 && !r.isBaby && !r.tripping && Math.random() < 0.25) {
+              const hol = activeHolidays.value[Math.floor(Math.random() * activeHolidays.value.length)]
+              const holPool = hol.thoughts[locale] || hol.thoughts['en']
+              if (holPool && holPool.length) text = holPool[Math.floor(Math.random() * holPool.length)]
+            }
+            if (!text) {
+              const thoughts = rabbitThoughts[locale] || rabbitThoughts['en']
+              const pool = r.isBaby ? thoughts.baby
+                : r.tripping ? thoughts.trip
+                : thoughts.idle
+              text = pool[Math.floor(Math.random() * pool.length)]
+            }
+            r.bubble = { text, timer: 120 }
             r.bubbleCooldown = 300
           }
           // Hop height
@@ -725,6 +822,43 @@ function tick(time) {
   })
   spores.value = spores.value.filter(sp => time - sp.spawnTime < 4000)
 
+  // ── Holiday particles & decorations ──
+  if (holidayParticles.value.length) {
+    const wind = weather.value.wind
+    holidayParticles.value.forEach(p => {
+      p.swayPhase += p.swaySpeed * dt
+      const sway = Math.sin(p.swayPhase) * 0.3
+      p.x += (p.vx + sway + wind * 0.2) * dt
+      p.y += p.vy * dt
+      p.rotation += p.rotSpeed * dt
+      if (p.life < 9999) {
+        p.life -= dt
+        p.opacity = Math.max(0, (p.life / p.maxLife) * 0.7)
+      }
+      // Boundary recycle
+      if (p.y > sh) { p.y = -10; p.x = Math.random() * w }
+      if (p.y < -20 && p.vy < 0) { p.y = sh + 10; p.x = Math.random() * w }
+      if (p.x > w + 20) p.x = -10
+      if (p.x < -20) p.x = w + 10
+      // Firework spark: respawn when life ends
+      if (p.type === 'firework-spark' && p.life <= 0) {
+        p.x = Math.random() * w
+        p.y = Math.random() * sh * 0.6
+        p.vy = -(0.5 + Math.random() * 1.5)
+        p.vx = (Math.random() - 0.5) * 0.8
+        p.life = 60 + Math.random() * 60
+        p.opacity = 0.4 + Math.random() * 0.4
+      }
+    })
+    triggerRef(holidayParticles)
+  }
+  if (holidayDecorations.value.length) {
+    holidayDecorations.value.forEach(d => {
+      d.wobblePhase += d.wobbleSpeed * dt
+    })
+    triggerRef(holidayDecorations)
+  }
+
   // ── Snake in grass ──
   snakeGrasses.value.forEach(sg => {
     const g = grasses.value[sg.grassIdx]
@@ -787,7 +921,7 @@ function tick(time) {
   if (spores.value.length) triggerRef(spores)
   if (wxParticles.value.length && weather.value.type !== 'clear') triggerRef(wxParticles)
 
-  animFrame = requestAnimationFrame(tick)
+  if (isVisible) animFrame = requestAnimationFrame(tick)
 }
 
 // ── Drag ──
@@ -845,13 +979,24 @@ onMounted(() => {
   measureGround()
   const footer = document.querySelector('.VPFooter')
   if (footer) { resizeObs = new ResizeObserver(measureGround); resizeObs.observe(footer) }
-  initScene()
-  animFrame = requestAnimationFrame(tick)
   window.addEventListener('resize', onResizeThrottled)
+
+  // Lazy init + visibility-driven loop: only compute when footer is in viewport
+  visibilityObs = new IntersectionObserver((entries) => {
+    const wasVisible = isVisible
+    isVisible = entries[0].isIntersecting
+    if (isVisible && !wasVisible) {
+      if (!sceneReady) { initScene(); sceneReady = true }
+      startLoop()
+    }
+    // stopLoop happens naturally: tick() checks isVisible before scheduling next frame
+  }, { rootMargin: '100px' }) // start slightly before entering viewport
+  if (container.value) visibilityObs.observe(container.value)
 })
 onUnmounted(() => {
   if (resizeObs) resizeObs.disconnect()
-  cancelAnimationFrame(animFrame)
+  if (visibilityObs) visibilityObs.disconnect()
+  stopLoop()
   if (resizeTimer) cancelAnimationFrame(resizeTimer)
   window.removeEventListener('pointermove', onMove)
   window.removeEventListener('pointerup', onUp)
@@ -1549,6 +1694,356 @@ function onSnakeClick(idx) {
       </div>
     </div>
 
+    <!-- ═══ Holiday decorations ═══ -->
+    <div v-for="(d, i) in holidayDecorations" :key="'hd' + i"
+      class="holiday-decoration"
+      :style="{
+        left: d.x + 'px',
+        bottom: (['red-lantern','round-lantern','tanzaku','chunlian','fanous'].includes(d.type)
+          ? groundY + 50 + Math.sin(d.wobblePhase * 0.5) * 5
+          : ['ema','omamori'].includes(d.type)
+          ? groundY + 40 + Math.sin(d.wobblePhase * 0.5) * 3
+          : groundY) + 'px',
+        transform: `translateX(-50%) rotate(${Math.sin(d.wobblePhase) * (['red-lantern','round-lantern','chunlian','fanous'].includes(d.type) ? 4 : ['ema','omamori'].includes(d.type) ? 3 : 2)}deg)`
+      }">
+      <!-- Red lantern 红灯笼 -->
+      <svg v-if="d.type === 'red-lantern'" width="36" height="62" viewBox="0 0 36 62" overflow="visible">
+        <!-- Hanging string -->
+        <line x1="18" y1="0" x2="18" y2="8" stroke="#aa7733" stroke-width="1" />
+        <!-- Top bar -->
+        <rect x="11" y="7" width="14" height="3.5" rx="1" fill="#cc8822" />
+        <rect x="12" y="7.5" width="12" height="1" rx="0.5" fill="#ddaa44" opacity="0.5" />
+        <!-- Body -->
+        <ellipse cx="18" cy="30" rx="13" ry="17" fill="#cc2222" />
+        <!-- Ribs (vertical lines) -->
+        <ellipse cx="18" cy="30" rx="13" ry="17" fill="none" stroke="#aa1111" stroke-width="0.4" opacity="0.3" />
+        <line x1="12" y1="13" x2="12" y2="47" stroke="#aa1111" stroke-width="0.4" opacity="0.25" />
+        <line x1="24" y1="13" x2="24" y2="47" stroke="#aa1111" stroke-width="0.4" opacity="0.25" />
+        <line x1="18" y1="10" x2="18" y2="50" stroke="#aa1111" stroke-width="0.3" opacity="0.15" />
+        <!-- Highlight -->
+        <ellipse cx="18" cy="26" rx="8" ry="11" fill="#ee4444" opacity="0.45" />
+        <ellipse cx="15" cy="22" rx="4" ry="6" fill="#ff6644" opacity="0.3" />
+        <ellipse cx="14" cy="20" rx="2" ry="3" fill="#ff8866" opacity="0.2" />
+        <!-- Character label -->
+        <rect x="12" y="24" width="12" height="12" rx="1.2" fill="#ffcc22" opacity="0.3" />
+        <rect x="13" y="25" width="10" height="10" rx="0.8" fill="none" stroke="#ffdd44" stroke-width="0.5" opacity="0.45" />
+        <text v-if="d.label" x="18" y="33.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#ffdd44" opacity="0.85" font-family="serif">{{ d.label }}</text>
+        <!-- Bottom bar -->
+        <rect x="11" y="46" width="14" height="3.5" rx="1" fill="#cc8822" />
+        <rect x="12" y="47" width="12" height="1" rx="0.5" fill="#ddaa44" opacity="0.4" />
+        <!-- Tassel -->
+        <line x1="18" y1="49.5" x2="18" y2="56" stroke="#dd3333" stroke-width="1.2" />
+        <line x1="15" y1="56" x2="18" y2="53" stroke="#dd3333" stroke-width="0.8" />
+        <line x1="21" y1="56" x2="18" y2="53" stroke="#dd3333" stroke-width="0.8" />
+        <line x1="16" y1="58" x2="18" y2="55" stroke="#cc2222" stroke-width="0.6" />
+        <line x1="20" y1="58" x2="18" y2="55" stroke="#cc2222" stroke-width="0.6" />
+        <circle cx="18" cy="56.5" r="1.2" fill="#dd3333" />
+        <!-- Glow effect -->
+        <ellipse cx="18" cy="30" rx="16" ry="20" fill="#ff4422" opacity="0.08" />
+      </svg>
+      <!-- Round lantern 圆灯笼 -->
+      <svg v-else-if="d.type === 'round-lantern'" width="38" height="52" viewBox="0 0 38 52" overflow="visible">
+        <line x1="19" y1="0" x2="19" y2="6" stroke="#aa7733" stroke-width="1" />
+        <circle cx="19" cy="24" r="16" fill="#dd4422" />
+        <circle cx="19" cy="22" r="10" fill="#ee6644" opacity="0.35" />
+        <circle cx="16" cy="18" r="5" fill="#ff8844" opacity="0.25" />
+        <circle cx="14" cy="16" r="2.5" fill="#ffaa66" opacity="0.15" />
+        <!-- Character label -->
+        <text v-if="d.label" x="19" y="28" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffdd44" opacity="0.8" font-family="serif">{{ d.label }}</text>
+        <line x1="19" y1="40" x2="19" y2="48" stroke="#dd4422" stroke-width="0.8" />
+        <circle cx="19" cy="48" r="1" fill="#cc3311" />
+        <circle cx="19" cy="24" r="19" fill="#ff6633" opacity="0.06" />
+      </svg>
+      <!-- Christmas tree 🎄 -->
+      <svg v-else-if="d.type === 'christmas-tree'" width="38" height="56" viewBox="0 0 38 56" overflow="visible">
+        <rect x="15.5" y="46" width="7" height="9" rx="1" fill="#6b4226" />
+        <rect x="16.5" y="47" width="2" height="7" rx="0.5" fill="#8b5a3a" opacity="0.3" />
+        <polygon points="19,3 5,22 33,22" fill="#1a6b1a" />
+        <polygon points="19,10 7,32 31,32" fill="#228b22" />
+        <polygon points="19,20 8,46 30,46" fill="#2d8b2d" />
+        <!-- Star -->
+        <polygon points="19,0 20.5,3 23,3 21,5 21.8,8 19,6.5 16.2,8 17,5 15,3 17.5,3" fill="#ffd700" />
+        <circle cx="19" cy="3.5" r="2.5" fill="#ffe44d" opacity="0.4" />
+        <!-- Ornaments -->
+        <circle cx="12" cy="20" r="1.8" fill="#ff3333" />
+        <circle cx="25" cy="25" r="1.6" fill="#4488ff" />
+        <circle cx="14" cy="32" r="1.8" fill="#ffdd44" />
+        <circle cx="26" cy="35" r="1.5" fill="#ff88dd" />
+        <circle cx="16" cy="40" r="1.6" fill="#ff3333" />
+        <circle cx="22" cy="42" r="1.4" fill="#44dd88" />
+        <!-- Snow patches -->
+        <ellipse cx="10" cy="22" rx="4" ry="1.2" fill="#f0f4ff" opacity="0.35" />
+        <ellipse cx="28" cy="32" rx="3" ry="1" fill="#f0f4ff" opacity="0.3" />
+        <ellipse cx="12" cy="38" rx="3.5" ry="1" fill="#f0f4ff" opacity="0.25" />
+      </svg>
+      <!-- Kadomatsu 門松 -->
+      <svg v-else-if="d.type === 'kadomatsu'" width="36" height="50" viewBox="0 0 36 50" overflow="visible">
+        <rect x="4" y="38" width="28" height="11" rx="2" fill="#8b6b3a" />
+        <rect x="6" y="39" width="24" height="2.5" rx="1" fill="#ddcc88" opacity="0.5" />
+        <rect x="6" y="10" width="7" height="32" rx="2" fill="#2d7a2d" />
+        <polygon points="6,10 13,10 13,7 9.5,3" fill="#88bb44" />
+        <rect x="14.5" y="3" width="7" height="39" rx="2" fill="#3a8a3a" />
+        <polygon points="14.5,3 21.5,3 21.5,0 18,0" fill="#aadd66" />
+        <rect x="23" y="14" width="7" height="28" rx="2" fill="#4a9a4a" />
+        <polygon points="23,14 30,14 30,11 26.5,8" fill="#88bb44" />
+        <!-- Pine branches -->
+        <circle cx="8" cy="36" r="3.5" fill="#1a5a1a" opacity="0.6" />
+        <circle cx="28" cy="36" r="3" fill="#1a5a1a" opacity="0.5" />
+        <circle cx="18" cy="38" r="2.5" fill="#1a5a1a" opacity="0.4" />
+      </svg>
+      <!-- Pumpkin 🎃 -->
+      <svg v-else-if="d.type === 'pumpkin'" width="34" height="32" viewBox="0 0 34 32" overflow="visible">
+        <ellipse cx="17" cy="20" rx="15" ry="11" fill="#dd7722" />
+        <ellipse cx="10" cy="20" rx="8" ry="10" fill="#ee9944" opacity="0.3" />
+        <ellipse cx="24" cy="20" rx="8" ry="10" fill="#bb5500" opacity="0.2" />
+        <path d="M17 9 Q17 4, 21 2" fill="none" stroke="#556b2f" stroke-width="2" stroke-linecap="round" />
+        <rect x="15.5" y="8.5" width="3" height="4" rx="1" fill="#556b2f" />
+        <!-- Face -->
+        <path d="M9 18 L11.5 21 L14 18" fill="none" stroke="#221100" stroke-width="1.2" />
+        <path d="M20 18 L22.5 21 L25 18" fill="none" stroke="#221100" stroke-width="1.2" />
+        <path d="M12 25 Q17 29, 22 25" fill="none" stroke="#221100" stroke-width="1.2" />
+        <!-- Inner glow -->
+        <ellipse cx="17" cy="20" rx="10" ry="7" fill="#ffaa33" opacity="0.12" />
+      </svg>
+      <!-- Shamrock ☘️ -->
+      <svg v-else-if="d.type === 'shamrock'" width="28" height="30" viewBox="0 0 28 30" overflow="visible">
+        <line x1="14" y1="17" x2="14" y2="30" stroke="#1a5a1a" stroke-width="2" stroke-linecap="round" />
+        <circle cx="10" cy="12" r="6" fill="#228b22" />
+        <circle cx="18" cy="12" r="6" fill="#228b22" />
+        <circle cx="14" cy="6.5" r="6" fill="#33aa33" />
+        <circle cx="11" cy="10" r="2.2" fill="#33aa33" opacity="0.4" />
+        <circle cx="17.5" cy="10" r="2" fill="#33aa33" opacity="0.3" />
+        <circle cx="14" cy="5" r="2.2" fill="#44bb44" opacity="0.3" />
+      </svg>
+      <!-- Crescent & star ☪ -->
+      <svg v-else-if="d.type === 'crescent-star'" width="36" height="36" viewBox="0 0 36 36" overflow="visible">
+        <circle cx="16" cy="18" r="12" fill="#ffd700" />
+        <circle cx="21" cy="15" r="10.5" :fill="isDark ? '#1a1a2e' : '#e8ecf4'" />
+        <polygon points="30,8 31.6,13 36,13 32.4,16 33.6,21 30,18 26.4,21 27.6,16 24,13 28.4,13" fill="#ffd700" />
+        <circle cx="30" cy="14" r="1" fill="#fff2aa" opacity="0.5" />
+        <circle cx="16" cy="18" r="14" fill="#ffd700" opacity="0.06" />
+      </svg>
+      <!-- Songpyeon 송편 -->
+      <svg v-else-if="d.type === 'songpyeon'" width="26" height="18" viewBox="0 0 26 18" overflow="visible">
+        <ellipse cx="13" cy="11" rx="12" ry="6.5" fill="#f0e8d8" />
+        <ellipse cx="13" cy="10" rx="9" ry="5" fill="#f8f4ec" opacity="0.4" />
+        <ellipse cx="13" cy="12" rx="6" ry="3" fill="#88aa44" opacity="0.25" />
+        <path d="M5 9 Q13 5, 21 9" fill="none" stroke="#ddcc88" stroke-width="0.8" opacity="0.5" />
+        <ellipse cx="13" cy="8" rx="4" ry="2" fill="#faf6ee" opacity="0.3" />
+      </svg>
+      <!-- Tanzaku 短冊 -->
+      <svg v-else-if="d.type === 'tanzaku'" width="18" height="48" viewBox="0 0 18 48" overflow="visible">
+        <line x1="9" y1="0" x2="9" y2="6" stroke="#ddcc88" stroke-width="0.8" />
+        <rect x="1" y="6" width="16" height="32" rx="1"
+          :fill="['#ff6688', '#6688ff', '#88dd44', '#ffdd44', '#dd88ff'][i % 5]" />
+        <!-- Wish character (vertical) -->
+        <text v-if="d.label" x="9" y="26" text-anchor="middle" font-size="11" fill="#fff" opacity="0.7" font-family="serif">{{ d.label }}</text>
+        <!-- Tassel threads -->
+        <line x1="6" y1="38" x2="9" y2="46" stroke="#ddcc88" stroke-width="0.6" />
+        <line x1="12" y1="38" x2="9" y2="46" stroke="#ddcc88" stroke-width="0.6" />
+      </svg>
+      <!-- Yolka Ёлка -->
+      <svg v-else-if="d.type === 'yolka'" width="38" height="56" viewBox="0 0 38 56" overflow="visible">
+        <rect x="15.5" y="46" width="7" height="9" rx="1" fill="#6b4226" />
+        <polygon points="19,3 5,22 33,22" fill="#1a6b4a" />
+        <polygon points="19,10 7,32 31,32" fill="#228b5a" />
+        <polygon points="19,20 8,46 30,46" fill="#2d8b6a" />
+        <!-- Red star -->
+        <polygon points="19,0 20.5,3 23,3 21,5 21.8,8 19,6.5 16.2,8 17,5 15,3 17.5,3" fill="#ff3333" />
+        <circle cx="19" cy="3.5" r="2.2" fill="#ff6644" opacity="0.35" />
+        <!-- Ornaments -->
+        <circle cx="12" cy="20" r="1.6" fill="#4488ff" />
+        <circle cx="25" cy="25" r="1.5" fill="#ffdd44" />
+        <circle cx="14" cy="32" r="1.6" fill="#ff3333" />
+        <circle cx="26" cy="35" r="1.4" fill="#44dd88" />
+        <circle cx="16" cy="40" r="1.5" fill="#ffdd44" />
+        <!-- Garland -->
+        <path d="M8 20 Q14 18, 20 21 Q26 24, 30 22" fill="none" stroke="#ffdd44" stroke-width="0.8" opacity="0.45" />
+        <path d="M9 32 Q15 30, 21 33 Q27 36, 29 34" fill="none" stroke="#ffdd44" stroke-width="0.7" opacity="0.35" />
+        <!-- Snow -->
+        <ellipse cx="10" cy="22" rx="4" ry="1.2" fill="#f0f4ff" opacity="0.3" />
+        <ellipse cx="28" cy="32" rx="3" ry="1" fill="#f0f4ff" opacity="0.25" />
+      </svg>
+      <!-- Chunlian 春联 (vertical scroll couplet) -->
+      <svg v-else-if="d.type === 'chunlian'" width="20" height="50" viewBox="0 0 20 50" overflow="visible">
+        <!-- Hanging string -->
+        <line x1="10" y1="0" x2="10" y2="5" stroke="#aa7733" stroke-width="0.8" />
+        <!-- Top cap -->
+        <rect x="2" y="4" width="16" height="4" rx="1" fill="#ccaa44" />
+        <rect x="3" y="5" width="14" height="1.5" rx="0.5" fill="#ddbb55" opacity="0.4" />
+        <!-- Red body -->
+        <rect x="3" y="8" width="14" height="34" rx="0.5" fill="#cc2222" />
+        <!-- Gold border -->
+        <rect x="3" y="8" width="14" height="34" rx="0.5" fill="none" stroke="#ccaa44" stroke-width="0.8" />
+        <!-- Inner border -->
+        <rect x="5" y="10" width="10" height="30" rx="0.3" fill="none" stroke="#ccaa44" stroke-width="0.4" opacity="0.5" />
+        <!-- Vertical text -->
+        <text v-if="d.label" x="10" y="28" text-anchor="middle" font-size="8" font-weight="bold" fill="#ffcc44" font-family="serif" writing-mode="vertical-rl">{{ d.label }}</text>
+        <!-- Bottom cap -->
+        <rect x="2" y="42" width="16" height="4" rx="1" fill="#ccaa44" />
+        <rect x="3" y="43" width="14" height="1.5" rx="0.5" fill="#ddbb55" opacity="0.4" />
+        <!-- Tassel -->
+        <line x1="10" y1="46" x2="10" y2="50" stroke="#dd3333" stroke-width="0.8" />
+        <circle cx="10" cy="50" r="1" fill="#dd3333" />
+      </svg>
+      <!-- Ema 絵馬 (Japanese votive tablet) -->
+      <svg v-else-if="d.type === 'ema'" width="30" height="26" viewBox="0 0 30 26" overflow="visible">
+        <!-- Hanging rope -->
+        <path d="M12 2 Q15 0, 18 2" fill="none" stroke="#aa7733" stroke-width="1.2" stroke-linecap="round" />
+        <!-- Pentagonal wood board -->
+        <polygon points="15,2 28,8 26,24 4,24 2,8" fill="#d4a054" />
+        <polygon points="15,3 27,8.5 25.5,23 4.5,23 3,8.5" fill="#e0b870" opacity="0.3" />
+        <!-- Wood grain -->
+        <line x1="5" y1="12" x2="25" y2="11" stroke="#b8863c" stroke-width="0.3" opacity="0.3" />
+        <line x1="4" y1="18" x2="26" y2="17" stroke="#b8863c" stroke-width="0.3" opacity="0.25" />
+        <!-- Text -->
+        <text v-if="d.label" x="15" y="17" text-anchor="middle" font-size="9" font-weight="bold" fill="#332211" font-family="serif">{{ d.label }}</text>
+        <!-- Nail at top -->
+        <circle cx="15" cy="5" r="1.2" fill="#aa7733" />
+      </svg>
+      <!-- Candy heart 💕 -->
+      <svg v-else-if="d.type === 'candy-heart'" width="24" height="22" viewBox="0 0 24 22" overflow="visible">
+        <!-- Heart shape -->
+        <path d="M12 20 C5 14, 0 8, 4 4 C7 1, 12 4, 12 7 C12 4, 17 1, 20 4 C24 8, 19 14, 12 20Z" fill="#ff8899" />
+        <!-- Light highlight -->
+        <path d="M7 6 C8 4, 10 5, 10 7" fill="none" stroke="#ffaabb" stroke-width="1.5" opacity="0.5" stroke-linecap="round" />
+        <!-- Embossed text (dynamic size) -->
+        <text v-if="d.label" x="12" y="13" text-anchor="middle"
+          :font-size="d.label.length <= 2 ? 6 : d.label.length <= 4 ? 5 : 4"
+          font-weight="bold" fill="#cc3355" font-family="sans-serif">{{ d.label }}</text>
+      </svg>
+      <!-- Tombstone 🪦 -->
+      <svg v-else-if="d.type === 'tombstone'" width="24" height="30" viewBox="0 0 24 30" overflow="visible">
+        <!-- Stone body -->
+        <path d="M3 30 L3 10 C3 4, 12 2, 12 2 C12 2, 21 4, 21 10 L21 30 Z" fill="#888888" />
+        <!-- Lighter face -->
+        <path d="M5 28 L5 11 C5 6, 12 4, 12 4 C12 4, 19 6, 19 11 L19 28 Z" fill="#999999" opacity="0.4" />
+        <!-- Engraved text -->
+        <text v-if="d.label" x="12" y="17" text-anchor="middle" font-size="7" font-weight="bold" fill="#333333" font-family="serif">{{ d.label }}</text>
+        <!-- Grass at base -->
+        <path d="M0 30 L2 25 L4 30 L6 26 L8 30 L10 25 L12 30 L14 26 L16 30 L18 25 L20 30 L22 26 L24 30 Z" fill="#3a7a3a" />
+      </svg>
+      <!-- Greeting card 💌 -->
+      <svg v-else-if="d.type === 'greeting-card'" width="28" height="22" viewBox="0 0 28 22" overflow="visible">
+        <!-- Back panel (slightly visible) -->
+        <rect x="2" y="2" width="24" height="18" rx="1.5" fill="#d8c8a8" />
+        <!-- Front panel -->
+        <rect x="4" y="3" width="22" height="17" rx="1.5" fill="#fff4e6" />
+        <!-- Fold line -->
+        <line x1="15" y1="3.5" x2="15" y2="19.5" stroke="#d8c8a8" stroke-width="0.5" stroke-dasharray="1.5,1" />
+        <!-- Decorative heart on front -->
+        <path d="M9 6.5 C8.2 5, 6 5.2, 6 6.8 C6 8, 9 9.5, 9 9.5 C9 9.5, 12 8, 12 6.8 C12 5.2, 9.8 5, 9 6.5Z" fill="#ee8899" opacity="0.35" />
+        <!-- Front face text (dynamic size, softer style) -->
+        <text v-if="d.label" x="9.5" y="16" text-anchor="middle"
+          :font-size="d.label.length <= 1 ? 9 : d.label.length <= 2 ? 7 : d.label.length <= 4 ? 5.5 : 4.5"
+          fill="#cc4444" font-family="Georgia, 'Times New Roman', serif" font-style="italic">{{ d.label }}</text>
+      </svg>
+      <!-- Bokjumeoni 복주머니 (Korean fortune pouch) -->
+      <svg v-else-if="d.type === 'bokjumeoni'" width="22" height="28" viewBox="0 0 22 28" overflow="visible">
+        <!-- Pouch body -->
+        <path d="M3 10 Q3 26, 11 26 Q19 26, 19 10 Z" fill="#cc2266" />
+        <!-- Lighter center -->
+        <path d="M5 12 Q5 24, 11 24 Q17 24, 17 12 Z" fill="#dd4488" opacity="0.3" />
+        <!-- Gathered top -->
+        <path d="M3 10 Q5 7, 11 8 Q17 7, 19 10" fill="#cc2266" stroke="#aa1144" stroke-width="0.3" />
+        <!-- Drawstring cord -->
+        <path d="M6 9 Q11 6, 16 9" fill="none" stroke="#ffcc44" stroke-width="1.2" stroke-linecap="round" />
+        <!-- Knot -->
+        <circle cx="11" cy="7.5" r="1.5" fill="#ddaa22" />
+        <!-- Cord tails -->
+        <line x1="9.5" y1="7.5" x2="7" y2="3" stroke="#ffcc44" stroke-width="0.8" stroke-linecap="round" />
+        <line x1="12.5" y1="7.5" x2="15" y2="3" stroke="#ffcc44" stroke-width="0.8" stroke-linecap="round" />
+        <!-- Tassel left -->
+        <line x1="7" y1="3" x2="5" y2="0" stroke="#ffcc44" stroke-width="0.6" />
+        <line x1="7" y1="3" x2="7" y2="0" stroke="#ffcc44" stroke-width="0.6" />
+        <!-- Tassel right -->
+        <line x1="15" y1="3" x2="15" y2="0" stroke="#ffcc44" stroke-width="0.6" />
+        <line x1="15" y1="3" x2="17" y2="0" stroke="#ffcc44" stroke-width="0.6" />
+        <!-- Embroidered text -->
+        <text v-if="d.label" x="11" y="20" text-anchor="middle"
+          :font-size="d.label.length <= 1 ? 9 : d.label.length <= 2 ? 7 : 5"
+          font-weight="bold" fill="#ffdd66" font-family="serif">{{ d.label }}</text>
+      </svg>
+      <!-- Omamori お守り (Japanese charm amulet) -->
+      <svg v-else-if="d.type === 'omamori'" width="16" height="26" viewBox="0 0 16 26" overflow="visible">
+        <!-- Hanging cord -->
+        <line x1="8" y1="0" x2="8" y2="4" stroke="#ddaa44" stroke-width="0.8" />
+        <!-- Cord knot -->
+        <path d="M6 4 Q8 2.5, 10 4 Q8 5.5, 6 4Z" fill="#ffcc44" />
+        <!-- Body -->
+        <rect x="2" y="5" width="12" height="18" rx="1.5" fill="#8b2252" />
+        <!-- Gold border -->
+        <rect x="2" y="5" width="12" height="18" rx="1.5" fill="none" stroke="#ddaa44" stroke-width="0.6" />
+        <!-- Inner decorative border -->
+        <rect x="3.5" y="7" width="9" height="14" rx="0.8" fill="none" stroke="#ddaa44" stroke-width="0.4" opacity="0.5" />
+        <!-- Highlight -->
+        <rect x="3" y="6" width="4" height="6" rx="1" fill="#aa3366" opacity="0.3" />
+        <!-- Text -->
+        <text v-if="d.label" x="8" y="14" text-anchor="middle"
+          :font-size="d.label.length <= 1 ? 7 : d.label.length <= 2 ? 5.5 : 4.5"
+          font-weight="bold" fill="#ffdd88" font-family="serif" writing-mode="vertical-rl">{{ d.label }}</text>
+        <!-- Bottom tassel -->
+        <line x1="8" y1="23" x2="8" y2="26" stroke="#ddaa44" stroke-width="0.6" />
+        <circle cx="8" cy="26" r="0.8" fill="#ffcc44" />
+      </svg>
+      <!-- Fanous فانوس (Arabic festive lantern) -->
+      <svg v-else-if="d.type === 'fanous'" width="22" height="36" viewBox="0 0 22 36" overflow="visible">
+        <!-- Hanging ring -->
+        <circle cx="11" cy="2" r="2" fill="none" stroke="#ccaa44" stroke-width="1" />
+        <!-- Top cap -->
+        <polygon points="6,5 16,5 14,8 8,8" fill="#ccaa44" />
+        <polygon points="7,5.5 15,5.5 13.5,7.5 8.5,7.5" fill="#ddbb55" opacity="0.4" />
+        <!-- Lantern body (hexagonal profile) -->
+        <path d="M5 8 L3 18 L5 28 L17 28 L19 18 L17 8 Z" fill="#22aa66" />
+        <!-- Glass panels with lighter shade -->
+        <path d="M6 9 L4.5 18 L6 27 L11 27 L11 9 Z" fill="#44cc88" opacity="0.25" />
+        <!-- Frame lines -->
+        <line x1="11" y1="8" x2="11" y2="28" stroke="#ccaa44" stroke-width="0.5" opacity="0.6" />
+        <line x1="3.5" y1="18" x2="18.5" y2="18" stroke="#ccaa44" stroke-width="0.5" opacity="0.4" />
+        <!-- Top/bottom frame -->
+        <line x1="5" y1="8" x2="17" y2="8" stroke="#ccaa44" stroke-width="0.8" />
+        <line x1="5" y1="28" x2="17" y2="28" stroke="#ccaa44" stroke-width="0.8" />
+        <!-- Glow -->
+        <ellipse cx="11" cy="18" rx="6" ry="8" fill="#44dd88" opacity="0.1" />
+        <!-- Text -->
+        <text v-if="d.label" x="11" y="20" text-anchor="middle"
+          :font-size="d.label.length <= 1 ? 8 : d.label.length <= 2 ? 7 : 5"
+          font-weight="bold" fill="#ffeecc" font-family="serif">{{ d.label }}</text>
+        <!-- Bottom finial -->
+        <polygon points="8,28 14,28 11,32" fill="#ccaa44" />
+        <line x1="11" y1="32" x2="11" y2="35" stroke="#ccaa44" stroke-width="0.6" />
+        <circle cx="11" cy="35.5" r="0.8" fill="#ddbb55" />
+      </svg>
+      <!-- Daruma だるま (Japanese wishing doll) -->
+      <svg v-else-if="d.type === 'daruma'" width="28" height="28" viewBox="0 0 28 28" overflow="visible">
+        <!-- Body (round) -->
+        <ellipse cx="14" cy="16" rx="12" ry="11" fill="#cc2222" />
+        <!-- Bottom flat -->
+        <ellipse cx="14" cy="25" rx="10" ry="2.5" fill="#aa1111" />
+        <!-- Highlight -->
+        <ellipse cx="11" cy="12" rx="5" ry="6" fill="#dd4444" opacity="0.35" />
+        <!-- Face area (white oval) -->
+        <ellipse cx="14" cy="13" rx="7" ry="6" fill="#f5e6d0" />
+        <!-- Eyebrows (gold arcs) -->
+        <path d="M9 10 Q10.5 8, 12 10" fill="none" stroke="#ccaa44" stroke-width="1" stroke-linecap="round" />
+        <path d="M16 10 Q17.5 8, 19 10" fill="none" stroke="#ccaa44" stroke-width="1" stroke-linecap="round" />
+        <!-- Left eye (filled = wish made) -->
+        <circle cx="10.5" cy="12.5" r="2" fill="#ffffff" />
+        <circle cx="10.5" cy="12.5" r="1.3" fill="#111111" />
+        <!-- Right eye (empty = wish pending) -->
+        <circle cx="17.5" cy="12.5" r="2" fill="#ffffff" />
+        <circle cx="17.5" cy="12.5" r="1.3" fill="#ffffff" stroke="#cccccc" stroke-width="0.3" />
+        <!-- Nose dot -->
+        <circle cx="14" cy="14.5" r="0.6" fill="#cc8866" opacity="0.5" />
+        <!-- Mouth -->
+        <path d="M12 16.5 Q14 17.5, 16 16.5" fill="none" stroke="#aa7755" stroke-width="0.5" opacity="0.5" />
+        <!-- Belly text -->
+        <text v-if="d.label" x="14" y="24" text-anchor="middle"
+          :font-size="d.label.length <= 1 ? 7 : d.label.length <= 2 ? 5.5 : 4"
+          font-weight="bold" fill="#ffcc44" font-family="serif">{{ d.label }}</text>
+      </svg>
+    </div>
+
     <!-- ═══ Mushrooms ═══ -->
     <div
       v-for="(m, i) in mushrooms" :key="'m' + i"
@@ -1881,6 +2376,74 @@ function onSnakeClick(idx) {
       </svg>
     </div>
 
+    <!-- ═══ Holiday particles ═══ -->
+    <svg v-if="holidayParticles.length" class="holiday-particle-overlay">
+      <template v-for="(p, i) in holidayParticles" :key="'hp' + i">
+        <!-- Sakura petal -->
+        <ellipse v-if="p.type === 'sakura'"
+          :cx="p.x" :cy="p.y" :rx="p.size * 0.6" :ry="p.size * 0.3"
+          :fill="p.color" :opacity="p.opacity"
+          :transform="`rotate(${p.rotation}, ${p.x}, ${p.y})`"
+        />
+        <!-- Lantern glow -->
+        <g v-else-if="p.type === 'lantern-glow'">
+          <circle :cx="p.x" :cy="p.y" :r="p.size * 1.8" :fill="p.color" :opacity="p.opacity * 0.15" />
+          <circle :cx="p.x" :cy="p.y" :r="p.size" :fill="p.color" :opacity="p.opacity * 0.7" />
+          <circle :cx="p.x" :cy="p.y" :r="p.size * 0.4" fill="#fff8dd" :opacity="p.opacity * 0.5" />
+        </g>
+        <!-- Firework spark -->
+        <circle v-else-if="p.type === 'firework-spark'"
+          :cx="p.x" :cy="p.y" :r="p.size * 0.4"
+          :fill="p.color" :opacity="p.opacity"
+        />
+        <!-- Confetti -->
+        <rect v-else-if="p.type === 'confetti'"
+          :x="p.x - p.size * 0.3" :y="p.y - p.size * 0.5"
+          :width="p.size * 0.6" :height="p.size"
+          :fill="p.color" :opacity="p.opacity"
+          :transform="`rotate(${p.rotation}, ${p.x}, ${p.y})`"
+          rx="0.5"
+        />
+        <!-- Maple leaf (simplified) -->
+        <g v-else-if="p.type === 'maple-leaf'"
+          :transform="`translate(${p.x}, ${p.y}) rotate(${p.rotation}) scale(${p.size * 0.2})`"
+          :opacity="p.opacity">
+          <path d="M0,-5 L2,-2 L5,-3 L3,0 L5,2 L2,1 L0,5 L-2,1 L-5,2 L-3,0 L-5,-3 L-2,-2 Z"
+            :fill="p.color" />
+          <line x1="0" y1="-4" x2="0" y2="5" :stroke="p.color" stroke-width="0.5" opacity="0.5" />
+        </g>
+        <!-- Special snowflake (large star) -->
+        <g v-else-if="p.type === 'snowflake-special'"
+          :transform="`translate(${p.x}, ${p.y}) rotate(${p.rotation}) scale(${p.size * 0.25})`"
+          :opacity="p.opacity">
+          <line v-for="n in 6" :key="n"
+            x1="0" y1="0"
+            :x2="Math.cos(n * Math.PI / 3) * 5"
+            :y2="Math.sin(n * Math.PI / 3) * 5"
+            stroke="#ffffff" stroke-width="0.8" stroke-linecap="round" />
+          <line v-for="n in 6" :key="'b'+n"
+            :x1="Math.cos(n * Math.PI / 3) * 2"
+            :y1="Math.sin(n * Math.PI / 3) * 2"
+            :x2="Math.cos(n * Math.PI / 3 + 0.4) * 3.5"
+            :y2="Math.sin(n * Math.PI / 3 + 0.4) * 3.5"
+            stroke="#e8f0ff" stroke-width="0.5" stroke-linecap="round" />
+          <circle cx="0" cy="0" r="1" fill="#ffffff" opacity="0.6" />
+        </g>
+        <!-- Heart -->
+        <g v-else-if="p.type === 'heart'"
+          :transform="`translate(${p.x}, ${p.y}) rotate(${p.rotation}) scale(${p.size * 0.15})`"
+          :opacity="p.opacity">
+          <path d="M0,3 C0,3 -5,-2 -5,-5 C-5,-8 -2,-9 0,-6 C2,-9 5,-8 5,-5 C5,-2 0,3 0,3 Z"
+            :fill="p.color" />
+        </g>
+        <!-- Crescent sparkle -->
+        <circle v-else-if="p.type === 'crescent-sparkle'"
+          :cx="p.x" :cy="p.y" :r="p.size * 0.5"
+          :fill="p.color" :opacity="p.opacity * 0.7"
+        />
+      </template>
+    </svg>
+
     <!-- ═══ Rain / Snow overlay ═══ -->
     <svg v-if="weather.type === 'rainy' || weather.type === 'snowy'" class="weather-overlay">
       <defs>
@@ -2127,5 +2690,18 @@ function onSnakeClick(idx) {
 }
 .snake-bubble-dark::after {
   border-top-color: rgba(45, 40, 30, 0.92);
+}
+.holiday-decoration {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  transform-origin: bottom center;
+}
+.holiday-particle-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 7;
 }
 </style>
