@@ -198,11 +198,32 @@ figcaption {
   text-wrap: pretty;
 }
 
-/* Feature card hover effects */
+/* Feature card styles */
 .VPFeature {
   position: relative;
+  border: 1px solid var(--vp-c-divider) !important;
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%) !important;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s ease;
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+/* Subtle top accent line */
+.VPFeature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: linear-gradient(90deg, transparent, var(--vp-c-brand-1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.VPFeature:hover::before {
+  opacity: 1;
 }
 
 /* Invisible zone below the card so hover doesn't flicker
@@ -218,7 +239,18 @@ figcaption {
 
 .VPFeature:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.12);
+  border-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08),
+              0 12px 32px rgba(124, 58, 237, 0.06);
+}
+
+.dark .VPFeature {
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, rgba(30, 30, 35, 0.8) 100%) !important;
+}
+
+.dark .VPFeature:hover {
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.12),
+              0 12px 32px rgba(124, 58, 237, 0.08);
 }
 
 /* About Banner Image card */
