@@ -59,6 +59,19 @@ const translateY = ref(0)
 const dragging = ref(false)
 const dragStart = { x: 0, y: 0, tx: 0, ty: 0 }
 
+// Pinch-to-zoom state
+const pointers = new Map()
+let pinching = false
+let pinchStartDist = 0
+let pinchStartScale = 1
+
+function getPinchDist() {
+  const pts = [...pointers.values()]
+  const dx = pts[1].x - pts[0].x
+  const dy = pts[1].y - pts[0].y
+  return Math.sqrt(dx * dx + dy * dy)
+}
+
 function openLightbox(e) {
   if (e.target.closest('a')) return
   lightboxOpen.value = true
@@ -67,6 +80,8 @@ function openLightbox(e) {
 
 function closeLightbox() {
   lightboxOpen.value = false
+  pointers.clear()
+  pinching = false
 }
 
 function resetTransform() {
@@ -82,22 +97,39 @@ function onWheel(e) {
 }
 
 function onPointerDown(e) {
-  dragging.value = true
-  dragStart.x = e.clientX
-  dragStart.y = e.clientY
-  dragStart.tx = translateX.value
-  dragStart.ty = translateY.value
+  pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+  if (pointers.size === 2) {
+    pinching = true
+    dragging.value = false
+    pinchStartDist = getPinchDist()
+    pinchStartScale = scale.value
+  } else if (pointers.size === 1 && !pinching) {
+    dragging.value = true
+    dragStart.x = e.clientX
+    dragStart.y = e.clientY
+    dragStart.tx = translateX.value
+    dragStart.ty = translateY.value
+  }
   e.target.setPointerCapture(e.pointerId)
 }
 
 function onPointerMove(e) {
-  if (!dragging.value) return
-  translateX.value = dragStart.tx + (e.clientX - dragStart.x)
-  translateY.value = dragStart.ty + (e.clientY - dragStart.y)
+  pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+  if (pinching && pointers.size >= 2) {
+    const dist = getPinchDist()
+    if (pinchStartDist > 0) {
+      scale.value = Math.min(Math.max(0.5, pinchStartScale * (dist / pinchStartDist)), 8)
+    }
+  } else if (dragging.value && !pinching) {
+    translateX.value = dragStart.tx + (e.clientX - dragStart.x)
+    translateY.value = dragStart.ty + (e.clientY - dragStart.y)
+  }
 }
 
-function onPointerUp() {
-  dragging.value = false
+function onPointerUp(e) {
+  pointers.delete(e.pointerId)
+  if (pointers.size < 2) pinching = false
+  if (pointers.size === 0) dragging.value = false
 }
 
 function onDblClick() {
@@ -118,10 +150,11 @@ function onDblClick() {
       @pointerdown="onPointerDown"
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
+      @pointercancel="onPointerUp"
       @dblclick="onDblClick">
       <img src="/images/banner-hd.webp" alt="모델 의존성 그래프 시각화" draggable="false" />
     </div>
     <button class="banner-lightbox-close" @click="closeLightbox" aria-label="닫기">&times;</button>
-    <div class="banner-lightbox-hint">스크롤하여 확대/축소 &middot; 드래그하여 이동 &middot; 더블클릭하여 초기화</div>
+    <div class="banner-lightbox-hint">스크롤/핀치로 확대/축소 &middot; 드래그하여 이동 &middot; 더블클릭하여 초기화</div>
   </div>
 </Teleport>
