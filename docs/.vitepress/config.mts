@@ -175,7 +175,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a> (excluding license text files). All rights reserved.',
+      message: 'Content licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">CC BY-NC-SA 4.0</a> (excluding ModelGo License text files).',
       copyright: 'ModelGo Licenses &copy; NUS Institute of Data Science | <a href="/learn-more/disclaimer">Disclaimer</a><br><span style="display:inline-flex;gap:12px;align-items:center;margin-top:4px;font-size:0.8em;opacity:0.5;letter-spacing:0.02em"><span style="display:inline-flex;align-items:center;gap:3px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span id="busuanzi_value_site_pv">-</span> views</span><span style="display:inline-flex;align-items:center;gap:3px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.7"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span id="busuanzi_value_site_uv">-</span> visitors</span></span>'
     },
 
