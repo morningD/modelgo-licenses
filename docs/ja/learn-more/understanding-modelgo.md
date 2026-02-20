@@ -10,7 +10,7 @@ ModelGoライセンスは6つのセクションで構成されています。セ
 
 ModelGoライセンスには、免責事項および責任制限（セクション3、4）が含まれています。さらに、セクション6に記載されているように、ライセンステキストの変更を許可する条項が含まれており、その場合は変更内容を読みやすく記載した通知を提供する必要があります。
 
-<figure><img src="/images/structure.jpg" alt="MGライセンスの構造"><figcaption><p>MGライセンスの構造</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="MGライセンスの構造"><figcaption><p>MGライセンスの構造</p></figcaption></figure>
 
 ## タイムライン
 

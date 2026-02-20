@@ -6,7 +6,7 @@
 
 ModelGo 라이선스에 대한 이해를 높이고 투명성을 강화하기 위해 차이점 보기를 제공합니다:
 
-<figure><img src="/images/diffview.jpg" alt="ModelGo 라이선스 차이점 보기"><figcaption><p>ModelGo 라이선스 차이점 보기. ✚ 추가된 조항, <strong>⧵</strong> 제거된 조항.</p></figcaption></figure>
+<figure><img src="/images/diffview.webp" alt="ModelGo 라이선스 차이점 보기"><figcaption><p>ModelGo 라이선스 차이점 보기. ✚ 추가된 조항, <strong>⧵</strong> 제거된 조항.</p></figcaption></figure>
 
 이 차이점 보기는 다양한 MG 라이선스에 대한 전반적인 이해를 제공합니다. 그러나 여전히 어떤 라이선스가 필요에 맞는지 확실하지 않다면, Model Sheet가 도움이 될 수 있습니다.
 

@@ -119,7 +119,7 @@ function onDblClick() {
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @dblclick="onDblClick">
-      <img src="/images/banner-hd.png" alt="模型依赖关系图可视化" draggable="false" />
+      <img src="/images/banner-hd.webp" alt="模型依赖关系图可视化" draggable="false" />
     </div>
     <button class="banner-lightbox-close" @click="closeLightbox" aria-label="关闭">&times;</button>
     <div class="banner-lightbox-hint">滚动缩放 &middot; 拖拽平移 &middot; 双击重置</div>

@@ -10,7 +10,7 @@
 
 تتضمن تراخيص ModelGo إخلاء المسؤولية وتحديد المسؤولية (القسم 3، 4). بالإضافة إلى ذلك، تتضمن تراخيصنا بنودًا، كما هو مذكور في القسم 6، تسمح لك بتعديل نص الترخيص، بشرط تقديم إشعار مقروء يصف تعديلاتك على هذا الترخيص.
 
-<figure><img src="/images/structure.jpg" alt="هيكل تراخيص MG"><figcaption><p>هيكل تراخيص MG</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="هيكل تراخيص MG"><figcaption><p>هيكل تراخيص MG</p></figcaption></figure>
 
 ## الجدول الزمني
 

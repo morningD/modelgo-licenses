@@ -119,7 +119,7 @@ function onDblClick() {
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @dblclick="onDblClick">
-      <img src="/images/banner-hd.png" alt="Model dependency graph visualization" draggable="false" />
+      <img src="/images/banner-hd.webp" alt="Model dependency graph visualization" draggable="false" />
     </div>
     <button class="banner-lightbox-close" @click="closeLightbox" aria-label="Close">&times;</button>
     <div class="banner-lightbox-hint">Défilement pour zoomer &middot; Glisser pour déplacer &middot; Double-clic pour réinitialiser</div>

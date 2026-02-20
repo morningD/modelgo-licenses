@@ -149,7 +149,7 @@ figcaption {
   height: 120vh;
   background:
     linear-gradient(to bottom, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
-    url('/images/banner.png') center top / cover no-repeat;
+    url('/images/banner.webp') center top / cover no-repeat;
   pointer-events: none;
   z-index: 0;
   -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 90%);
@@ -159,7 +159,7 @@ figcaption {
 .dark .VPHome::before {
   background:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/images/banner.png') center top / cover no-repeat;
+    url('/images/banner.webp') center top / cover no-repeat;
 }
 
 .VPHero {
@@ -306,7 +306,7 @@ figcaption {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/images/banner.png') center / cover no-repeat;
+  background: url('/images/banner.webp') center / cover no-repeat;
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;

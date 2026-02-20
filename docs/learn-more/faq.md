@@ -34,7 +34,7 @@ MG licenses only apply to the Model, but their terms govern the <mark style="col
 
 MG licenses should not apply to Third-Party Materials (e.g., open-source software and free-content artifacts), system libraries, and datasets (e.g., training set, validation set, test set). This implies that choosing MG with SA does not mandate open-sourcing the data used to develop the model. Due to data privacy concerns and the fact that these datasets or the data samples therein already have free-content licenses (typically CCs), we consider datasets to be outside the scope of MG licenses.
 
-<figure><img src="/images/scope.jpg" alt="MG Governing Scope"><figcaption><p>MG Governing Scope</p></figcaption></figure>
+<figure><img src="/images/scope.webp" alt="MG Governing Scope"><figcaption><p>MG Governing Scope</p></figcaption></figure>
 
 ## Should I continue using ModelGo Licenses V1?
 
@@ -129,7 +129,7 @@ In the first scenario, where the two models remain separable from each other, su
 
 In the second scenario, where the remixing process results in an inseparable outcome (for example, weight averaging, model fusion, layer concatenation, etc.), it is necessary to check the compatibility between the two original licenses of the base models before remixing. There is a one-way compatibility in MG licenses from Permissive to Conditional to Stringent. This means that the remixing result can be licensed under MG with stricter options, but fewer options are not permitted. We provide you a compatibility table to demonstrate this rule:
 
-<figure><img src="/images/compati.jpg" alt="MG Compatibility Table"><figcaption><p>MG Compatibility Table</p></figcaption></figure>
+<figure><img src="/images/compati.webp" alt="MG Compatibility Table"><figcaption><p>MG Compatibility Table</p></figcaption></figure>
 
 Choose two models' licenses you want to remix from the rows and columns. The ✅ mark means you can remix the two models, and there is a feasible licensing solution for relicensing your remix results; ⚠️ mark means due to the terms of NoDerivatives, you can't share your remix results, which leads to you being unable to apply any license to the results; ❌ mark means there isn't a feasible licensing solution for such remixing, so you should follow the terms regarding derivatives of original licenses but can't relicense your remix results.
 

@@ -10,7 +10,7 @@ ModelGo 许可证由六个章节组成。第 2 节"许可权利"是授予权利�
 
 ModelGo 许可证包含免责声明和责任限制（第 3、4 节）。此外，我们的许可证在第 6 节中包含条款，允许您修改许可证文本，前提是您提供描述您对此许可证所做修改的可读通知。
 
-<figure><img src="/images/structure.jpg" alt="MG 许可证结构"><figcaption><p>MG 许可证结构</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="MG 许可证结构"><figcaption><p>MG 许可证结构</p></figcaption></figure>
 
 ## 时间线
 

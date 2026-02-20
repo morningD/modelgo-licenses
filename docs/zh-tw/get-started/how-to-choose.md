@@ -6,7 +6,7 @@
 
 為了增進理解並提高 ModelGo 授權條款的透明度，我們在此提供差異視圖：
 
-<figure><img src="/images/diffview.jpg" alt="ModelGo 授權條款差異視圖"><figcaption><p>ModelGo 授權條款差異視圖。✚ 新增條款，<strong>⧵</strong> 移除條款。</p></figcaption></figure>
+<figure><img src="/images/diffview.webp" alt="ModelGo 授權條款差異視圖"><figcaption><p>ModelGo 授權條款差異視圖。✚ 新增條款，<strong>⧵</strong> 移除條款。</p></figcaption></figure>
 
 此差異視圖提供了對不同 MG 授權條款的整體理解。但如果您仍不確定哪個授權條款能滿足您的需求，我們的 Model Sheet 可以提供幫助。
 

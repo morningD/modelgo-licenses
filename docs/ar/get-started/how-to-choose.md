@@ -6,7 +6,7 @@
 
 لتعزيز الفهم وزيادة الشفافية لتراخيص ModelGo، نقدم هنا عرض الفروقات:
 
-<figure><img src="/images/diffview.jpg" alt="عرض الفروقات لتراخيص ModelGo"><figcaption><p>عرض الفروقات لتراخيص ModelGo. ✚ بنود مضافة، <strong>⧵</strong> بنود محذوفة.</p></figcaption></figure>
+<figure><img src="/images/diffview.webp" alt="عرض الفروقات لتراخيص ModelGo"><figcaption><p>عرض الفروقات لتراخيص ModelGo. ✚ بنود مضافة، <strong>⧵</strong> بنود محذوفة.</p></figcaption></figure>
 
 يوفر عرض الفروقات هذا فهمًا عامًا لتراخيص MG المختلفة. ومع ذلك، إذا كنت لا تزال غير متأكد من الترخيص الذي يلبي احتياجاتك، فإن Model Sheet يمكن أن تكون مفيدة.
 

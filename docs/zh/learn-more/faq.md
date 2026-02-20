@@ -34,7 +34,7 @@ MG 许可证仅适用于模型，但其条款管辖 <mark style="color:purple;">
 
 MG 许可证不应适用于第三方材料（如开源软件和自由内容作品）、系统库和数据集（如训练集、验证集、测试集）。这意味着选择带有 SA 的 MG 不要求开源用于开发模型的数据。由于数据隐私问题以及这些数据集或其中的数据样本已经有自由内容许可证（通常是 CCs），我们认为数据集不在 MG 许可证的范围之内。
 
-<figure><img src="/images/scope.jpg" alt="MG 管辖范围"><figcaption><p>MG 管辖范围</p></figcaption></figure>
+<figure><img src="/images/scope.webp" alt="MG 管辖范围"><figcaption><p>MG 管辖范围</p></figcaption></figure>
 
 ## 我应该继续使用 ModelGo 许可证 V1 吗？
 
@@ -129,7 +129,7 @@ ModelGo 许可证明确声明是否授予被许可方专利和版权许可。这
 
 在第二种场景中，混合过程产生不可分离的结果（例如权重平均、模型融合、层拼接等），在混合之前需要检查两个基础模型原始许可证之间的兼容性。MG 许可证从宽松到有条件到严格存在单向兼容性。这意味着混合结果可以在更严格的 MG 选项下许可，但不允许更少的选项。我们提供一个兼容性表来展示此规则：
 
-<figure><img src="/images/compati.jpg" alt="MG 兼容性表"><figcaption><p>MG 兼容性表</p></figcaption></figure>
+<figure><img src="/images/compati.webp" alt="MG 兼容性表"><figcaption><p>MG 兼容性表</p></figcaption></figure>
 
 从行和列中选择您要混合的两个模型的许可证。✅ 标记表示您可以混合这两个模型，并且有一个可行的许可解决方案来重新许可您的混合结果；⚠️ 标记表示由于禁止衍生品条款，您不能共享您的混合结果，导致您无法对结果应用任何许可证；❌ 标记表示此类混合没有可行的许可解决方案，因此您应该遵循原始许可证关于衍生品的条款，但不能重新许可您的混合结果。
 

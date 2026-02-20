@@ -10,7 +10,7 @@ ModelGo 라이선스는 6개의 섹션으로 구성됩니다. 섹션 2 "라이�
 
 ModelGo 라이선스는 면책 조항 및 책임 제한(섹션 3, 4)을 포함합니다. 또한, 섹션 6에 명시된 바와 같이, 라이선스 텍스트에 대한 수정 사항을 읽을 수 있는 고지로 제공하는 경우 라이선스 텍스트를 수정할 수 있는 조항을 포함합니다.
 
-<figure><img src="/images/structure.jpg" alt="MG 라이선스의 구조"><figcaption><p>MG 라이선스의 구조</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="MG 라이선스의 구조"><figcaption><p>MG 라이선스의 구조</p></figcaption></figure>
 
 ## 타임라인
 

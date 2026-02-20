@@ -119,7 +119,7 @@ function onDblClick() {
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @dblclick="onDblClick">
-      <img src="/images/banner-hd.png" alt="モデル依存関係グラフの可視化" draggable="false" />
+      <img src="/images/banner-hd.webp" alt="モデル依存関係グラフの可視化" draggable="false" />
     </div>
     <button class="banner-lightbox-close" @click="closeLightbox" aria-label="閉じる">&times;</button>
     <div class="banner-lightbox-hint">スクロールでズーム &middot; ドラッグで移動 &middot; ダブルクリックでリセット</div>

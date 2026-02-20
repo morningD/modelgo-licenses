@@ -10,7 +10,7 @@ Les licences ModelGo se composent de six sections. La section 2, « License Righ
 
 Les licences ModelGo incluent une Clause de non-responsabilité et une Limitation de responsabilité (Sections 3, 4). De plus, nos licences comprennent des conditions, telles qu'énoncées dans la Section 6, qui vous permettent de modifier le texte de la licence, à condition que vous fournissiez un avis lisible décrivant vos modifications apportées à cette licence.
 
-<figure><img src="/images/structure.jpg" alt="Structure des licences MG"><figcaption><p>Structure des licences MG</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="Structure des licences MG"><figcaption><p>Structure des licences MG</p></figcaption></figure>
 
 ## Chronologie
 

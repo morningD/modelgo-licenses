@@ -10,7 +10,7 @@ ModelGo licenses consist of six sections. Section 2, "License Rights," is the <m
 
 ModelGo licenses include a Disclaimer and Limitation of Liability (Section 3, 4). Additionally, our licenses include terms, as stated in Section 6, that allow you to modify the license text, provided you furnish a readable notice describing your modifications to this license.
 
-<figure><img src="/images/structure.jpg" alt="Structure of MG Licenses"><figcaption><p>Structure of MG Licenses</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="Structure of MG Licenses"><figcaption><p>Structure of MG Licenses</p></figcaption></figure>
 
 ## Timeline
 

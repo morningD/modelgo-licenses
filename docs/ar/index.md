@@ -118,7 +118,7 @@ function onDblClick() {
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @dblclick="onDblClick">
-      <img src="/images/banner-hd.png" alt="تصور رسم بياني لتبعيات النماذج" draggable="false" />
+      <img src="/images/banner-hd.webp" alt="تصور رسم بياني لتبعيات النماذج" draggable="false" />
     </div>
     <button class="banner-lightbox-close" @click="closeLightbox" aria-label="إغلاق">&times;</button>
     <div class="banner-lightbox-hint">مرر للتكبير &middot; اسحب للتحريك &middot; انقر مرتين لإعادة التعيين</div>

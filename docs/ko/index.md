@@ -119,7 +119,7 @@ function onDblClick() {
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @dblclick="onDblClick">
-      <img src="/images/banner-hd.png" alt="모델 의존성 그래프 시각화" draggable="false" />
+      <img src="/images/banner-hd.webp" alt="모델 의존성 그래프 시각화" draggable="false" />
     </div>
     <button class="banner-lightbox-close" @click="closeLightbox" aria-label="닫기">&times;</button>
     <div class="banner-lightbox-hint">스크롤하여 확대/축소 &middot; 드래그하여 이동 &middot; 더블클릭하여 초기화</div>

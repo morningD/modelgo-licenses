@@ -10,7 +10,7 @@ ModelGo 授權條款由六個章節組成。第 2 節「授權權利」是授予
 
 ModelGo 授權條款包含免責聲明和責任限制（第 3、4 節）。此外，我們的授權條款在第 6 節中包含條款，允許您修改授權條款文本，前提是您提供描述您對此授權條款所做修改的可讀通知。
 
-<figure><img src="/images/structure.jpg" alt="MG 授權條款結構"><figcaption><p>MG 授權條款結構</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="MG 授權條款結構"><figcaption><p>MG 授權條款結構</p></figcaption></figure>
 
 ## 時間線
 

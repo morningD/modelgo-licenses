@@ -6,7 +6,7 @@ If you are familiar with the [Creative Commons Licenses](https://creativecommons
 
 To enhance understanding and increase transparency of ModelGo licenses, we offer a diff view here:
 
-<figure><img src="/images/diffview.jpg" alt="Diff View of ModelGo Licenses"><figcaption><p>Diff View of ModelGo Licenses. ✚ Added terms, <strong>⧵</strong> Removed terms.</p></figcaption></figure>
+<figure><img src="/images/diffview.webp" alt="Diff View of ModelGo Licenses"><figcaption><p>Diff View of ModelGo Licenses. ✚ Added terms, <strong>⧵</strong> Removed terms.</p></figcaption></figure>
 
 This diff view provides an overview understanding of different MG licenses. However, if you're still unsure which license will meet your needs, our Model Sheet can be helpful.
 

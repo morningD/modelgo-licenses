@@ -34,7 +34,7 @@ Las licencias MG solo se aplican al Modelo, pero sus terminos rigen el <mark sty
 
 Las licencias MG no deben aplicarse a Third-Party Materials (por ejemplo, software de codigo abierto y artefactos de contenido libre), bibliotecas del sistema y conjuntos de datos (por ejemplo, conjunto de entrenamiento, conjunto de validacion, conjunto de prueba). Esto implica que elegir MG con SA no obliga a hacer codigo abierto los datos utilizados para desarrollar el modelo. Debido a las preocupaciones de privacidad de datos y al hecho de que estos conjuntos de datos o las muestras de datos que contienen ya tienen licencias de contenido libre (tipicamente CCs), consideramos que los conjuntos de datos estan fuera del alcance de las licencias MG.
 
-<figure><img src="/images/scope.jpg" alt="Alcance de gobernanza de MG"><figcaption><p>Alcance de gobernanza de MG</p></figcaption></figure>
+<figure><img src="/images/scope.webp" alt="Alcance de gobernanza de MG"><figcaption><p>Alcance de gobernanza de MG</p></figcaption></figure>
 
 ## ¿Deberia seguir usando las licencias ModelGo V1?
 
@@ -129,7 +129,7 @@ En el primer escenario, donde los dos modelos permanecen separables entre si, di
 
 En el segundo escenario, donde el proceso de mezcla resulta en un resultado inseparable (por ejemplo, promediado de pesos, fusion de modelos, concatenacion de capas, etc.), es necesario verificar la compatibilidad entre las dos licencias originales de los modelos base antes de mezclar. Existe una compatibilidad unidireccional en las licencias MG desde Permisiva a Condicional a Estricta. Esto significa que el resultado de la mezcla puede licenciarse bajo MG con opciones mas estrictas, pero no se permiten menos opciones. Le proporcionamos una tabla de compatibilidad para demostrar esta regla:
 
-<figure><img src="/images/compati.jpg" alt="Tabla de compatibilidad de MG"><figcaption><p>Tabla de compatibilidad de MG</p></figcaption></figure>
+<figure><img src="/images/compati.webp" alt="Tabla de compatibilidad de MG"><figcaption><p>Tabla de compatibilidad de MG</p></figcaption></figure>
 
 Elija las licencias de los dos modelos que desea mezclar de las filas y columnas. La marca ✅ significa que puede mezclar los dos modelos y existe una solucion de licenciamiento factible para relicenciar sus resultados de mezcla; la marca ⚠️ significa que debido a los terminos de NoDerivatives, no puede compartir sus resultados de mezcla, lo que le impide aplicar cualquier licencia a los resultados; la marca ❌ significa que no existe una solucion de licenciamiento factible para dicha mezcla, por lo que debe seguir los terminos relativos a derivados de las licencias originales pero no puede relicenciar sus resultados de mezcla.
 

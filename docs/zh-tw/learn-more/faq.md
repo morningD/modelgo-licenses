@@ -34,7 +34,7 @@ MG 授權條款僅適用於模型，但其條款管轄 <mark style="color:purple
 
 MG 授權條款不應適用於第三方材料（如開源軟體和自由內容作品）、系統函式庫和資料集（如訓練集、驗證集、測試集）。這意味著選擇帶有 SA 的 MG 不要求開源用於開發模型的資料。由於資料隱私問題以及這些資料集或其中的資料樣本已經有自由內容授權條款（通常是 CCs），我們認為資料集不在 MG 授權條款的管轄範圍之內。
 
-<figure><img src="/images/scope.jpg" alt="MG 管轄範圍"><figcaption><p>MG 管轄範圍</p></figcaption></figure>
+<figure><img src="/images/scope.webp" alt="MG 管轄範圍"><figcaption><p>MG 管轄範圍</p></figcaption></figure>
 
 ## 我應該繼續使用 ModelGo 授權條款 V1 嗎？
 
@@ -129,7 +129,7 @@ ModelGo 授權條款明確聲明是否授予被授權方專利和版權授權。
 
 在第二種場景中，混合過程產生不可分離的結果（例如權重平均、模型融合、層拼接等），在混合之前需要檢查兩個基礎模型原始授權條款之間的相容性。MG 授權條款從寬鬆到有條件到嚴格存在單向相容性。這意味著混合結果可以在更嚴格的 MG 選項下授權，但不允許更少的選項。我們提供一個相容性表來展示此規則：
 
-<figure><img src="/images/compati.jpg" alt="MG 相容性表"><figcaption><p>MG 相容性表</p></figcaption></figure>
+<figure><img src="/images/compati.webp" alt="MG 相容性表"><figcaption><p>MG 相容性表</p></figcaption></figure>
 
 從行和列中選擇您要混合的兩個模型的授權條款。✅ 標記表示您可以混合這兩個模型，並且有一個可行的授權解決方案來重新授權您的混合結果；⚠️ 標記表示由於禁止衍生品條款，您不能共享您的混合結果，導致您無法對結果應用任何授權條款；❌ 標記表示此類混合沒有可行的授權解決方案，因此您應該遵循原始授權條款關於衍生品的條款，但不能重新授權您的混合結果。
 

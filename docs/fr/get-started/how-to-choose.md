@@ -6,7 +6,7 @@ Si vous êtes familier avec les [licences Creative Commons](https://creativecomm
 
 Pour améliorer la compréhension et accroître la transparence des licences ModelGo, nous proposons ici une vue comparative :
 
-<figure><img src="/images/diffview.jpg" alt="Vue comparative des licences ModelGo"><figcaption><p>Vue comparative des licences ModelGo. ✚ Clauses ajoutées, <strong>⧵</strong> Clauses supprimées.</p></figcaption></figure>
+<figure><img src="/images/diffview.webp" alt="Vue comparative des licences ModelGo"><figcaption><p>Vue comparative des licences ModelGo. ✚ Clauses ajoutées, <strong>⧵</strong> Clauses supprimées.</p></figcaption></figure>
 
 Cette vue comparative offre une compréhension globale des différentes licences MG. Cependant, si vous n'êtes toujours pas certain de la licence qui répondra à vos besoins, notre Model Sheet peut vous aider.
 

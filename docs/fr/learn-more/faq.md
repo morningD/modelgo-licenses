@@ -34,7 +34,7 @@ Les licences MG s'appliquent uniquement au Modèle, mais leurs termes régissent
 
 Les licences MG ne doivent pas s'appliquer aux Third-Party Materials (par exemple, les logiciels open source et les artefacts à contenu libre), aux bibliothèques système et aux jeux de données (par exemple, jeu d'entraînement, jeu de validation, jeu de test). Cela implique que le choix de MG avec SA n'oblige pas à rendre open source les données utilisées pour développer le modèle. En raison de préoccupations relatives à la confidentialité des données et du fait que ces jeux de données ou les échantillons de données qu'ils contiennent ont déjà des licences de contenu libre (généralement des CCs), nous considérons les jeux de données comme étant en dehors de la portée des licences MG.
 
-<figure><img src="/images/scope.jpg" alt="Portée de gouvernance MG"><figcaption><p>Portée de gouvernance MG</p></figcaption></figure>
+<figure><img src="/images/scope.webp" alt="Portée de gouvernance MG"><figcaption><p>Portée de gouvernance MG</p></figcaption></figure>
 
 ## Dois-je continuer à utiliser les licences ModelGo V1 ?
 
@@ -129,7 +129,7 @@ Dans le premier scénario, où les deux modèles restent séparables l'un de l'a
 
 Dans le second scénario, où le processus de remix aboutit à un résultat inséparable (par exemple, moyennage des poids, fusion de modèles, concaténation de couches, etc.), il est nécessaire de vérifier la compatibilité entre les deux licences originales des modèles de base avant le remix. Il existe une compatibilité unidirectionnelle dans les licences MG, des Permissives aux Conditionnelles puis aux Strictes. Cela signifie que le résultat du remix peut être licencié sous MG avec des options plus strictes, mais des options moins restrictives ne sont pas autorisées. Nous vous fournissons un tableau de compatibilité pour illustrer cette règle :
 
-<figure><img src="/images/compati.jpg" alt="Tableau de compatibilité MG"><figcaption><p>Tableau de compatibilité MG</p></figcaption></figure>
+<figure><img src="/images/compati.webp" alt="Tableau de compatibilité MG"><figcaption><p>Tableau de compatibilité MG</p></figcaption></figure>
 
 Choisissez les licences des deux modèles que vous souhaitez remixer dans les lignes et colonnes. La marque ✅ signifie que vous pouvez remixer les deux modèles et qu'il existe une solution de licence viable pour relicencier vos résultats de remix ; la marque ⚠️ signifie qu'en raison des termes NoDerivatives, vous ne pouvez pas partager vos résultats de remix, ce qui vous empêche d'appliquer une licence aux résultats ; la marque ❌ signifie qu'il n'existe pas de solution de licence viable pour un tel remix, vous devez donc suivre les termes relatifs aux dérivés des licences originales mais ne pouvez pas relicencier vos résultats de remix.
 

@@ -6,7 +6,7 @@
 
 为了增强理解和提高 ModelGo 许可证的透明度，我们在此提供差异视图：
 
-<figure><img src="/images/diffview.jpg" alt="ModelGo 许可证差异视图"><figcaption><p>ModelGo 许可证差异视图。✚ 新增条款，<strong>⧵</strong> 移除条款。</p></figcaption></figure>
+<figure><img src="/images/diffview.webp" alt="ModelGo 许可证差异视图"><figcaption><p>ModelGo 许可证差异视图。✚ 新增条款，<strong>⧵</strong> 移除条款。</p></figcaption></figure>
 
 此差异视图提供了对不同 MG 许可证的概览。然而，如果您仍然不确定哪种许可证能满足您的需求，我们的 Model Sheet 可以提供帮助。
 

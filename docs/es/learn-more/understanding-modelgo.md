@@ -10,7 +10,7 @@ Las licencias ModelGo constan de seis secciones. La Seccion 2, "License Rights,"
 
 Las licencias ModelGo incluyen una Exencion de Responsabilidad y Limitacion de Responsabilidad (Secciones 3, 4). Ademas, nuestras licencias incluyen terminos, como se establece en la Seccion 6, que le permiten modificar el texto de la licencia, siempre que proporcione un aviso legible que describa sus modificaciones a esta licencia.
 
-<figure><img src="/images/structure.jpg" alt="Estructura de las licencias MG"><figcaption><p>Estructura de las licencias MG</p></figcaption></figure>
+<figure><img src="/images/structure.webp" alt="Estructura de las licencias MG"><figcaption><p>Estructura de las licencias MG</p></figcaption></figure>
 
 ## Cronologia
 

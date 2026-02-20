@@ -28,6 +28,11 @@ export default defineConfig({
   title: 'ModelGo Licenses',
   description: 'A Standard Way for Model Publishing',
   base: '/',
+  lastUpdated: true,
+  cleanUrls: true,
+  sitemap: {
+    hostname: 'https://www.modelgo.li'
+  },
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/mg-favicon.svg' }]

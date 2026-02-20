@@ -6,7 +6,7 @@
 
 ModelGoライセンスの理解を深め、透明性を高めるために、差分ビューを提供しています：
 
-<figure><img src="/images/diffview.jpg" alt="ModelGoライセンスの差分ビュー"><figcaption><p>ModelGoライセンスの差分ビュー。✚ 追加された条項、<strong>⧵</strong> 削除された条項。</p></figcaption></figure>
+<figure><img src="/images/diffview.webp" alt="ModelGoライセンスの差分ビュー"><figcaption><p>ModelGoライセンスの差分ビュー。✚ 追加された条項、<strong>⧵</strong> 削除された条項。</p></figcaption></figure>
 
 この差分ビューは、異なるMGライセンスの概要的な理解を提供します。ただし、どのライセンスがあなたのニーズに合うかまだ不明な場合は、Model Sheetが役立ちます。
 
