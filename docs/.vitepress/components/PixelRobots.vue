@@ -1741,7 +1741,8 @@ function svgFilter(r) {
   user-select: none;
   touch-action: none;
   pointer-events: none;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 .celestial {
   position: absolute;
