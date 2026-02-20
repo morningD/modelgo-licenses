@@ -1,6 +1,10 @@
 <script setup>
 import { ref, shallowRef, triggerRef, onMounted, onUnmounted } from 'vue'
+import { useData } from 'vitepress'
 import { rabbitPalettes, mushroomPalettes, butterflyPalettes, snailPalettes, sporeColors, grassShades, flowerColors } from './pixel-palettes'
+import { rabbitThoughts } from './rabbit-thoughts'
+
+const { lang, isDark } = useData()
 
 const container = ref(null)
 const rabbits = shallowRef([])
@@ -10,6 +14,7 @@ const butterflies = shallowRef([])
 const snails = shallowRef([])
 const rainbows = shallowRef([])
 const spores = shallowRef([])
+const snakeGrasses = shallowRef([])
 const groundY = ref(48)
 function getLunarPhase() {
   // Known new moon: Jan 6, 2000 18:14 UTC
@@ -200,7 +205,9 @@ function initScene() {
     // Growth from eating mushrooms
     sizeBoost: 1,
     mushroomsEaten: 0,
-    isBaby: false
+    isBaby: false,
+    bubble: null,
+    bubbleCooldown: 0
   }))
 
   const mc = 4 + Math.floor(Math.random() * 3)
@@ -371,6 +378,23 @@ function initScene() {
   } else {
     wxParticles.value = []
   }
+
+  // Snake nests — pick 1-2 non-short grasses to hide snakes
+  const snakeCandidates = grasses.value
+    .map((g, i) => ({ g, i }))
+    .filter(({ g }) => g.style !== 1)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 1 + Math.floor(Math.random() * 2))
+  snakeGrasses.value = snakeCandidates.map(({ g, i }) => ({
+    grassIdx: i,
+    x: g.x,
+    tailReveal: 0,
+    rustlePhase: Math.random() * Math.PI * 2,
+    rustleTimer: 60 + Math.random() * 180,
+    rustling: false,
+    rustleAmount: 0,
+    hovered: false
+  }))
 }
 
 function tick(time) {
@@ -463,6 +487,16 @@ function tick(time) {
         if (r.hopTimer >= interval) {
           r.hopping = true
           r.hopTimer = 0
+          // Speech bubble — ~15% chance per hop, with cooldown
+          if (!r.bubble && r.bubbleCooldown <= 0 && Math.random() < 0.15) {
+            const locale = lang.value?.replace(/\/.*/, '') || 'en'
+            const thoughts = rabbitThoughts[locale] || rabbitThoughts['en']
+            const pool = r.isBaby ? thoughts.baby
+              : r.tripping ? thoughts.trip
+              : thoughts.idle
+            r.bubble = { text: pool[Math.floor(Math.random() * pool.length)], timer: 120 }
+            r.bubbleCooldown = 300
+          }
           // Hop height
           if (isTripping && r.tripType === 'dizzy') {
             r.vy = -(2.5 + Math.random() * 2)
@@ -487,6 +521,10 @@ function tick(time) {
 
     // Ear animation
     r.earPhase += (r.y < -0.5 ? 0.12 : 0.04) * dt
+
+    // Bubble timer
+    if (r.bubble) { r.bubble.timer -= dt; if (r.bubble.timer <= 0) r.bubble = null }
+    if (r.bubbleCooldown > 0) r.bubbleCooldown -= dt
 
     // Wall bounce
     if (r.x < RABBIT_W / 2) { r.x = RABBIT_W / 2; r.vx = Math.abs(r.vx) || WALK_SPEED_MIN }
@@ -549,7 +587,8 @@ function tick(time) {
             hopping: false, hopTimer: Math.random() * 10, hopInterval: 12 + Math.random() * 10,
             squash: 0,
             tripping: false, tripTimer: 0, tripPhase: 0, tripType: null,
-            sizeBoost: 0.5, mushroomsEaten: 0, isBaby: true
+            sizeBoost: 0.5, mushroomsEaten: 0, isBaby: true,
+            bubble: null, bubbleCooldown: 0
           })
         }
       }
@@ -681,6 +720,32 @@ function tick(time) {
   })
   spores.value = spores.value.filter(sp => time - sp.spawnTime < 4000)
 
+  // ── Snake in grass ──
+  snakeGrasses.value.forEach(sg => {
+    const g = grasses.value[sg.grassIdx]
+    if (!g) return
+    if (!sg.rustling) {
+      sg.rustleTimer -= dt
+      if (sg.rustleTimer <= 0) {
+        sg.rustling = true
+        sg.rustleTimer = 20 + Math.random() * 15
+      }
+    } else {
+      sg.rustlePhase += 0.5 * dt
+      sg.rustleAmount = Math.sin(sg.rustlePhase * 3) * 6
+      sg.rustleTimer -= dt
+      if (sg.rustleTimer <= 0) {
+        sg.rustling = false
+        sg.rustleAmount = 0
+        sg.rustleTimer = 120 + Math.random() * 300
+      }
+    }
+    if (sg.rustling) g.bend += sg.rustleAmount
+    const target = sg.hovered ? 1 : 0
+    sg.tailReveal += (target - sg.tailReveal) * 0.06 * dt
+    if (sg.tailReveal < 0.01) sg.tailReveal = 0
+  })
+
   // ── Grass bending ──
   const windPush = weather.value.wind * 4
   grasses.value.forEach(g => {
@@ -704,6 +769,7 @@ function tick(time) {
   triggerRef(butterflies)
   triggerRef(snails)
   triggerRef(grasses)
+  triggerRef(snakeGrasses)
   if (rainbows.value.length) triggerRef(rainbows)
   if (spores.value.length) triggerRef(spores)
   if (wxParticles.value.length && weather.value.type !== 'clear') triggerRef(wxParticles)
@@ -848,6 +914,31 @@ function svgFilter(r) {
     return `brightness(${1 + fade * 0.25}) drop-shadow(0 0 ${3 * fade}px rgba(80, 160, 255, ${0.7 * fade}))`
   }
   return ''
+}
+
+// Combined filter for .rabbit wrapper div: base drop-shadow + trip effects.
+// Trip filter is applied here (not on SVG) to avoid creating a compositing layer
+// sized to the SVG's 30×30 layout box, which clips ears that overflow via SVG overflow:visible.
+function rabbitDivFilter(r) {
+  const base = 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))'
+  const trip = svgFilter(r)
+  return trip ? `${base} ${trip}` : ''
+}
+
+// ── Snake helpers ──
+function isSnakeGrass(idx) {
+  return snakeGrasses.value.some(sg => sg.grassIdx === idx)
+}
+function getSnakeData(idx) {
+  return snakeGrasses.value.find(sg => sg.grassIdx === idx)
+}
+function onGrassEnter(idx) {
+  const sg = snakeGrasses.value.find(s => s.grassIdx === idx)
+  if (sg) sg.hovered = true
+}
+function onGrassLeave(idx) {
+  const sg = snakeGrasses.value.find(s => s.grassIdx === idx)
+  if (sg) sg.hovered = false
 }
 </script>
 
@@ -1321,11 +1412,13 @@ function svgFilter(r) {
     <!-- ═══ Grass ═══ -->
     <div
       v-for="(g, i) in grasses" :key="'g' + i"
-      class="grass-cluster"
+      class="grass-cluster" :class="{ 'grass-has-snake': isSnakeGrass(i) }"
       :style="{
         left: g.x + 'px', bottom: groundY + 'px',
         transform: `rotate(${g.bend}deg)`, transformOrigin: 'bottom center'
       }"
+      @pointerenter="onGrassEnter(i)"
+      @pointerleave="onGrassLeave(i)"
     >
       <svg :width="g.totalW" :height="g.maxH" :viewBox="`0 0 ${g.totalW} ${g.maxH}`">
         <!-- Dark base band -->
@@ -1358,6 +1451,16 @@ function svgFilter(r) {
               :cx="b.x + b.lean" :cy="g.maxH - b.h - 2"
               :r="b.flower.r * 0.35" fill="#f8e858" opacity="0.9"
             />
+          </g>
+        </template>
+        <!-- Snake tail -->
+        <template v-if="getSnakeData(i)">
+          <g :opacity="getSnakeData(i).tailReveal"
+             :transform="`translate(${g.totalW * 0.6}, ${g.maxH - 2})`">
+            <path d="M0 0 Q3 -4, 1 -8 Q-1 -12, 2 -14"
+              fill="none" stroke="#5a8a48" stroke-width="2.5"
+              stroke-linecap="round" opacity="0.85" />
+            <path d="M2 -14 L3 -16 L1 -15 Z" fill="#5a8a48" opacity="0.85" />
           </g>
         </template>
       </svg>
@@ -1564,14 +1667,13 @@ function svgFilter(r) {
     <div
       v-for="(r, i) in rabbits" :key="'r' + i"
       class="rabbit" :class="{ grabbed: r.grabbed, glowing: r.glowing }"
-      :style="{ left: r.x + 'px', bottom: (groundY - r.y) + 'px', cursor: r.grabbed ? 'grabbing' : 'grab' }"
+      :style="{ left: r.x + 'px', bottom: (groundY - r.y) + 'px', cursor: r.grabbed ? 'grabbing' : 'grab', filter: rabbitDivFilter(r) }"
       @pointerdown.stop="onDown($event, i)"
     >
       <svg width="30" height="30" viewBox="0 0 30 30" overflow="visible"
         :style="{
           transformOrigin: '50% 100%',
-          transform: svgTransform(r),
-          filter: svgFilter(r)
+          transform: svgTransform(r)
         }"
       >
         <defs>
@@ -1665,6 +1767,14 @@ function svgFilter(r) {
         <!-- Front paw -->
         <ellipse cx="21" cy="27.5" rx="2.5" ry="2" :fill="r.colors.paw" :stroke="r.colors.dark" stroke-width="0.3" />
       </svg>
+      <!-- Speech bubble -->
+      <div v-if="r.bubble" class="rabbit-bubble" :class="{ 'rabbit-bubble-dark': isDark }"
+        :style="{
+          opacity: Math.min(1, r.bubble.timer / 15, (120 - r.bubble.timer + 15) / 15),
+          transform: 'translateX(' + (r.vx < 0 ? '20%' : '-120%') + ')'
+        }">
+        {{ r.bubble.text }}
+      </div>
     </div>
 
     <!-- ═══ Rainbows ═══ -->
@@ -1806,6 +1916,10 @@ function svgFilter(r) {
   pointer-events: none;
   z-index: 3;
 }
+.grass-has-snake {
+  pointer-events: auto;
+  cursor: pointer;
+}
 .mushroom {
   position: absolute;
   transform: translateX(-50%);
@@ -1855,5 +1969,42 @@ function svgFilter(r) {
   pointer-events: none;
   z-index: 4;
   transform: translate(-50%, 50%);
+}
+.rabbit-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #3a2820;
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: system-ui, -apple-system, sans-serif;
+  z-index: 20;
+  margin-bottom: 4px;
+}
+.rabbit-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid rgba(255, 255, 255, 0.92);
+}
+.rabbit-bubble-dark {
+  background: rgba(40, 36, 50, 0.92);
+  color: #e8e0d8;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.rabbit-bubble-dark::after {
+  border-top-color: rgba(40, 36, 50, 0.92);
 }
 </style>
