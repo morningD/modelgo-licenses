@@ -1076,6 +1076,13 @@ onUnmounted(() => {
 .slide-up-leave-to { opacity: 0; transform: translateY(8px) scale(0.95); }
 
 /* Mobile responsive */
+/* Mobile: VitePress stacks hero title above image slot at < 960px */
+@media (max-width: 959px) {
+  .ls-root {
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .ls-btn {
     padding: 7px 16px;

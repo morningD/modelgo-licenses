@@ -470,6 +470,13 @@ figcaption {
   clip-path: inset(100%) !important;
 }
 
+/* Mobile: reduce hero min-height when layout stacks vertically */
+@media (max-width: 959px) {
+  .VPHero {
+    min-height: auto;
+  }
+}
+
 /* Mobile responsive */
 @media (max-width: 640px) {
   .banner-about {
