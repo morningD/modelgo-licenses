@@ -30,8 +30,7 @@ export default defineConfig({
   base: '/',
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/mg-favicon.svg' }],
-    ['script', { async: '', src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/mg-favicon.svg' }]
   ],
 
   markdown: {
