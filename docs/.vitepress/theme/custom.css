@@ -377,6 +377,7 @@ figcaption {
   transition: none;
   user-select: none;
   touch-action: none;
+  contain: layout style;
 }
 
 .banner-lightbox-img:active {
@@ -387,7 +388,6 @@ figcaption {
   width: 90vw;
   display: block;
   pointer-events: none;
-  image-rendering: -webkit-optimize-contrast;
 }
 
 .banner-lightbox-close {

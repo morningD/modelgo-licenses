@@ -49,7 +49,7 @@ Las **licencias ModelGo** ofrecen soluciones de licenciamiento al estilo de Crea
 <VideoEmbed url="https://drive.google.com/file/d/1BWLXb523KuWWZneGpvOjdsEuECsy4_4l/preview" />
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 
 // --- Lightbox ---
 const lightboxOpen = ref(false)
@@ -64,6 +64,32 @@ const pointers = new Map()
 let pinching = false
 let pinchStartDist = 0
 let pinchStartScale = 1
+
+// rAF throttle — batch pointer updates to once per frame
+let rafId = 0
+let pendingScale = 0
+let pendingTx = 0
+let pendingTy = 0
+let needsUpdate = false
+
+function flushUpdate() {
+  rafId = 0
+  if (!needsUpdate) return
+  needsUpdate = false
+  scale.value = pendingScale
+  translateX.value = pendingTx
+  translateY.value = pendingTy
+}
+
+function scheduleUpdate(s, tx, ty) {
+  pendingScale = s
+  pendingTx = tx
+  pendingTy = ty
+  needsUpdate = true
+  if (!rafId) rafId = requestAnimationFrame(flushUpdate)
+}
+
+onBeforeUnmount(() => { if (rafId) cancelAnimationFrame(rafId) })
 
 function getPinchDist() {
   const pts = [...pointers.values()]
@@ -82,18 +108,23 @@ function closeLightbox() {
   lightboxOpen.value = false
   pointers.clear()
   pinching = false
+  if (rafId) { cancelAnimationFrame(rafId); rafId = 0 }
 }
 
 function resetTransform() {
   scale.value = 2
   translateX.value = window.innerWidth * 0.05
   translateY.value = 0
+  pendingScale = scale.value
+  pendingTx = translateX.value
+  pendingTy = translateY.value
 }
 
 function onWheel(e) {
   e.preventDefault()
   const delta = e.deltaY > 0 ? -0.15 : 0.15
-  scale.value = Math.min(Math.max(0.5, scale.value + delta), 8)
+  const s = Math.min(Math.max(0.5, scale.value + delta), 8)
+  scheduleUpdate(s, translateX.value, translateY.value)
 }
 
 function onPointerDown(e) {
@@ -102,13 +133,13 @@ function onPointerDown(e) {
     pinching = true
     dragging.value = false
     pinchStartDist = getPinchDist()
-    pinchStartScale = scale.value
+    pinchStartScale = pendingScale || scale.value
   } else if (pointers.size === 1 && !pinching) {
     dragging.value = true
     dragStart.x = e.clientX
     dragStart.y = e.clientY
-    dragStart.tx = translateX.value
-    dragStart.ty = translateY.value
+    dragStart.tx = pendingTx || translateX.value
+    dragStart.ty = pendingTy || translateY.value
   }
   e.target.setPointerCapture(e.pointerId)
 }
@@ -118,11 +149,13 @@ function onPointerMove(e) {
   if (pinching && pointers.size >= 2) {
     const dist = getPinchDist()
     if (pinchStartDist > 0) {
-      scale.value = Math.min(Math.max(0.5, pinchStartScale * (dist / pinchStartDist)), 8)
+      const s = Math.min(Math.max(0.5, pinchStartScale * (dist / pinchStartDist)), 8)
+      scheduleUpdate(s, pendingTx, pendingTy)
     }
   } else if (dragging.value && !pinching) {
-    translateX.value = dragStart.tx + (e.clientX - dragStart.x)
-    translateY.value = dragStart.ty + (e.clientY - dragStart.y)
+    const tx = dragStart.tx + (e.clientX - dragStart.x)
+    const ty = dragStart.ty + (e.clientY - dragStart.y)
+    scheduleUpdate(pendingScale, tx, ty)
   }
 }
 
