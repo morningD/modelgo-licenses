@@ -164,7 +164,7 @@ function measureGround() {
   const footer = document.querySelector('.VPFooter')
   if (footer && container.value) {
     const h = footer.offsetHeight
-    const sh = h + 160
+    const sh = h + 200
     container.value.style.height = sh + 'px'
     container.value.style.marginTop = -sh + 'px'
     groundY.value = h
@@ -313,7 +313,7 @@ function initScene() {
     : 10 + Math.floor(Math.random() * 5)
   clouds.value = Array.from({ length: clCount }, (_, ci) => ({
     x: Math.random() * (w + 60) - 30,
-    y: 45 + Math.random() * 50,
+    y: 55 + Math.random() * 70,
     speed: 0.04 + Math.random() * 0.08,
     scale: 0.55 + Math.random() * 0.65,
     opacity: wt === 'clear' ? 0.25 + Math.random() * 0.15
@@ -330,7 +330,7 @@ function initScene() {
     const bright = Math.random()
     return {
       x: Math.random() * w,
-      y: 50 + Math.random() * 105,
+      y: 60 + Math.random() * 135,
       r: 0.3 + bright * 0.9,
       delay: Math.random() * 5,
       duration: 1.8 + Math.random() * 3,
@@ -1735,14 +1735,13 @@ function svgFilter(r) {
 .scene-strip {
   position: relative;
   width: 100%;
-  height: 200px;
-  margin-top: -200px;
+  height: 240px;
+  margin-top: -240px;
   z-index: 11;
   user-select: none;
   touch-action: none;
   pointer-events: none;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: hidden;
 }
 .celestial {
   position: absolute;
