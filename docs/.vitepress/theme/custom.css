@@ -470,10 +470,16 @@ figcaption {
   clip-path: inset(100%) !important;
 }
 
-/* Mobile: reduce hero min-height when layout stacks vertically */
+/* Mobile: fix hero layout when stacked vertically */
 @media (max-width: 959px) {
   .VPHero {
     min-height: auto;
+  }
+
+  /* VitePress default image margin is -76px -24px -48px on mobile;
+     the -48px bottom pulls the title into the LicenseSelector badges */
+  .VPHero .image {
+    margin-bottom: 0 !important;
   }
 }
 

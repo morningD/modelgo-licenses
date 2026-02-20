@@ -1076,10 +1076,16 @@ onUnmounted(() => {
 .slide-up-leave-to { opacity: 0; transform: translateY(8px) scale(0.95); }
 
 /* Mobile responsive */
-/* Mobile: VitePress stacks hero title above image slot at < 960px */
+/* Mobile: VitePress stacks image above title at < 960px.
+   Let badges wrap naturally so they don't overflow into the title below. */
 @media (max-width: 959px) {
   .ls-root {
     margin-top: 0;
+  }
+
+  .ls-badges-wrap {
+    height: auto;
+    min-height: 46px;
   }
 }
 
