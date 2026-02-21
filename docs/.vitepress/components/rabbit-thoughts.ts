@@ -1,4 +1,4 @@
-export const rabbitThoughts: Record<string, { idle: string[], trip: string[], baby: string[] }> = {
+export const rabbitThoughts: Record<string, { idle: string[], trip: string[], baby: string[], snake: string[] }> = {
   'en': {
     idle: [
       'Boing!',
@@ -33,9 +33,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'Ears up!',
       'Zoom zoom!',
       'Almost tripped!',
-      '...did that move?',
-      'Ssss...?',
-      'Grass is wiggly...',
     ],
     trip: [
       'The colors, man...',
@@ -62,6 +59,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'So tall up here!',
       'Where mama go?',
       'Tiny hop!',
+    ],
+    snake: [
+      '...did that move?',
+      'Ssss...?',
+      'Grass is wiggly...',
     ],
   },
   'zh-CN': {
@@ -98,9 +100,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '嗖嗖嗖！',
       '差点摔倒！',
       '哼哼~',
-      '...刚才动了？',
-      '嘶...？',
-      '草在扭...',
     ],
     trip: [
       '这些颜色...',
@@ -127,6 +126,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '这里好高！',
       '妈妈去哪了？',
       '小小跳！',
+    ],
+    snake: [
+      '...刚才动了？',
+      '嘶...？',
+      '草在扭...',
     ],
   },
   'zh-TW': {
@@ -163,9 +167,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '咻咻咻！',
       '差點摔倒！',
       '哼哼~',
-      '...剛才動了？',
-      '嘶...？',
-      '草在扭...',
     ],
     trip: [
       '這些顏色...',
@@ -192,6 +193,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '這裡好高！',
       '媽媽去哪了？',
       '小小跳！',
+    ],
+    snake: [
+      '...剛才動了？',
+      '嘶...？',
+      '草在扭...',
     ],
   },
   'ja': {
@@ -228,9 +234,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'びゅーん！',
       'あぶなかった！',
       'ふんふん~',
-      '...今動いた？',
-      'シュル...？',
-      '草がもぞもぞ...',
     ],
     trip: [
       'この色は...',
@@ -257,6 +260,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'たかーい！',
       'ママどこ？',
       'ちいさくジャンプ！',
+    ],
+    snake: [
+      '...今動いた？',
+      'シュル...？',
+      '草がもぞもぞ...',
     ],
   },
   'ko': {
@@ -293,9 +301,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '슝슝!',
       '앗 미끄러질 뻔!',
       '흥흥~',
-      '...지금 움직였어?',
-      '스스...?',
-      '풀이 꿈틀...',
     ],
     trip: [
       '이 색깔들...',
@@ -322,6 +327,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '여기 높다!',
       '엄마 어디?',
       '작은 점프!',
+    ],
+    snake: [
+      '...지금 움직였어?',
+      '스스...?',
+      '풀이 꿈틀...',
     ],
   },
   'ru': {
@@ -358,9 +368,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'Вжух!',
       'Чуть не упал!',
       'Хм-хм~',
-      '...шевелится?',
-      'Ссс...?',
-      'Трава дрожит...',
     ],
     trip: [
       'Эти цвета...',
@@ -387,6 +394,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'Тут высоко!',
       'Где мама?',
       'Прыг-малыш!',
+    ],
+    snake: [
+      '...шевелится?',
+      'Ссс...?',
+      'Трава дрожит...',
     ],
   },
   'es': {
@@ -423,9 +435,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '¡Zum zum!',
       '¡Casi me caigo!',
       'Hmm hmm~',
-      '...se movió?',
-      'Ssss...?',
-      'El pasto tiembla...',
     ],
     trip: [
       'Los colores...',
@@ -452,6 +461,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       '¡Qué alto!',
       '¿Dónde está mamá?',
       '¡Saltito!',
+    ],
+    snake: [
+      '...se movió?',
+      'Ssss...?',
+      'El pasto tiembla...',
     ],
   },
   'fr': {
@@ -488,9 +502,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'Zoum zoum !',
       'J\'ai failli tomber !',
       'Hmm hmm~',
-      '...ça a bougé ?',
-      'Ssss...?',
-      'L\'herbe frémit...',
     ],
     trip: [
       'Ces couleurs...',
@@ -517,6 +528,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'C\'est haut ici !',
       'Où est maman ?',
       'Petit saut !',
+    ],
+    snake: [
+      '...ça a bougé ?',
+      'Ssss...?',
+      'L\'herbe frémit...',
     ],
   },
   'ar': {
@@ -553,9 +569,6 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'زووم!',
       'كدت أسقط!',
       'هم هم~',
-      '...تحرّك؟',
-      'سسس...؟',
-      'العشب يرتجف...',
     ],
     trip: [
       'هذه الألوان...',
@@ -582,6 +595,11 @@ export const rabbitThoughts: Record<string, { idle: string[], trip: string[], ba
       'عالٍ هنا!',
       'أين ماما؟',
       'نطة صغيرة!',
+    ],
+    snake: [
+      '...تحرّك؟',
+      'سسس...؟',
+      'العشب يرتجف...',
     ],
   },
 }

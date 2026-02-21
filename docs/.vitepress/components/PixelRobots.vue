@@ -594,6 +594,23 @@ function tick(time) {
               const holPool = hol.thoughts[locale] || hol.thoughts['en']
               if (holPool && holPool.length) text = holPool[Math.floor(Math.random() * holPool.length)]
             }
+            // Snake awareness — only when rabbit faces toward and is near a snake grass
+            // Babies are more sensitive: wider detection range and higher trigger chance
+            if (!text && !r.tripping && snakeGrasses.value.length > 0) {
+              const facingDir = r.vx < 0 ? -1 : 1
+              const baseProximity = w < 640 ? w * 0.25 : 150
+              const proximity = r.isBaby ? baseProximity * 1.4 : baseProximity
+              const nearSnake = snakeGrasses.value.some(sg => {
+                const dx = sg.x - r.x
+                return Math.abs(dx) < proximity && (dx < 0 ? -1 : 1) === facingDir
+              })
+              if (nearSnake && Math.random() < (r.isBaby ? 0.3 : 0.1)) {
+                const thoughts = rabbitThoughts[locale] || rabbitThoughts['en']
+                if (thoughts.snake?.length) {
+                  text = thoughts.snake[Math.floor(Math.random() * thoughts.snake.length)]
+                }
+              }
+            }
             if (!text) {
               const thoughts = rabbitThoughts[locale] || rabbitThoughts['en']
               const pool = r.isBaby ? thoughts.baby
