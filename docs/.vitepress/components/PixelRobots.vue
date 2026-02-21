@@ -681,10 +681,20 @@ function tick(time) {
         if (wasMaxed) {
           rainbows.value.push({ x: r.x, spawnTime: time, opacity: 0, phase: 0 })
         }
-        // Baby rabbit after 3 mushrooms
+        // Breeding: babies must grow to adult size first, then eat 5 mushrooms like adults
         r.mushroomsEaten = (r.mushroomsEaten || 0) + 1
-        if (r.mushroomsEaten >= 5) {
+        let shouldBreed = false
+        if (r.isBaby) {
+          // Graduate to adult when reaching adult size
+          if (r.sizeBoost >= 1) {
+            r.isBaby = false
+            r.mushroomsEaten = 0
+          }
+        } else if (r.mushroomsEaten >= 5) {
+          shouldBreed = true
           r.mushroomsEaten = 0
+        }
+        if (shouldBreed) {
           const babyColors = rabbitPalettes[Math.floor(Math.random() * rabbitPalettes.length)]
           rabbits.value.push({
             x: r.x + (Math.random() > 0.5 ? 15 : -15), y: 0,
