@@ -101,6 +101,7 @@ function openLightbox(e) {
   if (e.target.closest('a')) return
   lightboxOpen.value = true
   resetTransform()
+  window.dispatchEvent(new CustomEvent('lightbox-change', { detail: { open: true } }))
 }
 
 function closeLightbox() {
@@ -108,6 +109,7 @@ function closeLightbox() {
   pointers.clear()
   pinching = false
   if (rafId) { cancelAnimationFrame(rafId); rafId = 0 }
+  window.dispatchEvent(new CustomEvent('lightbox-change', { detail: { open: false } }))
 }
 
 function resetTransform() {

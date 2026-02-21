@@ -67,6 +67,7 @@ let lastTime = 0
 let resizeObs = null
 let visibilityObs = null
 let isVisible = false
+let lightboxOpen = false
 let sceneReady = false
 let nextSpawn = 0
 let skyFrame = 0
@@ -487,9 +488,13 @@ function startLoop() {
 function stopLoop() {
   if (animFrame) { cancelAnimationFrame(animFrame); animFrame = 0 }
 }
+function onLightboxChange(e) {
+  lightboxOpen = e.detail.open
+  if (!lightboxOpen && isVisible) startLoop()
+}
 function tick(time) {
   animFrame = 0
-  if (!isVisible) return
+  if (!isVisible || lightboxOpen) return
   const dt = lastTime ? Math.min((time - lastTime) / 16, 3) : 1
   lastTime = time
   const w = container.value?.offsetWidth || 800
@@ -921,7 +926,7 @@ function tick(time) {
   if (spores.value.length) triggerRef(spores)
   if (wxParticles.value.length && weather.value.type !== 'clear') triggerRef(wxParticles)
 
-  if (isVisible) animFrame = requestAnimationFrame(tick)
+  if (isVisible && !lightboxOpen) animFrame = requestAnimationFrame(tick)
 }
 
 // ── Drag ──
@@ -992,6 +997,7 @@ onMounted(() => {
     // stopLoop happens naturally: tick() checks isVisible before scheduling next frame
   }, { rootMargin: '100px' }) // start slightly before entering viewport
   if (container.value) visibilityObs.observe(container.value)
+  window.addEventListener('lightbox-change', onLightboxChange)
 })
 onUnmounted(() => {
   if (resizeObs) resizeObs.disconnect()
@@ -1001,6 +1007,7 @@ onUnmounted(() => {
   window.removeEventListener('pointermove', onMove)
   window.removeEventListener('pointerup', onUp)
   window.removeEventListener('resize', onResizeThrottled)
+  window.removeEventListener('lightbox-change', onLightboxChange)
 })
 
 // ── Helpers ──
