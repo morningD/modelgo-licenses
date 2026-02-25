@@ -2379,9 +2379,14 @@ function onSnakeClick(idx) {
         <!-- Front paw -->
         <ellipse cx="21" cy="27.5" rx="2.5" ry="2" :fill="r.colors.paw" :stroke="r.colors.dark" stroke-width="0.3" />
       </svg>
-      <!-- Speech bubble -->
+    </div>
+
+    <!-- Speech bubbles — rendered outside .rabbit to avoid Safari filter clipping -->
+    <div v-for="(r, i) in rabbits" :key="'rbub' + i">
       <div v-if="r.bubble" class="rabbit-bubble" :class="{ 'rabbit-bubble-dark': isDark }"
         :style="{
+          left: r.x + 'px',
+          bottom: (groundY - r.y + 34) + 'px',
           opacity: Math.min(1, r.bubble.timer / 15, (120 - r.bubble.timer + 15) / 15),
           transform: 'translateX(-50%)'
         }">
@@ -2652,8 +2657,6 @@ function onSnakeClick(idx) {
 }
 .rabbit-bubble {
   position: absolute;
-  bottom: 100%;
-  left: 50%;
   background: rgba(255, 255, 255, 0.92);
   border: 1.5px solid rgba(0, 0, 0, 0.12);
   border-radius: 10px;
@@ -2665,7 +2668,6 @@ function onSnakeClick(idx) {
   pointer-events: none;
   font-family: system-ui, -apple-system, sans-serif;
   z-index: 20;
-  margin-bottom: 4px;
 }
 .rabbit-bubble::after {
   content: '';
