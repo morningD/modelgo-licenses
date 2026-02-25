@@ -1071,7 +1071,7 @@ function bladePath(bx, baseY, h, lean, curve, w) {
   return `M${bx} ${baseY} Q${cx - hw} ${cpY}, ${tipX} ${tipY} Q${cx + hw} ${cpY}, ${bx} ${baseY} Z`
 }
 
-function svgTransform(r) {
+function rabbitTransform(r) {
   const sq = getSquash(r)
   const fade = tripFade(r)
   // Dizzy: scale pulse
@@ -1090,7 +1090,7 @@ function svgTransform(r) {
   if (r.tripType === 'rainbow' && fade > 0) rot = ` rotate(${Math.sin(r.tripPhase * 3) * fade * 8}deg)`
   if (r.tripType === 'dizzy' && fade > 0) rot = ` rotate(${Math.sin(r.tripPhase * 2) * fade * 14}deg)`
   if (r.tripType === 'sparkle' && fade > 0) rot = ` translateY(${Math.sin(r.tripPhase * 2) * fade * -4}px)`
-  return `scaleX(${flipX * sq.sx * boost}) scaleY(${sq.sy * boost})${rot}`
+  return `translateX(-15px) scaleX(${flipX * sq.sx * boost}) scaleY(${sq.sy * boost})${rot}`
 }
 
 function svgFilter(r) {
@@ -1109,8 +1109,9 @@ function svgFilter(r) {
 }
 
 // Combined filter for .rabbit wrapper div: base drop-shadow + trip effects.
-// Trip filter is applied here (not on SVG) to avoid creating a compositing layer
-// sized to the SVG's 30×30 layout box, which clips ears that overflow via SVG overflow:visible.
+// Transform is also applied on the .rabbit div (via rabbitTransform) so that filter and
+// transform share the same element. Per CSS spec: paint content → apply filter → apply transform.
+// This prevents Safari from clipping scaled overflow (ears) inside the filter compositing layer.
 function rabbitDivFilter(r) {
   const base = 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))'
   const trip = svgFilter(r)
@@ -2279,15 +2280,10 @@ function onSnakeClick(idx) {
     <div
       v-for="(r, i) in rabbits" :key="'r' + i"
       class="rabbit" :class="{ grabbed: r.grabbed, glowing: r.glowing }"
-      :style="{ left: r.x + 'px', bottom: (groundY - r.y) + 'px', cursor: r.grabbed ? 'grabbing' : 'grab', filter: rabbitDivFilter(r) }"
+      :style="{ left: r.x + 'px', bottom: (groundY - r.y) + 'px', cursor: r.grabbed ? 'grabbing' : 'grab', filter: rabbitDivFilter(r), transformOrigin: '50% 100%', transform: rabbitTransform(r) }"
       @pointerdown.stop="onDown($event, i)"
     >
-      <svg width="30" height="30" viewBox="0 0 30 30" overflow="visible"
-        :style="{
-          transformOrigin: '50% 100%',
-          transform: svgTransform(r)
-        }"
-      >
+      <svg width="30" height="30" viewBox="0 0 30 30" overflow="visible">
         <defs>
           <radialGradient :id="'rb' + i" cx="38%" cy="32%" r="62%">
             <stop offset="0%" :stop-color="r.colors.light" />
@@ -2632,7 +2628,6 @@ function onSnakeClick(idx) {
 }
 .rabbit {
   position: absolute;
-  transform: translateX(-15px);
   pointer-events: auto;
   transition: filter 0.2s ease;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
