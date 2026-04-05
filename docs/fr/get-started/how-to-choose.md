@@ -26,39 +26,53 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
 |              | Distribute Derivative Materials                 | ✓ |
 | Grant of     +-------------------------------------------------+---+
-| Rights       | Sublicensable License                           | ✓ |
+| Rights       | Distribute Extracted Models                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Sublicensable License                           | ✓ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✗ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✓ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✓ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✗ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✗ |
 |              | Distributing Licensed Materials                 |   |
 |              +-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✗ |
 |              | Distributing Derivative Materials               |   |
+| Requirements +-------------------------------------------------+---+
+| Relating to  | Retain Original Attribution Notice when         | ✗ |
+| Distribution | Distributing Licensed Materials                 |   |
+| of Licensed  +-------------------------------------------------+---+
+| Materials    | Retain Original Attribution Notice when         | ✗ |
+| and          | Distributing Derivative Materials               |   |
+| Derivative   +-------------------------------------------------+---+
+| Materials    | Indicate Modifications when Distributing        | ✗ |
+|              | Derivative Materials                            |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✗ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✗ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
-| Derivative   | Indicate Modifications when Distributing        | ✗ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
-|              | Disclosure of Distributed Licensed Materials    | ✗ |
-|              | and/or Derivative Materials in Source Code Form |   |
+|              | Disclosure of Distributed Licensed Materials    |   |
+|              | and/or Derivative Materials in Preferred        | ✗ |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✗ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✗ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
+| Requirements | Indicate Extracted Models Notice when           | ✗ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✗ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
 |              | Include a Notice of Provenance when             | ✗ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
@@ -76,39 +90,53 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
 |              | Distribute Derivative Materials                 | ✓ |
 | Grant of     +-------------------------------------------------+---+
-| Rights       | Sublicensable License                           | ✓ |
+| Rights       | Distribute Extracted Models                     | ✓ |
+|              +-------------------------------------------------+---+
+|              | Sublicensable License                           | ✓ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✗ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✓ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✓ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✗ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Licensed Materials                 |   |
 |              +-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Derivative Materials               |   |
+| Requirements +-------------------------------------------------+---+
+| Relating to  | Retain Original Attribution Notice when         | ✓ |
+| Distribution | Distributing Licensed Materials                 |   |
+| of Licensed  +-------------------------------------------------+---+
+| Materials    | Retain Original Attribution Notice when         | ✓ |
+| and          | Distributing Derivative Materials               |   |
+| Derivative   +-------------------------------------------------+---+
+| Materials    | Indicate Modifications when Distributing        | ✓ |
+|              | Derivative Materials                            |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✓ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✓ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
-| Derivative   | Indicate Modifications when Distributing        | ✓ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
-|              | Disclosure of Distributed Licensed Materials    | ✗ |
-|              | and/or Derivative Materials in Source Code Form |   |
+|              | Disclosure of Distributed Licensed Materials    |   |
+|              | and/or Derivative Materials in Preferred        | ✗ |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✗ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
+| Requirements | Indicate Extracted Models Notice when           | ✓ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✗ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
 |              | Include a Notice of Provenance when             | ✗ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
@@ -126,40 +154,54 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
 |              | Distribute Derivative Materials                 | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Extracted Models                     | ✓ |
 | Grant of     +-------------------------------------------------+---+
 | Rights       | Sublicensable License                           | ✗ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✗ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✓ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✓ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✗ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Licensed Materials                 |   |
 |              +-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Derivative Materials               |   |
+| Requirements +-------------------------------------------------+---+
+| Relating to  | Retain Original Attribution Notice when         | ✓ |
+| Distribution | Distributing Licensed Materials                 |   |
+| of Licensed  +-------------------------------------------------+---+
+| Materials    | Retain Original Attribution Notice when         | ✓ |
+| and          | Distributing Derivative Materials               |   |
+| Derivative   +-------------------------------------------------+---+
+| Materials    | Indicate Modifications when Distributing        | ✓ |
+|              | Derivative Materials                            |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✓ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✓ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
-| Derivative   | Indicate Modifications when Distributing        | ✓ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
 |              | Disclosure of Distributed Licensed Materials    | ✓ |
-|              | and/or Derivative Materials in Source Code Form |   |
+|              | and/or Derivative Materials in Preferred        |   |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✓ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
-|              | Include a Notice of Provenance when             | ✗ |
+| Requirements | Indicate Extracted Models Notice when           | ✓ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✓ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✓ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
 ```
@@ -176,40 +218,54 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
 |              | Distribute Derivative Materials                 | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Extracted Models                     | ✓ |
 | Grant of     +-------------------------------------------------+---+
 | Rights       | Sublicensable License                           | ✗ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✓ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✓ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✓ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✓ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✓ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Licensed Materials                 |   |
 |              +-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Derivative Materials               |   |
+| Requirements +-------------------------------------------------+---+
+| Relating to  | Retain Original Attribution Notice when         | ✓ |
+| Distribution | Distributing Licensed Materials                 |   |
+| of Licensed  +-------------------------------------------------+---+
+| Materials    | Retain Original Attribution Notice when         | ✓ |
+| and          | Distributing Derivative Materials               |   |
+| Derivative   +-------------------------------------------------+---+
+| Materials    | Indicate Modifications when Distributing        | ✓ |
+|              | Derivative Materials                            |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✓ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✓ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
-| Derivative   | Indicate Modifications when Distributing        | ✓ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
-|              | Disclosure of Distributed Licensed Materials    | ✗ |
-|              | and/or Derivative Materials in Source Code Form |   |
+|              | Disclosure of Distributed Licensed Materials    |   |
+|              | and/or Derivative Materials in Preferred        | ✗ |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✗ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
-|              | Include a Notice of Provenance when             | ✗ |
+| Requirements | Indicate Extracted Models Notice when           | ✓ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✗ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
+|              | Include a Notice of Provenance when             | ✓ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
 ```
@@ -226,39 +282,53 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
 |              | Distribute Derivative Materials                 | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Extracted Models                     | ✓ |
 | Grant of     +-------------------------------------------------+---+
 | Rights       | Sublicensable License                           | ✗ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✓ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✗ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✗ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✗ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Licensed Materials                 |   |
 |              +-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Derivative Materials               |   |
+| Requirements +-------------------------------------------------+---+
+| Relating to  | Retain Original Attribution Notice when         | ✓ |
+| Distribution | Distributing Licensed Materials                 |   |
+| of Licensed  +-------------------------------------------------+---+
+| Materials    | Retain Original Attribution Notice when         | ✓ |
+| and          | Distributing Derivative Materials               |   |
+| Derivative   +-------------------------------------------------+---+
+| Materials    | Indicate Modifications when Distributing        | ✓ |
+|              | Derivative Materials                            |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✓ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✓ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
-| Derivative   | Indicate Modifications when Distributing        | ✓ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
-|              | Disclosure of Distributed Licensed Materials    | ✗ |
-|              | and/or Derivative Materials in Source Code Form |   |
+|              | Disclosure of Distributed Licensed Materials    |   |
+|              | and/or Derivative Materials in Preferred        | ✗ |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✗ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
+| Requirements | Indicate Extracted Models Notice when           | ✓ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✗ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
 |              | Include a Notice of Provenance when             | ✓ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
@@ -276,39 +346,53 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
 |              | Distribute Derivative Materials                 | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Extracted Models                     | ✓ |
 | Grant of     +-------------------------------------------------+---+
 | Rights       | Sublicensable License                           | ✗ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✓ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✗ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✗ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✓ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✓ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Licensed Materials                 |   |
 |              +-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Derivative Materials               |   |
+| Requirements +-------------------------------------------------+---+
+| Relating to  | Retain Original Attribution Notice when         | ✓ |
+| Distribution | Distributing Licensed Materials                 |   |
+| of Licensed  +-------------------------------------------------+---+
+| Materials    | Retain Original Attribution Notice when         | ✓ |
+| and          | Distributing Derivative Materials               |   |
+| Derivative   +-------------------------------------------------+---+
+| Materials    | Indicate Modifications when Distributing        | ✓ |
+|              | Derivative Materials                            |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✓ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✓ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
-| Derivative   | Indicate Modifications when Distributing        | ✓ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
-|              | Disclosure of Distributed Licensed Materials    | ✗ |
-|              | and/or Derivative Materials in Source Code Form |   |
+|              | Disclosure of Distributed Licensed Materials    |   |
+|              | and/or Derivative Materials in Preferred        | ✗ |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✗ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✓ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
+| Requirements | Indicate Extracted Models Notice when           | ✓ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✗ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
 |              | Include a Notice of Provenance when             | ✓ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
@@ -326,17 +410,20 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
-|              | Distribute Derivative Materials                 | ✗ |
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials or              | ✗ |
+|              | Extracted Models                                |   |
 | Grant of     +-------------------------------------------------+---+
 | Rights       | Sublicensable License                           | ✗ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✓ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✓ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✓ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✗ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Licensed Materials                 |   |
@@ -344,21 +431,31 @@ Model Sheet :
 |              | Provide a Copy of Original License when         | ✗ |
 |              | Distributing Derivative Materials               |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✓ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✗ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
+| Requirements | Retain Original Attribution Notice when         | ✓ |
+| Relating to  | Distributing Licensed Materials                 |   |
+| Distribution +-------------------------------------------------+---+
+| of Licensed  | Retain Original Attribution Notice when         | ✗ |
+| Materials    | Distributing Derivative Materials               |   |
+| and          +-------------------------------------------------+---+
 | Derivative   | Indicate Modifications when Distributing        | ✗ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
-|              | Disclosure of Distributed Licensed Materials    | ✗ |
-|              | and/or Derivative Materials in Source Code Form |   |
+| Materials    | Derivative Materials                            |   |
+|              +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    |   |
+|              | and/or Derivative Materials in Preferred        | ✗ |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✗ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✗ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
+| Requirements | Indicate Extracted Models Notice when           | ✗ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✗ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
 |              | Include a Notice of Provenance when             | ✓ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
@@ -376,17 +473,20 @@ Model Sheet :
 |              +-------------------------------------------------+---+
 |              | Create Derivative Materials                     | ✓ |
 |              +-------------------------------------------------+---+
-|              | Distribute Derivative Materials                 | ✗ |
+|              | Create Extracted Models (e.g., by distillation) | ✓ |
+|              +-------------------------------------------------+---+
+|              | Distribute Derivative Materials or              | ✗ |
+|              | Extracted Models                                |   |
 | Grant of     +-------------------------------------------------+---+
 | Rights       | Sublicensable License                           | ✗ |
 |              +-------------------------------------------------+---+
 |              | Revocable License                               | ✓ |
 |              +-------------------------------------------------+---+
-|              | Commercial Use of Licensed Materials            | ✗ |
-|              | and/or Derivative Materials                     |   |
+|              | Commercial Use of Licensed Materials,           | ✗ |
+|              | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
-| Responsible  | Use Restrictions (RAI) on Licensed Materials    | ✗ |
-| AI           | and Derivative Materials                        |   |
+| Responsible  | Use Restrictions (RAI) on Licensed Materials,   | ✗ |
+| AI           | Derivative Materials, and Extracted Models      |   |
 +--------------+-------------------------------------------------+---+
 |              | Provide a Copy of Original License when         | ✓ |
 |              | Distributing Licensed Materials                 |   |
@@ -394,21 +494,31 @@ Model Sheet :
 |              | Provide a Copy of Original License when         | ✗ |
 |              | Distributing Derivative Materials               |   |
 |              +-------------------------------------------------+---+
-|              | Retain Original Attribution Notice when         | ✓ |
-| Requirements | Distributing Licensed Materials                 |   |
-| Relating to  +-------------------------------------------------+---+
-| Distribution | Retain Original Attribution Notice when         | ✗ |
-| of Licensed  | Distributing Derivative Materials               |   |
-| Materials,   +-------------------------------------------------+---+
+| Requirements | Retain Original Attribution Notice when         | ✓ |
+| Relating to  | Distributing Licensed Materials                 |   |
+| Distribution +-------------------------------------------------+---+
+| of Licensed  | Retain Original Attribution Notice when         | ✗ |
+| Materials    | Distributing Derivative Materials               |   |
+| and          +-------------------------------------------------+---+
 | Derivative   | Indicate Modifications when Distributing        | ✗ |
-| Materials,   | Derivative Materials                            |   |
-| Output       +-------------------------------------------------+---+
-|              | Disclosure of Distributed Licensed Materials    | ✗ |
-|              | and/or Derivative Materials in Source Code Form |   |
+| Materials    | Derivative Materials                            |   |
+|              +-------------------------------------------------+---+
+|              | Disclosure of Distributed Licensed Materials    |   |
+|              | and/or Derivative Materials in Preferred        | ✗ |
+|              | Adaptable Form                                  |   |
 |              +-------------------------------------------------+---+
 |              | Licensing Distributed Derivative Materials      | ✗ |
 |              | on Same Terms as License                        |   |
++--------------+-------------------------------------------------+---+
+|              | Provide a Copy of Original License when         | ✗ |
+|              | Distributing Extracted Models                   |   |
 |              +-------------------------------------------------+---+
+| Requirements | Indicate Extracted Models Notice when           | ✗ |
+| Relating to  | Distributing Extracted Models                   |   |
+| Distribution +-------------------------------------------------+---+
+| of Extracted | Licensing Distributed Extracted Models          | ✗ |
+| Models and   | on Same Terms as License                        |   |
+| Output       +-------------------------------------------------+---+
 |              | Include a Notice of Provenance when             | ✓ |
 |              | Distributing Output as Dataset                  |   |
 +--------------+-------------------------------------------------+---+
