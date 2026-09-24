@@ -103,11 +103,11 @@ ModelGo licenses explicitly state whether they grant or do not grant licensee pa
 
 ## Are MG-BY-SA considered Open Source licenses?
 
-<mark style="color:purple;">**Currently, no.**</mark> None of the variants of the ModelGo licenses have been approved by the Open Source Initiative (OSI) yet. However, we aim for MG-BY-SA-2.0 to keep the model "open." It's also worth mentioning that the meaning of "open" may differ between software and models. In ModelGo licenses, SA means the availability of **Licensed Materials** and **Derivative Materials**, excluding the openness of the dataset (as we consider it outside the governing scope of MG licenses).
+<mark style="color:purple;">**Currently, no.**</mark> None of the variants of the ModelGo licenses have been approved by the Open Source Initiative (OSI) yet. However, we aim for MG-BY-SA-2.0 to keep the model "open." It's also worth mentioning that the meaning of "open" may differ between software and models. In ModelGo licenses, SA means the availability of **Licensed Materials**, **Derivative Materials**, and **Extracted Models**, excluding the openness of the dataset (as we consider it outside the governing scope of MG licenses).
 
 ## May I close source my models licensed under MG with SA?
 
-<mark style="color:purple;">**No.**</mark> This applies to its derivatives as well. MG-BY-SA-2.0 is a copyleft license, meaning all derivative works must also be covered by the same license. You also can't revoke MG-BY-SA-2.0, unlike GPL-3.0, which doesn't explicitly claim the granted patent license is irrevocable.
+<mark style="color:purple;">**No.**</mark> This applies to its derivatives and Extracted Models as well. MG-BY-SA-2.0 is a copyleft license, meaning all derivative works and Extracted Models must also be covered by the same license. You also can't revoke MG-BY-SA-2.0, unlike GPL-3.0, which doesn't explicitly claim the granted patent license is irrevocable.
 
 ## Will ModelGo licenses support more licensing options?
 

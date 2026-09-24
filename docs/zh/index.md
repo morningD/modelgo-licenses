@@ -1,5 +1,7 @@
 ---
 layout: home
+title: ModelGo 许可证 - AI 模型发布的标准化许可证
+description: ModelGo 提供类似 Creative Commons 风格的 AI 模型许可证解决方案，包含 8 种许可证变体，帮助您管理模型的共享与知识产权保护。
 
 hero:
   name: ModelGo Licenses

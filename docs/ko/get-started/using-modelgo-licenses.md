@@ -68,7 +68,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY/LICENSE
 |---|---|
 | 짧은 식별자 | MG-BY-SA-2.0 |
 | 태그 | 카피레프트, 소스 공개, 재라이선스 불가, 철회 불가능 |
-| 용도 | 모든 복사본 및 후속 파생물에 대해 모델 가중치, 아키텍처, 학습 및 테스트 코드/스크립트 등(데이터 및 시스템 라이브러리 제외)을 오픈소스로 공개해야 하는 조건으로 모델을 배포합니다. |
+| 용도 | 모든 복사본, 후속 파생물 및 추출 모델이 모델 가중치, 아키텍처, 학습 및 테스트 코드/스크립트 등(데이터 및 시스템 라이브러리 제외)을 오픈소스로 공개해야 하는 조건으로 모델을 배포합니다. |
 | 전체 텍스트 | [GitHub에서 보기 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-SA/LICENSE) |
 
 <details>
@@ -92,7 +92,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-SA/LICENSE
 |---|---|
 | 짧은 식별자 | MG-BY-RAI-2.0 |
 | 태그 | 약한 카피레프트, 책임 있는 AI, 재라이선스 불가, <mark style="color:purple;">**철회 가능**</mark>, GPL 비호환 |
-| 용도 | [RAIL](https://www.licenses.ai)이 주장하는 AI 책임 사용 조항과 함께 모델을 배포합니다. 이 라이선스를 적용하면 모든 복사본 및 후속 파생물이 이러한 사용 기반 제한 조항에 의해 제약을 받게 됩니다. |
+| 용도 | [RAIL](https://www.licenses.ai)이 주장하는 AI 책임 사용 조항과 함께 모델을 배포합니다. 이 라이선스를 적용하면 모든 복사본, 후속 파생물 및 추출 모델이 이러한 사용 기반 제한 조항에 의해 제약을 받게 됩니다. |
 | 전체 텍스트 | [GitHub에서 보기 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-RAI/LICENSE) |
 
 <details>
@@ -114,7 +114,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 
 ### 엄격한 라이선스
 
-이 라이선스는 <mark style="color:purple;">비자유</mark>이며 <mark style="color:purple;">엄격한 재배포 제한</mark>을 포함합니다. 예를 들어 비상업적 목적으로만 사용하거나 원본 저작물의 파생물 공유를 금지합니다. 또한 모델 출력을 데이터셋으로 배포할 때 모델 저작자 표시를 요구합니다.
+이 라이선스는 <mark style="color:purple;">비자유</mark>이며 <mark style="color:purple;">엄격한 재배포 제한</mark>을 포함합니다. 예를 들어 비상업적 목적으로만 사용하거나 원본 저작물의 파생물 및 추출 모델 공유를 금지합니다. 또한 모델 출력을 데이터셋으로 배포할 때 모델 저작자 표시를 요구합니다.
 
 :::tabs
 == MG-BY-NC
@@ -123,7 +123,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 |---|---|
 | 짧은 식별자 | MG-BY-NC-2.0 |
 | 태그 | 상업적 사용 금지, 재라이선스 불가, GPL 비호환, <mark style="color:purple;">**철회 가능**</mark> |
-| 용도 | 상업적 사용 금지로 모델을 배포합니다. 원본 모델과 그 파생물, 그리고 보완 코드 및 스크립트의 모든 종류의 상업적 사용(SaaS 포함)이 허용되지 않습니다. 이 라이선스의 권리 부여는 철회될 수 있습니다. |
+| 용도 | 상업적 사용 금지로 모델을 배포합니다. 원본 모델, 그 파생물 및 추출 모델, 그리고 보완 코드 및 스크립트의 모든 종류의 상업적 사용(SaaS 포함)이 허용되지 않습니다. 이 라이선스의 권리 부여는 철회될 수 있습니다. |
 | 전체 텍스트 | [GitHub에서 보기 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC/LICENSE) |
 
 <details>
@@ -167,7 +167,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 
 :::
 
-<mark style="color:purple;">**NoDerivatives**</mark> 라이선스 옵션은 모든 종류의 파생물 공유를 금지합니다. 이 라이선스는 독점 라이선스로 사용할 수 있습니다.
+<mark style="color:purple;">**NoDerivatives**</mark> 라이선스 옵션은 모든 종류의 파생물 및 추출 모델 공유를 금지합니다. 이 라이선스는 독점 라이선스로 사용할 수 있습니다.
 
 :::tabs
 == MG-BY-ND
@@ -176,7 +176,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 |---|---|
 | 짧은 식별자 | MG-BY-ND-2.0 |
 | 태그 | 독점적, 파생물 공유 금지, 재라이선스 불가, <mark style="color:purple;">**철회 가능**</mark> |
-| 용도 | 원본 그대로의 복사본에 한정된 공유 제한으로 모델을 배포하며, 모든 종류의 파생물(출력 제외) 공유를 금지합니다. |
+| 용도 | 원본 그대로의 복사본에 한정된 공유 제한으로 모델을 배포하며, 모든 종류의 파생물 및 추출 모델(출력 제외) 공유를 금지합니다. |
 | 전체 텍스트 | [GitHub에서 보기 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-ND/LICENSE) |
 
 <details>
@@ -200,7 +200,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-ND/LICENSE
 |---|---|
 | 짧은 식별자 | MG-BY-NC-ND-2.0 |
 | 태그 | 독점적, 상업적 사용 금지, 파생물 공유 금지, 재라이선스 불가, <mark style="color:purple;">**철회 가능**</mark> |
-| 용도 | MG-BY-ND의 조항에 추가하여, 원본 모델과 그 파생물, 그리고 보완 코드 및 스크립트의 모든 종류의 상업적 사용(SaaS 포함)이 허용되지 않습니다. |
+| 용도 | MG-BY-ND의 조항에 추가하여, 원본 모델, 그 파생물 및 추출 모델, 그리고 보완 코드 및 스크립트의 모든 종류의 상업적 사용(SaaS 포함)이 허용되지 않습니다. |
 | 전체 텍스트 | [GitHub에서 보기 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-ND/LICENSE) |
 
 <details>

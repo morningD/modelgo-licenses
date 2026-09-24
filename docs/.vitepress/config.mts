@@ -56,6 +56,12 @@ export default defineConfig({
     zh: {
       label: '简体中文',
       lang: 'zh-CN',
+      title: 'ModelGo 许可证',
+      titleTemplate: 'ModelGo 许可证',
+      description: '为 AI 模型设计的灵活、标准化许可证框架 — 管理 AI 模型的使用、分发和衍生作品',
+      head: [
+        ['meta', { name: 'keywords', content: 'ModelGo, AI模型许可证, 模型发布许可证, 机器学习许可证, MG0, MG-BY, MG-BY-SA, MG-BY-NC, 开源AI许可证, AI模型开源, 模型共享, Hugging Face许可证' }]
+      ],
       themeConfig: {
         nav: nav('首页', '/zh/'),
         sidebar: sidebar('/zh', '快速开始', '了解更多', '使用 ModelGo 许可证', '如何选择', '理解 ModelGo', '常见问题', '免责声明'),

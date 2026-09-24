@@ -1,3 +1,8 @@
+---
+title: How to Choose a ModelGo License - Comparison and Selection Guide
+description: Compare ModelGo license options through the Diff View and Model Sheet to choose the most suitable license for your AI model.
+---
+
 # ✨ How to Choose
 
 ## Diff View of ModelGo Licenses

@@ -103,11 +103,11 @@ Las licencias ModelGo establecen explicitamente si otorgan o no otorgan al licen
 
 ## ¿Se consideran las licencias MG-BY-SA como licencias de codigo abierto?
 
-<mark style="color:purple;">**Actualmente, no.**</mark> Ninguna de las variantes de las licencias ModelGo ha sido aprobada por la Open Source Initiative (OSI) todavia. Sin embargo, nuestro objetivo es que MG-BY-SA-2.0 mantenga el modelo "abierto". Tambien vale la pena mencionar que el significado de "abierto" puede diferir entre software y modelos. En las licencias ModelGo, SA significa la disponibilidad de **Licensed Materials** y **Derivative Materials**, excluyendo la apertura del conjunto de datos (ya que lo consideramos fuera del alcance de gobernanza de las licencias MG).
+<mark style="color:purple;">**Actualmente, no.**</mark> Ninguna de las variantes de las licencias ModelGo ha sido aprobada por la Open Source Initiative (OSI) todavia. Sin embargo, nuestro objetivo es que MG-BY-SA-2.0 mantenga el modelo "abierto". Tambien vale la pena mencionar que el significado de "abierto" puede diferir entre software y modelos. En las licencias ModelGo, SA significa la disponibilidad de **Licensed Materials**, **Derivative Materials** y **Extracted Models**, excluyendo la apertura del conjunto de datos (ya que lo consideramos fuera del alcance de gobernanza de las licencias MG).
 
 ## ¿Puedo hacer codigo cerrado de mis modelos licenciados bajo MG con SA?
 
-<mark style="color:purple;">**No.**</mark> Esto tambien se aplica a sus derivados. MG-BY-SA-2.0 es una licencia copyleft, lo que significa que todas las obras derivadas tambien deben estar cubiertas por la misma licencia. Tampoco puede revocar MG-BY-SA-2.0, a diferencia de GPL-3.0, que no afirma explicitamente que la licencia de patente otorgada sea irrevocable.
+<mark style="color:purple;">**No.**</mark> Esto tambien se aplica a sus derivados y modelos extraidos. MG-BY-SA-2.0 es una licencia copyleft, lo que significa que todas las obras derivadas y los modelos extraidos tambien deben estar cubiertas por la misma licencia. Tampoco puede revocar MG-BY-SA-2.0, a diferencia de GPL-3.0, que no afirma explicitamente que la licencia de patente otorgada sea irrevocable.
 
 ## ¿Las licencias ModelGo admitiran mas opciones de licenciamiento?
 

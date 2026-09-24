@@ -103,11 +103,11 @@ Les licences ModelGo déclarent explicitement si elles accordent ou n'accordent 
 
 ## Les MG-BY-SA sont-elles considérées comme des licences Open Source ?
 
-<mark style="color:purple;">**Actuellement, non.**</mark> Aucune des variantes des licences ModelGo n'a encore été approuvée par l'Open Source Initiative (OSI). Cependant, nous visons à ce que MG-BY-SA-2.0 maintienne le modèle « ouvert ». Il convient également de mentionner que la signification d'« ouvert » peut différer entre les logiciels et les modèles. Dans les licences ModelGo, SA signifie la disponibilité des **Licensed Materials** et des **Derivative Materials**, excluant l'ouverture du jeu de données (car nous le considérons en dehors de la portée de gouvernance des licences MG).
+<mark style="color:purple;">**Actuellement, non.**</mark> Aucune des variantes des licences ModelGo n'a encore été approuvée par l'Open Source Initiative (OSI). Cependant, nous visons à ce que MG-BY-SA-2.0 maintienne le modèle « ouvert ». Il convient également de mentionner que la signification d'« ouvert » peut différer entre les logiciels et les modèles. Dans les licences ModelGo, SA signifie la disponibilité des **Licensed Materials**, des **Derivative Materials** et des **Extracted Models**, excluant l'ouverture du jeu de données (car nous le considérons en dehors de la portée de gouvernance des licences MG).
 
 ## Puis-je fermer le code source de mes modèles sous licence MG avec SA ?
 
-<mark style="color:purple;">**Non.**</mark> Cela s'applique également à ses dérivés. MG-BY-SA-2.0 est une licence copyleft, ce qui signifie que toutes les œuvres dérivées doivent également être couvertes par la même licence. Vous ne pouvez pas non plus révoquer MG-BY-SA-2.0, contrairement à GPL-3.0, qui ne déclare pas explicitement que la licence de brevet accordée est irrévocable.
+<mark style="color:purple;">**Non.**</mark> Cela s'applique également à ses dérivés et aux modèles extraits. MG-BY-SA-2.0 est une licence copyleft, ce qui signifie que toutes les œuvres dérivées et les modèles extraits doivent également être couverts par la même licence. Vous ne pouvez pas non plus révoquer MG-BY-SA-2.0, contrairement à GPL-3.0, qui ne déclare pas explicitement que la licence de brevet accordée est irrévocable.
 
 ## Les licences ModelGo supporteront-elles davantage d'options de licence ?
 

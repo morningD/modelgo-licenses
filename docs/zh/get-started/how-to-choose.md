@@ -1,3 +1,8 @@
+---
+title: 如何选择 ModelGo 许可证 - 对比与选择指南
+description: 通过差异视图和 Model Sheet 并排比较 ModelGo 许可证选项，帮助您选择最适合的 AI 模型许可证。
+---
+
 # ✨ 如何选择
 
 ## ModelGo 许可证的差异视图

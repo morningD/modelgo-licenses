@@ -68,7 +68,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY/LICENSE
 |---|---|
 | 短縮識別子 | MG-BY-SA-2.0 |
 | タグ | コピーレフト、ソース開示、サブライセンス不可、撤回不可能 |
-| 用途 | すべてのコピーおよびその後の派生物に対して、モデルの重み、アーキテクチャ、トレーニングおよびテストのコード/スクリプトなど（データとシステムライブラリを除く）をオープンソース化する要件付きでモデルを公開します。 |
+| 用途 | すべてのコピー、後続の派生物、および抽出モデルに対して、モデルの重み、アーキテクチャ、トレーニングおよびテストのコード/スクリプトなど（データとシステムライブラリを除く）をオープンソース化する要件付きでモデルを公開します。 |
 | 全文 | [GitHubで見る →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-SA/LICENSE) |
 
 <details>
@@ -92,7 +92,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-SA/LICENSE
 |---|---|
 | 短縮識別子 | MG-BY-RAI-2.0 |
 | タグ | 弱いコピーレフト、責任あるAI、サブライセンス不可、<mark style="color:purple;">**撤回可能**</mark>、GPL非互換 |
-| 用途 | [RAIL](https://www.licenses.ai)が提唱するAIの責任ある使用条項付きでモデルを公開します。このライセンスを適用すると、すべてのコピーおよびその後の派生物がこれらの使用制限条項に拘束されることに注意してください。 |
+| 用途 | [RAIL](https://www.licenses.ai)が提唱するAIの責任ある使用条項付きでモデルを公開します。このライセンスを適用すると、すべてのコピー、後続の派生物、および抽出モデルがこれらの使用制限条項に拘束されることに注意してください。 |
 | 全文 | [GitHubで見る →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-RAI/LICENSE) |
 
 <details>
@@ -114,7 +114,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 
 ### 厳格なライセンス
 
-これらのライセンスは<mark style="color:purple;">非フリー</mark>であり、非商用目的のみの使用や元の著作物の派生物の共有禁止など、<mark style="color:purple;">厳格な再配布制限</mark>が含まれています。また、モデル出力をデータセットとして公開する際にモデルの帰属表示が必要です。
+これらのライセンスは<mark style="color:purple;">非フリー</mark>であり、非商用目的のみの使用や元の著作物の派生物および抽出モデルの共有禁止など、<mark style="color:purple;">厳格な再配布制限</mark>が含まれています。また、モデル出力をデータセットとして公開する際にモデルの帰属表示が必要です。
 
 :::tabs
 == MG-BY-NC
@@ -123,7 +123,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 |---|---|
 | 短縮識別子 | MG-BY-NC-2.0 |
 | タグ | 商用利用禁止、サブライセンス不可、GPL非互換、<mark style="color:purple;">**撤回可能**</mark> |
-| 用途 | 商用利用禁止の条件付きでモデルを公開します。元のモデルとその派生物、および補完的なコードとスクリプトに対するいかなる商用利用（SaaSを含む）も許可されません。このライセンスの権利付与は撤回可能であることにご注意ください。 |
+| 用途 | 商用利用禁止の条件付きでモデルを公開します。元のモデル、その派生物、および抽出モデル、ならびに補完的なコードとスクリプトに対するいかなる商用利用（SaaSを含む）も許可されません。このライセンスの権利付与は撤回可能であることにご注意ください。 |
 | 全文 | [GitHubで見る →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC/LICENSE) |
 
 <details>
@@ -167,7 +167,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 
 :::
 
-<mark style="color:purple;">**NoDerivatives**</mark>ライセンスオプションは、いかなる派生物の共有も禁止します。これらのライセンスはプロプライエタリライセンスとして使用できます。
+<mark style="color:purple;">**NoDerivatives**</mark>ライセンスオプションは、いかなる派生物および抽出モデルの共有も禁止します。これらのライセンスはプロプライエタリライセンスとして使用できます。
 
 :::tabs
 == MG-BY-ND
@@ -176,7 +176,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 |---|---|
 | 短縮識別子 | MG-BY-ND-2.0 |
 | タグ | プロプライエタリ、派生物の共有禁止、サブライセンス不可、<mark style="color:purple;">**撤回可能**</mark> |
-| 用途 | 共有制限付きでモデルを公開し、完全なコピーの共有のみに限定し、いかなる派生物（出力を除く）の共有も禁止します。 |
+| 用途 | 共有制限付きでモデルを公開し、完全なコピーの共有のみに限定し、いかなる派生物および抽出モデル（出力を除く）の共有も禁止します。 |
 | 全文 | [GitHubで見る →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-ND/LICENSE) |
 
 <details>
@@ -200,7 +200,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-ND/LICENSE
 |---|---|
 | 短縮識別子 | MG-BY-NC-ND-2.0 |
 | タグ | プロプライエタリ、商用利用禁止、派生物の共有禁止、サブライセンス不可、<mark style="color:purple;">**撤回可能**</mark> |
-| 用途 | MG-BY-NDの規定に加え、元のモデルとその派生物、および補完的なコードとスクリプトに対するいかなる商用利用（SaaSを含む）も許可されません。 |
+| 用途 | MG-BY-NDの規定に加え、元のモデル、その派生物、および抽出モデル、ならびに補完的なコードとスクリプトに対するいかなる商用利用（SaaSを含む）も許可されません。 |
 | 全文 | [GitHubで見る →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-ND/LICENSE) |
 
 <details>

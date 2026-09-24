@@ -68,7 +68,7 @@ Estas licencias incluyen algunos <mark style="color:purple;">terminos de estilo 
 |---|---|
 | Identificador corto | MG-BY-SA-2.0 |
 | Etiquetas | Copyleft, Divulgacion de codigo fuente, No sublicenciable, Irrevocable |
-| Proposito | Publicar modelos con el requisito de hacer codigo abierto los pesos del modelo, arquitecturas, codigo/scripts de entrenamiento y prueba, etc. (excluyendo datos y bibliotecas del sistema) para todas las copias y derivados subsiguientes. |
+| Proposito | Publicar modelos con el requisito de que todas las copias, derivados subsiguientes y modelos extraidos hagan codigo abierto los pesos del modelo, arquitecturas, codigo/scripts de entrenamiento y prueba, etc. (excluyendo datos y bibliotecas del sistema). |
 | Texto completo | [View on GitHub →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-SA/LICENSE) |
 
 <details>
@@ -92,7 +92,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-SA/LICENSE
 |---|---|
 | Identificador corto | MG-BY-RAI-2.0 |
 | Etiquetas | Copyleft debil, IA Responsable, No sublicenciable, <mark style="color:purple;">**Revocable**</mark>, Incompatible con GPL |
-| Proposito | Publicar modelos con los terminos de uso responsable de IA, promovidos por [RAIL](https://www.licenses.ai). Tenga en cuenta que, al aplicar esta licencia, todas las copias y derivados subsiguientes estaran restringidos por estos terminos de restriccion basados en el uso. |
+| Proposito | Publicar modelos con los terminos de uso responsable de IA, promovidos por [RAIL](https://www.licenses.ai). Tenga en cuenta que, al aplicar esta licencia, todas las copias, derivados subsiguientes y modelos extraidos estaran restringidos por estos terminos de restriccion basados en el uso. |
 | Texto completo | [View on GitHub →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-RAI/LICENSE) |
 
 <details>
@@ -114,7 +114,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 
 ### Estrictas
 
-Estas licencias son <mark style="color:purple;">no libres</mark> y contienen <mark style="color:purple;">restricciones estrictas de redistribucion</mark>, como solo para fines no comerciales y/o prohibir el intercambio de derivados de la obra original. Tambien requieren la atribucion del modelo al publicar las salidas del modelo como conjuntos de datos.
+Estas licencias son <mark style="color:purple;">no libres</mark> y contienen <mark style="color:purple;">restricciones estrictas de redistribucion</mark>, como solo para fines no comerciales y/o prohibir el intercambio de derivados y modelos extraidos de la obra original. Tambien requieren la atribucion del modelo al publicar las salidas del modelo como conjuntos de datos.
 
 :::tabs
 == MG-BY-NC
@@ -123,7 +123,7 @@ Estas licencias son <mark style="color:purple;">no libres</mark> y contienen <ma
 |---|---|
 | Identificador corto | MG-BY-NC-2.0 |
 | Etiquetas | Sin uso comercial, No sublicenciable, Incompatible con GPL, <mark style="color:purple;">**Revocable**</mark> |
-| Proposito | Publicar modelos con la prohibicion de uso comercial, lo que significa que cualquier tipo de uso comercial (incluyendo SaaS) de los modelos originales y sus derivados, asi como el codigo y scripts complementarios, no esta permitido. Tenga en cuenta que los derechos otorgados por esta licencia pueden ser revocados. |
+| Proposito | Publicar modelos con la prohibicion de uso comercial, lo que significa que cualquier tipo de uso comercial (incluyendo SaaS) de los modelos originales, sus derivados y modelos extraidos, asi como el codigo y scripts complementarios, no esta permitido. Tenga en cuenta que los derechos otorgados por esta licencia pueden ser revocados. |
 | Texto completo | [View on GitHub →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC/LICENSE) |
 
 <details>
@@ -167,7 +167,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 
 :::
 
-Las opciones de licencia <mark style="color:purple;">**NoDerivatives**</mark> prohiben cualquier tipo de intercambio de derivados. Estas licencias pueden usarse como licencias propietarias.
+Las opciones de licencia <mark style="color:purple;">**NoDerivatives**</mark> prohiben cualquier tipo de intercambio de derivados y modelos extraídos. Estas licencias pueden usarse como licencias propietarias.
 
 :::tabs
 == MG-BY-ND
@@ -176,7 +176,7 @@ Las opciones de licencia <mark style="color:purple;">**NoDerivatives**</mark> pr
 |---|---|
 | Identificador corto | MG-BY-ND-2.0 |
 | Etiquetas | Propietaria, Sin compartir derivados, No sublicenciable, <mark style="color:purple;">**Revocable**</mark> |
-| Proposito | Publicar modelos con restricciones de intercambio limitadas a la copia literal, prohibiendo cualquier tipo de intercambio de derivados (excluyendo salidas). |
+| Proposito | Publicar modelos con restricciones de intercambio limitadas a la copia literal, prohibiendo cualquier tipo de intercambio de derivados y modelos extraidos (excluyendo salidas). |
 | Texto completo | [View on GitHub →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-ND/LICENSE) |
 
 <details>
@@ -200,7 +200,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-ND/LICENSE
 |---|---|
 | Identificador corto | MG-BY-NC-ND-2.0 |
 | Etiquetas | Propietaria, Sin uso comercial, Sin compartir derivados, No sublicenciable, <mark style="color:purple;">**Revocable**</mark> |
-| Proposito | Ademas de las disposiciones de MG-BY-ND, cualquier tipo de uso comercial (incluyendo SaaS) de los modelos originales y sus derivados, asi como el codigo y scripts complementarios, no esta permitido. |
+| Proposito | Ademas de las disposiciones de MG-BY-ND, cualquier tipo de uso comercial (incluyendo SaaS) de los modelos originales, sus derivados y modelos extraidos, asi como el codigo y scripts complementarios, no esta permitido. |
 | Texto completo | [View on GitHub →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-ND/LICENSE) |
 
 <details>

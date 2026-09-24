@@ -1,3 +1,8 @@
+---
+title: 理解 ModelGo - 设计理念与适用范围
+description: 了解 ModelGo 许可证框架的设计哲学、适用范围和结构，以及它与传统开源许可证、CC 许可证和 OpenRAIL 的区别。
+---
+
 # 📖 理解 ModelGo
 
 ## 如何构建

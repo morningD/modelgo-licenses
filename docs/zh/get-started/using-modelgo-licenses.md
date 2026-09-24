@@ -1,3 +1,8 @@
+---
+title: 使用 ModelGo 许可证 - 浏览所有许可证变体
+description: 探索 MG0、MG-BY、MG-BY-SA 等 8 种 ModelGo 许可证变体，从宽松到严格，找到最适合您 AI 模型的许可证。
+---
+
 # 🚀 使用 ModelGo 许可证
 
 ModelGo 许可证包含八种变体，分为**宽松许可证**、**有条件宽松许可证**和**严格许可证**。请选择最适合您需求的许可证。
@@ -68,7 +73,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY/LICENSE
 |---|---|
 | 简短标识符 | MG-BY-SA-2.0 |
 | 标签 | Copyleft、公开源代码、不可再许可、不可撤销 |
-| 用途 | 发布模型，要求所有副本和后续衍生品开源模型权重、架构、训练和测试代码/脚本等（不包括数据和系统库）。 |
+| 用途 | 发布模型，要求所有副本、后续衍生品及提取模型开源其模型权重、架构、训练和测试代码/脚本等（不包括数据和系统库）。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-SA/LICENSE) |
 
 <details>
@@ -92,7 +97,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-SA/LICENSE
 |---|---|
 | 简短标识符 | MG-BY-RAI-2.0 |
 | 标签 | 弱 Copyleft、负责任 AI、不可再许可、<mark style="color:purple;">**可撤销**</mark>、与 GPL 不兼容 |
-| 用途 | 发布模型，附带负责任使用 AI 的条款，这是 [RAIL](https://www.licenses.ai) 所倡导的。请注意，通过应用此许可证，所有副本和后续衍生品将受到这些基于使用的限制条款的约束。 |
+| 用途 | 发布模型，附带负责任使用 AI 的条款，这是 [RAIL](https://www.licenses.ai) 所倡导的。请注意，通过应用此许可证，所有副本、后续衍生品及提取模型将受到这些基于使用的限制条款的约束。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-RAI/LICENSE) |
 
 <details>
@@ -114,7 +119,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 
 ### 严格许可证
 
-这些许可证是 <mark style="color:purple;">非自由的</mark>，包含 <mark style="color:purple;">严格的再分发限制</mark>，例如仅限非商业用途和/或禁止共享原始作品的衍生品。它们还要求在将模型输出发布为数据集时注明模型出处。
+这些许可证是 <mark style="color:purple;">非自由的</mark>，包含 <mark style="color:purple;">严格的再分发限制</mark>，例如仅限非商业用途和/或禁止共享原始作品的衍生品及提取模型。它们还要求在将模型输出发布为数据集时注明模型出处。
 
 :::tabs
 == MG-BY-NC
@@ -123,7 +128,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 |---|---|
 | 简短标识符 | MG-BY-NC-2.0 |
 | 标签 | 禁止商业使用、不可再许可、与 GPL 不兼容、<mark style="color:purple;">**可撤销**</mark> |
-| 用途 | 发布模型，禁止商业使用意味着不允许对原始模型及其衍生品以及配套代码和脚本进行任何形式的商业使用（包括 SaaS）。请注意，此许可证授予的权利可以被撤销。 |
+| 用途 | 发布模型，禁止商业使用意味着不允许对原始模型、其衍生品及提取模型以及配套代码和脚本进行任何形式的商业使用（包括 SaaS）。请注意，此许可证授予的权利可以被撤销。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC/LICENSE) |
 
 <details>
@@ -167,7 +172,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 
 :::
 
-<mark style="color:purple;">**禁止衍生品**</mark> 选项禁止任何形式的衍生品共享。这些许可证可用作专有许可证。
+<mark style="color:purple;">**禁止衍生品**</mark> 选项禁止任何形式的衍生品及提取模型共享。这些许可证可用作专有许可证。
 
 :::tabs
 == MG-BY-ND
@@ -176,7 +181,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 |---|---|
 | 简短标识符 | MG-BY-ND-2.0 |
 | 标签 | 专有、禁止共享衍生品、不可再许可、<mark style="color:purple;">**可撤销**</mark> |
-| 用途 | 发布模型，共享限制仅限于逐字副本，禁止任何形式的衍生品共享（不包括输出）。 |
+| 用途 | 发布模型，共享限制仅限于逐字副本，禁止任何形式的衍生品及提取模型共享（不包括输出）。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-ND/LICENSE) |
 
 <details>
@@ -200,7 +205,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-ND/LICENSE
 |---|---|
 | 简短标识符 | MG-BY-NC-ND-2.0 |
 | 标签 | 专有、禁止商业使用、禁止共享衍生品、不可再许可、<mark style="color:purple;">**可撤销**</mark> |
-| 用途 | 在 MG-BY-ND 的基础上，不允许对原始模型及其衍生品以及配套代码和脚本进行任何形式的商业使用（包括 SaaS）。 |
+| 用途 | 在 MG-BY-ND 的基础上，不允许对原始模型、其衍生品及提取模型以及配套代码和脚本进行任何形式的商业使用（包括 SaaS）。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-ND/LICENSE) |
 
 <details>

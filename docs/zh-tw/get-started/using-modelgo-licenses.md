@@ -68,7 +68,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY/LICENSE
 |---|---|
 | 簡短標識符 | MG-BY-SA-2.0 |
 | 標籤 | 著作權保護、公開原始碼、不可再授權、不可撤銷 |
-| 用途 | 發布模型並要求對所有副本及後續衍生品開源模型權重、架構、訓練和測試程式碼/腳本等（不包括數據和系統函式庫）。 |
+| 用途 | 發布模型並要求所有副本、後續衍生品及提取模型開源其模型權重、架構、訓練和測試程式碼/腳本等（不包括數據和系統函式庫）。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-SA/LICENSE) |
 
 <details>
@@ -92,7 +92,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-SA/LICENSE
 |---|---|
 | 簡短標識符 | MG-BY-RAI-2.0 |
 | 標籤 | 弱著作權保護、負責任 AI、不可再授權、<mark style="color:purple;">**可撤銷**</mark>、與 GPL 不相容 |
-| 用途 | 發布模型並附帶負責任使用 AI 的條款，此概念已由 [RAIL](https://www.licenses.ai) 倡導。請注意，使用此授權條款時，所有副本及後續衍生品將受到這些基於用途的限制條款約束。 |
+| 用途 | 發布模型並附帶負責任使用 AI 的條款，此概念已由 [RAIL](https://www.licenses.ai) 倡導。請注意，使用此授權條款時，所有副本、後續衍生品及提取模型將受到這些基於用途的限制條款約束。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-RAI/LICENSE) |
 
 <details>
@@ -114,7 +114,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 
 ### 嚴格授權
 
-這些授權條款為<mark style="color:purple;">非自由</mark>授權，包含<mark style="color:purple;">嚴格的再分發限制</mark>，例如僅限非商業用途和/或禁止共享原始作品的衍生品。它們還要求在將模型輸出作為數據集發布時標註模型出處。
+這些授權條款為<mark style="color:purple;">非自由</mark>授權，包含<mark style="color:purple;">嚴格的再分發限制</mark>，例如僅限非商業用途和/或禁止共享原始作品的衍生品及提取模型。它們還要求在將模型輸出作為數據集發布時標註模型出處。
 
 :::tabs
 == MG-BY-NC
@@ -123,7 +123,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-RAI/LICENSE
 |---|---|
 | 簡短標識符 | MG-BY-NC-2.0 |
 | 標籤 | 禁止商業使用、不可再授權、與 GPL 不相容、<mark style="color:purple;">**可撤銷**</mark> |
-| 用途 | 發布模型並禁止商業使用，即不允許對原始模型及其衍生品以及配套程式碼和腳本進行任何商業使用（包括 SaaS）。請注意，此授權條款的授權可以被撤銷。 |
+| 用途 | 發布模型並禁止商業使用，即不允許對原始模型、其衍生品及提取模型以及配套程式碼和腳本進行任何商業使用（包括 SaaS）。請注意，此授權條款的授權可以被撤銷。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC/LICENSE) |
 
 <details>
@@ -167,7 +167,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 
 :::
 
-<mark style="color:purple;">**禁止衍生品（NoDerivatives）**</mark>授權選項禁止任何形式的衍生品共享。這些授權條款可作為專有授權使用。
+<mark style="color:purple;">**禁止衍生品（NoDerivatives）**</mark>授權選項禁止任何形式的衍生品及提取模型共享。這些授權條款可作為專有授權使用。
 
 :::tabs
 == MG-BY-ND
@@ -176,7 +176,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-NC-RAI/LICENSE
 |---|---|
 | 簡短標識符 | MG-BY-ND-2.0 |
 | 標籤 | 專有、禁止共享衍生品、不可再授權、<mark style="color:purple;">**可撤銷**</mark> |
-| 用途 | 發布模型並限制共享僅限於原始副本，禁止任何形式的衍生品共享（不包括輸出）。 |
+| 用途 | 發布模型並限制共享僅限於原始副本，禁止任何形式的衍生品及提取模型共享（不包括輸出）。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-ND/LICENSE) |
 
 <details>
@@ -200,7 +200,7 @@ https://ids.nus.edu.sg/docs/modelgo/v2/MG-BY-ND/LICENSE
 |---|---|
 | 簡短標識符 | MG-BY-NC-ND-2.0 |
 | 標籤 | 專有、禁止商業使用、禁止共享衍生品、不可再授權、<mark style="color:purple;">**可撤銷**</mark> |
-| 用途 | 在 MG-BY-ND 條款的基礎上，不允許對原始模型及其衍生品以及配套程式碼和腳本進行任何商業使用（包括 SaaS）。 |
+| 用途 | 在 MG-BY-ND 條款的基礎上，不允許對原始模型、其衍生品及提取模型以及配套程式碼和腳本進行任何商業使用（包括 SaaS）。 |
 | 完整文本 | [在 GitHub 上查看 →](https://github.com/Xtra-Computing/ModelGo/blob/main/MGL/V2/MG-BY-NC-ND/LICENSE) |
 
 <details>
